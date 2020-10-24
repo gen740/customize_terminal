@@ -5,7 +5,7 @@ brew install neovim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh ~/.vim/dein
 
-if ! [ -e ~/.cofig/nvim/ ]; then
+if ! [ -e ~/.config/nvim/ ]; then
     if [ -e ~/.config ]; then
         echo "There already exists .config file. Please remove it by "rm ~/.config" or manually\n\n"
         exit
