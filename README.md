@@ -30,7 +30,5 @@ chmod +x p10k_zinit_install.sh
 
 After you install vim and powerlevel10k, yout terminal would look like....
 
-[zsh](./Samples/スクリーンショット 2020-10-24 14.10.33)
-
-
+![zsh]("Samples/スクリーンショット 2020-10-24 14.10.33")
 
