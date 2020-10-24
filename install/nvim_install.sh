@@ -33,7 +33,7 @@ fi
 
 cp ./init.vim ~/.config/nvim/
 cp ./plugins.toml ~/.vim/dein/
-cp ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim
+cp -r ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 echo "You should install Nerd Fonts"
 echo "Prease ref -> https://github.com/ryanoasis/nerd-fonts"
