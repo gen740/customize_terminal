@@ -6,11 +6,11 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 sh ./installer.sh ~/.vim/dein
 
 if ! [ -e ~/.cofig/nvim/ ]; then
-    if [ -e ~/.config ]; then
+    if [ -f ~/.config ]; then
         echo "There already exists .config file. Please remove it by "rm ~/.config" or manually\n\n"
         exit
     fi
-    if [ -e ~/.config/nvim ]; then
+    if [ -f ~/.config/nvim ]; then
         echo "There already exists nvim file. Please remove it by "rm ~/.config/nvim" or manually\n\n"
         exit
     fi
@@ -18,11 +18,11 @@ if ! [ -e ~/.cofig/nvim/ ]; then
 fi
 
 if ! [ -e ~/.vim/dein/ ]; then
-    if [ -e ~/.vim ]; then
+    if [ -f ~/.vim ]; then
         echo "There already exists .vim file. Please remove it by "rm ~/.vim" or manually\n\n"
         exit
     fi
-    if [ -e ~/.vim/dein ]; then
+    if [ -f ~/.vim/dein ]; then
         echo "There already exists dein file. Please remove it by "rm ~/.vim/dein" or manually\n\n"
         exit
     fi
