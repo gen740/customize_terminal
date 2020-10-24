@@ -18,7 +18,7 @@ cd customize_terminal/install
 chmod +x nvim_install.sh
 ./nvim_install.sh
 ```
-
+Then you can use neovim by `nvim`.
 Furtermore you can Install Iterm2 and powerlevel10k (plugin for zsh) by doing
 
 ```shell
