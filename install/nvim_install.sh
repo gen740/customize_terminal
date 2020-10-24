@@ -1,4 +1,5 @@
 python3 -m pip install neovim
+sudo easy_install pip
 python -m pip install neovim
 brew install neovim
 
