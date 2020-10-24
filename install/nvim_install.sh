@@ -1,6 +1,7 @@
 python3 -m pip install neovim
 sudo easy_install pip
 python -m pip install neovim
+python -m pip install pynvim
 brew install neovim
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
