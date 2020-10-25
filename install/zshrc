@@ -1,3 +1,5 @@
+
+# Add By customize_terminal
 # 履歴ファイルの保存先
 export HISTFILE=${HOME}/.zsh_history
 # メモリに保存される履歴の件数
@@ -36,3 +38,4 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 alias ls="ls -GF"
 alias gls="gls --color"
 alias c=clear
+# End customize_terminal
