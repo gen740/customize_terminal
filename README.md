@@ -26,6 +26,8 @@ chmod +x p10k_zinit_install.sh
 ./p10k_zinit_install.sh
 ```
 
+If you have some arror, please do: `checkhealth` and see ERRORS, or do `:UpdateRemotePlugins`
+
 ## Samples
 
 After you install vim and powerlevel10k, yout terminal would look like....
