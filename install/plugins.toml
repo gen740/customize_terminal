@@ -223,18 +223,6 @@ let g:previm_open_cmd = 'open -a Google\ Chrome'
 [[plugins]]
 repo = "chrisbra/csv.vim"
 
-# 19
-[[plugins]] # html リアルタイムプレビュー
-repo = "turbio/bracey.vim"
-hook_add =
-'''
-let g:bracey_browser_command = 'open' 
-'''
-
-# 20
-[[plugins]]
-repo = "jaxbot/browserlink.vim"
-
 # 21
 [[plugins]]
 repo = "dhruvasagar/vim-table-mode"
@@ -250,28 +238,3 @@ let g:indentLine_char = '┊'
 # 23
 [[plugins]] # binary
 repo = 'Shougo/vinarise.vim'
-
-# 24
-[[plugins]] # text
-repo = 'bpstahlman/txtfmt'
-
-# 25
-[[plugins]]
-repo = 'lilydjwg/colorizer'
-
-# 26
-[[plugins]]
-repo = 'junegunn/goyo.vim'
-
-# 27
-[[plugins]]
-repo = 'itchyny/screensaver.vim'
-hook_add = 
-'''
-let g:screensaver_password = 1
-" call screensaver#source#password#set(sha256('vim'))
-'''
-
-# 28
-[[plugins]]
-repo = 'itchyny/calendar.vim'
