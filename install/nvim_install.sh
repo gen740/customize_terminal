@@ -1,6 +1,7 @@
-sudo add-apt-repository ppa:neovim-ppa/stable 
-sudo apt-get update
-sudo apt-get install neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage
+
 python3 -m pip install neovim
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
