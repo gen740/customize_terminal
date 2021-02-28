@@ -1,0 +1,29 @@
+[[plugins]] # pythonの補完
+repo ='davidhalter/jedi-vim'
+on_ft = 'python'
+hook_add = '''
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#show_call_signatures = 2
+'''
+
+[[plugins]] # 表組みをしてくれる。
+repo ='godlygeek/tabular' # << https://devhints.io/tabular
+
+[[plugins]]
+repo = "chrisbra/csv.vim"
+on_ft = 'csv'
+
+[[plugins]]
+repo = "dhruvasagar/vim-table-mode"
+
+[[plugins]] # binary
+repo = 'Shougo/vinarise.vim'
+
+[[plugins]]
+repo = 'junegunn/goyo.vim'
+
+[[plugins]]
+repo = 'CoatiSoftware/vim-sourcetrail'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
