@@ -12,7 +12,9 @@ if dein#load_state('~/.vim/dein')
     endif
     let g:config_dir  = expand('~/.vim/dein')
     let s:toml_file   = g:config_dir . '/plugins.toml'
-    call dein#load_toml(s:toml_file)  " TOML を読み込み、キャッシュしておく
+    let s:lazy_toml_file   = g:config_dir . '/lazy_plugins.toml'
+    call dein#load_toml(s:toml_file, {'lazy': 0})  " TOML を読み込み、キャッシュしておく
+    call dein#load_toml(s:lazy_toml_file, {'lazy': 1})  " TOML を読み込み、キャッシュしておく
     call dein#end()
     call dein#save_state()
 endif
@@ -21,29 +23,27 @@ if dein#check_install()
     call dein#install()
 endif
 "　必要なときにコメントアウトを戻してpluginを削除してください。
-" call map(dein#check_clean(), "delete(v:val, 'rf')")
-" call dein#recache_runtimepath()
+"    call map(dein#check_clean(), "delete(v:val, 'rf')")
+"    call dein#recache_runtimepath()
 "End dein Scripts-------------------------
+set runtimepath+=~/.vim/custom_runtime
 
 "シンタックスハイライトを有効
 "###############################################################################
 syntax enable
 set syntax=markdown
-colorscheme mountaineer
+au BufRead,BufNewFile *.md set filetype=markdown
+colo my-scheme
 
 "インデント関係
 "###############################################################################
 set expandtab                   " タブを押すと空白が挿入されるようにする
-set tabstop=4                   " 一個のタブを空白何個分にとるか。
-set shiftwidth=4                " vimのインデントでいくつ空白を挿入するか
-set softtabstop=4               " tabを押した時に空白何個分のインデントをとるか。
+set tabstop=2                   " 一個のタブを空白何個分にとるか。
+set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
+set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
 set autoindent                  " 改行したりした時にインデントを保持してくれます。
 
 " Airline用
-set statusline=2                " ステータスラインの記述
-set laststatus=2                " 下のステータスライン
-set noshowmode                  " デフォルトのステータスラインを消す
-
 "検索関係
 "###############################################################################
 set incsearch                   " 文字検索時にリアルタイムで検索してくれます。
@@ -52,118 +52,52 @@ set hlsearch                    " 検索した文字がハイライトされま�
 
 "その他
 "###############################################################################
+filetype plugin indent on
 set autoread                    " 編集中に別のところで編集されたら自動で読み込みます。
 set showcmd                     " 入力中のコマンドを表示します。右下に表示されます。
 set whichwrap=b,s,h,l,<,>,[,]   " 行末、行頭で行を跨ぐことができるようになります。
-set colorcolumn=81              " 81文字目にラインが入ります。
-let &colorcolumn="81,"  ".join(range(121,999),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+let &colorcolumn="81,".join(range(100,999),",")
 set noswapfile                  " swapファイルは使いません
 set mouse+=a                    " マウスでカーソルの位置を指定できる
 set cursorline                  " 今いる行をハイライト
 set vb t_vb=                    " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
 set title                       " タイトルにパスを表示する
 set number                      " 行頭に数字を表示する
+set relativenumber
 set clipboard+=unnamed          " クリップボードにコピーできるようにする
 set backspace=indent,eol,start  " deleteキーの有効化
-    
-let var = expand('%:e')
-if var == "html"                " htmlではタブを2個に
-    retab 2
-    set tabstop=2
-    set shiftwidth=2
-    set softtabstop=2
-endif
 
 "Functions
 "###############################################################################
-function! s:clang_format()      " clang-format　をしてくれる関数
-    let now_line = line(".")
-    :%! clang-format -style=file
-    exec ":" . now_line
-endfunction
-
-function! s:prettier_format()   "prettier-format　をしてくれる関数
-    let now_line = line(".")
-    :silent! w
-    :%! prettier %
-    exec ":" . now_line
-endfunction
-
-if executable('clang-format')
-    augroup cpp_clang_format
-        autocmd!
-        autocmd BufWrite,FileWritePre,FileAppendPre *.[ch]pp call s:clang_format()
-    augroup END
-endif
-
-if executable('clang-format') 
-    augroup clang_format
-        autocmd!
-        autocmd BufWrite,FileWritePre,FileAppendPre *.[ch] call s:clang_format()
-    augroup END
-endif
-
-if executable('prettier') 
-    augroup prettier_format
-        autocmd!
-        autocmd BufWrite,FileWritePre,FileAppendPre *.html call s:prettier_format()
-        autocmd BufWrite,FileWritePre,FileAppendPre *.css call s:prettier_format()
-        autocmd BufWrite,FileWritePre,FileAppendPre *.js call s:prettier_format()
-    augroup END
-endif
-
-function! Run() "
-    let var = expand('%:e') 
-    if var == "cpp"
-        :w
-        :!g++-10 % -o %:r.out -lstdc++fs -std=c++17
-        :!./%:r.out
-    elseif var == "c"
-        :w
-        :!gcc-10 % -o %:r.out
-        :!./%:r.out
-    elseif var == "py"
-        :w
-        :!python3 %
-        :!echo "End"
-    elseif var == "sh"
-        :w
-        :!bash %
-        :!echo "End"
-    else
-        :w
-        exec ":!echo cannot Run this file" 
-    endif
-endfunction
-
-function! Run_Kp()          " 競技プログラミング用の実行環境。
-    let var = expand('%:e') 
-    if var == "cpp"
-       :w
-       :!g++-9 % -o %:r.out -lstdc++fs -std=c++17
-       :!./%:r.out < Normal_input
-    endif
-endfunction
-
-function! CmakeRun()
-    :w
-    :!cd build; cmake ..; make ;./main
-    :!echo "END"
-endfunction
-
-"ここ以降はコマンドを規定
-"###############################################################################
-command! Run call Run()
-command! RunKp call Run_Kp()
-command! CmakeRun call CmakeRun()
-
-"キーマップを規定
-"###############################################################################
-noremap <F2> :Run<CR>
-noremap <F3> :CmakeRun<CR>
-noremap <F4> :RunKp<CR>
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-]> <C-\><C-n>
+let mapleader = "\<Space>"
+nnoremap <Leader>s :SourcetrailActivateToken <CR>
+nmap j gj
+nmap k gk
 
 "プラグインの設定
 "###############################################################################
 set splitbelow
 set completeopt-=preview " プレビューウインドウを表示しない
+
+set foldmethod=marker
+au FileType cpp setlocal foldmarker={,}
+au FileType c setlocal foldmarker={,}
+au FileType cpp setlocal foldmarker={,}
+set nofoldenable
+
+function! s:arrangeCSV() abort
+  :%UnArrangeColumn
+  :%ArrangeColumn
+endfunction
+
+autocmd BufWrite,FileWritePre,FileAppendPre *.csv call s:arrangeCSV()
+autocmd FileType tex let g:indentLine_enabled=0
+autocmd FileType tex let g:Imap_UsePlaceHolders=0
+set updatetime=3000
+let g:markdown_minlines = 100
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'cpp']
+let g:ycm_auto_hover='CursorHold'
+
