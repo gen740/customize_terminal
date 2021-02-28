@@ -30,6 +30,7 @@ fi
 cp ./init.vim ~/.config/nvim/
 cp ./init.vim ~/.vimrc
 cp ./plugins.toml ~/.vim/dein/
+cp ./lazy_plugins.toml ~/.vim/dein/
 cp -r ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 echo "You should install Nerd Fonts"
