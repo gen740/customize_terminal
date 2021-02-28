@@ -1,8 +1,4 @@
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-./nvim.appimage
-
-python3 -m pip install neovim
+sudo apt install vim
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh ~/.vim/dein
@@ -32,6 +28,7 @@ if ! [ -e ~/.vim/dein/ ]; then
 fi
 
 cp ./init.vim ~/.config/nvim/
+cp ./init.vim ~/.vimrc
 cp ./plugins.toml ~/.vim/dein/
 cp -r ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim
 
