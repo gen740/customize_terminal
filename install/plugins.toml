@@ -1,77 +1,40 @@
-# 1
-[[plugins]] # 補完をしてくれる
-repo = 'Shougo/deoplete.nvim'
-hook_add = 
-'''
-let g:deoplete#enable_at_startup = 1
-'''
-
-# 2
-[[plugins]] # snippet
-repo = 'Shougo/neosnippet.vim'
-hook_add =
-'''
-imap <C-k>  <Plug>(neosnippet_expand_or_jump)
-smap <C-k>  <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>  <Plug>(neosnippet_expand_target)
-map <C-q> :NERDTreeToggle<CR>
-'''
-
-# 3
-[[plugins]] # snippets
-repo = 'Shougo/neosnippet-snippets'
-hook_add = 
-'''
-let g:neosnippet#snippets_directory = 
-            \ "~/.vim/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets"
-'''
-
-# 4
-[[plugins]]
+[[plugins]] # START画面の表示
 repo = 'mhinz/vim-startify'
 hook_add =
 '''
 let g:startify_enable_special      = 1
-let g:startify_files_number        = 30
+let g:startify_files_number        = 15
 let g:startify_relative_path       = 1
 let g:startify_change_to_dir       = 1
 let g:startify_update_oldfiles     = 1
 let g:startify_session_autoload    = 1
 let g:startify_session_persistence = 1
-
-let g:startify_skiplist = [
-        \ 'COMMIT_EDITMSG',
-        \ 'bundle/.*/doc',
-        \ '/data/repo/neovim/runtime/doc',
-        \ '/Users/mhi/local/vim/share/vim/vim74/doc',
-        \ ]
-
+"let g:startify_skiplist = [
+"        \ 'COMMIT_EDITMSG',
+"        \ '~/.vimrc',
+"        \ '/Users/mhi/local/vim/share/vim/vim74/doc',
+"        \ '~/.config/nvim']
+"        \ '~/.vim/dein',
+"        \ '~/.vim/dein/repos/github.com/Shougo/dein.vim/colors'
+"        \ ]
 let g:startify_bookmarks = [
-        \ { 'c': '~/.config/nvim/init.vim' },
+        \ { 'cc': '~/.config/nvim/init.vim' },
+        \ { 'cf': '~/.vim/custom_runtime/autoload/custom.vim' },
+        \ { 'cd': '~/.vim/custom_runtime/plugin/custom.vim' },
+        \ { 'cv': '~/.vimrc' },
         \ { 'p': '~/.vim/dein/plugins.toml'},
+        \ { 'lp': '~/.vim/dein/lazy_plugins.toml'},
+        \ { 'z': '~/.vim/dein/repos/github.com/Shougo/dein.vim/colors/my-scheme.vim'},
         \ ]
-let g:startify_custom_header = [
- \ '                                                        ',
-"\ '     ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ ',
-"\ '     ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒ ',
-"\ '    ▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░ ',
-"\ '    ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██  ',
-"\ '    ▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒ ',
-"\ '    ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░ ',
-"\ '    ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░ ',
-"\ '       ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░    ',
-"\ '             ░    ░  ░    ░ ░        ░   ░         ░    ',
-"\ '                                    ░ '
+let g:startify_custom_header = [ ' ' ]
+" \'     ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗  ',
+" \'     ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║  ',
+" \'     ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║  ',
+" \'     ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║  ',
+" \'     ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║  ',
+" \'     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝  ',
 "\]
- \'     ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗  ',
- \'     ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║  ',
- \'     ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║  ',
- \'     ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║  ',
- \'     ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║  ',
- \'     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝  ',
-\]
-let g:startify_custom_footer =
-       \ ['', "", '']
+"let g:startify_custom_footer = ['', "", '']
 let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   MRU']            },
       \ { 'type': 'sessions',  'header': ['   Sessions']       },
@@ -88,153 +51,154 @@ hi StartifySlash   ctermfg=240
 hi StartifySpecial ctermfg=240
 '''
 
-# 5
+[[plugins]] # Airlineのテーマ
+repo = 'vim-airline/vim-airline-themes'
+
 [[plugins]] # ステータスラインの装飾
 repo = 'vim-airline/vim-airline'
 hook_add = '''
 let g:airline#extensions#default#layout = [
      \ [ 'a', 'b', 'c' ],
-     \ [ 'x', 'y', 'z','time' ]
+     \ [ 'x', 'y', 'z']
      \ ]
 let g:airline_detect_modified=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#formatter ='default'
 let g:airline#extensions#branch#enabled = 1
-" let g:airline#extensions#tabline#formatter ='default'
+let g:airline#extensions#denite#enabled = 1
+let g:airline#extensions#fugitiveline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 1
-let g:airline_section_time = '%{strftime("%H:%M")}'
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_section_y = airline#section#create_right(['neomake_custom','ffenc'])
+let g:airline_stl_path_style = 'short'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰ '
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = ''
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = ''
+" let g:airline#extensions#tabline#right_sep = ' '
+" let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-
+let g:airline#extensions#wordcount#enabled = 1
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
+let g:airline_theme = 'murmur' " ubaryd,
+set showtabline=2
+set statusline=2                " ステータスラインの記述
+set laststatus=2                " 下のステータスライン
+set noshowmode                  " デフォルトのステータスラインを消す
 '''
 
-# 6
-[[plugins]] # Airlineのテーマ
-repo = 'vim-airline/vim-airline-themes'
-hook_add =
-'''
-let g:airline_theme = 'hybrid'
-'''
-
-# 7
-[[plugins]]
+[[plugins]] # ファイルツリーの表示
 repo = "preservim/nerdtree"
+hook_add = '''
+map <C-q> :NERDTreeToggle<CR>
+let g:NERDTreeLimitedSyntax = 1
+'''
 
-# 8
 [[plugins]]
+repo = "Xuyuanp/nerdtree-git-plugin"
+hook_add = '''
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+'''
+
+
+[[plugins]] # アイコンの表示
 repo = 'ryanoasis/vim-devicons'
 
-# 9
-[[plugins]] # C++の補完
-repo ='justmao945/vim-clang'
-on_ft = 'cpp'
-hook_add = '''
-let g:clang_cpp_completeopt = 'longest,menuone'
-let g:clang_diagsopt = ''
-'''
-# 10
-[[plugins]] # pythonの補完
-repo ='davidhalter/jedi-vim'
-on_ft = 'python'
-hook_add = '''
-'''
-
-# 11
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
-# 12
-[[plugins]] # gitをvimから使う 
-repo ='tpope/vim-fugitive'
-
-# 13
-[[plugins]] # 闇の力
-repo = "Shougo/denite.nvim"
-
-# 14
-[[plugins]] # latexのコンパイルとかプレビュー
-repo = 'vim-latex/vim-latex'
-hook_add = '''
-filetype plugin on
-filetype indent on
-set shellslash
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Imap_UsePlaceHolders = 1
-let g:Imap_DeleteEmptyPlaceHolders = 1
-let g:Imap_StickyPlaceHolders = 0
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats='dvi,pdf'
-"let g:Tex_FormatDependency_pdf = 'pdf'
-let g:Tex_FormatDependency_pdf = 'dvi,pdf'
-let g:Tex_CompileRule_pdf = 'ptex2pdf -u -l -ot "-synctex=1 -interaction=nonstopmode -file-line-error-style" $*'
-"let g:Tex_CompileRule_pdf = 'lualatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
-let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
-let g:Tex_BibtexFlavor = 'upbibtex'
-let g:Tex_MakeIndexFlavor = 'upmendex $*.idx'
-let g:Tex_UseEditorSettingInDVIViewer = 1
-"let g:Tex_ViewRule_pdf = 'Skim'
-"let g:Tex_ViewRule_pdf = 'open -a Skim'
-"let g:Tex_ViewRule_pdf = 'open -a Preview'
-"let g:Tex_ViewRule_pdf = 'open -a TeXShop'
-"let g:Tex_ViewRule_pdf = '/Applications/TeXworks.app/Contents/MacOS/TeXworks'
-"let g:Tex_ViewRule_pdf = '/Applications/texstudio.app/Contents/MacOS/texstudio --pdf-viewer-only'
-"let g:Tex_ViewRule_pdf = 'open -a Google\ Chrome'
-"let g:Tex_ViewRule_pdf = 'open -a "Adobe Acrobat Reader DC"'
-let g:Tex_ViewRule_pdf = 'open'
-'''
-
-# 15
 [[plugins]] # コメントアウトとか手軽にできるようになる。
 repo = "tpope/vim-commentary"
 
-# 16
-[[plugins]] # 表組みをしてくれる。
-repo ='godlygeek/tabular'
-
-# 17
-[[plugins]]
-repo = "previm/previm"
-hook_add = 
-'''
-let g:previm_open_cmd = 'open -a Google\ Chrome'
-'''
-
-# 18
-[[plugins]]
-repo = "chrisbra/csv.vim"
-
-# 21
-[[plugins]]
-repo = "dhruvasagar/vim-table-mode"
-
-# 22
 [[plugins]]
 repo = 'yggdroot/indentline'
 hook_add =
 '''
 let g:indentLine_char = '┊'
+let g:indentLine_conceallevel=2
+let g:indentLine_concealcursor=""
+set conceallevel=1
+set concealcursor-=incv
 '''
 
-# 23
-[[plugins]] # binary
-repo = 'Shougo/vinarise.vim'
+[[plugins]] 
+repo = 'cohama/lexima.vim'
+
+[[plugins]] # gitをvimから使う 
+repo ='tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+'''
+
+[[plugins]]
+repo = 'octol/vim-cpp-enhanced-highlight'
+hook_add = '''
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 1
+'''
+
+[[plugins]]
+repo = 'valloric/youcompleteme'
+merged = 0
+hook_add = '''
+let g:ycm_use_clangd = 1
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['/Users/fujimotogen/Garage/bamboo/control/*']
+let g:ycm_error_symbol = ''
+let g:ycm_warning_symbol = ''
+nmap <leader>d <plug>(YCMHover)
+augroup MyYCMCustom
+  autocmd!
+  autocmd FileType c,cpp let b:ycm_hover = {
+    \ 'command': 'GetDoc',
+    \ 'syntax': &filetype
+    \ }
+augroup END
+'''
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+merged = 0
+hook_add = '''
+let g:UltiSnipsExpandTrigger='<C-k>'
+let g:UltiSnipsJumpForwardTrigger='<C-k>'
+let g:UltiSnipsJumpBackwardTrigger='<C-l>'
+'''
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+merged = 0
