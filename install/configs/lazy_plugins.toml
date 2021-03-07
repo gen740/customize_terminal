@@ -1,0 +1,38 @@
+[[plugins]] # 表組みをしてくれる。
+repo ='godlygeek/tabular' # << https://devhints.io/tabular
+
+[[plugins]]
+repo = "chrisbra/csv.vim"
+on_ft = 'csv'
+
+[[plugins]]
+repo = 'junegunn/goyo.vim'
+on_ft = ['txt', 'md']
+
+[[plugins]]
+repo = 'CoatiSoftware/vim-sourcetrail'
+
+
+[[plugins]] # アイコンの表示
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]] # toml syntax
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+
+[[plugins]] # gitをvimから使う 
+repo ='tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+" let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+'''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'guns/xterm-color-table.vim'

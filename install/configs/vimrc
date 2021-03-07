@@ -1,0 +1,140 @@
+"################################# DEIN ########################################
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.vim/dein')
+    call dein#begin('~/.vim/dein')
+    call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+    call dein#add('nvim-lua/popup.nvim')
+    call dein#add('nvim-lua/plenary.nvim')
+    call dein#add('nvim-telescope/telescope.nvim')
+    if !has('nvim')
+        call dein#add('roxma/nvim-yarp')
+        call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+    let g:config_dir  = expand('~/.vim/dein')
+    let s:toml_file   = g:config_dir . '/plugins.toml'
+    let s:lazy_toml_file   = g:config_dir . '/lazy_plugins.toml'
+    call dein#load_toml(s:toml_file, {'lazy': 0})  " TOML を読み込み、キャッシュしておく
+    call dein#load_toml(s:lazy_toml_file, {'lazy': 1})  " TOML を読み込み、キャッシュしておく
+    call dein#end()
+    call dein#save_state()
+endif
+filetype plugin indent on
+if dein#check_install()
+    call dein#install()
+endif
+"　必要なときにコメントアウトを戻してpluginを削除してください。
+   " call map(dein#check_clean(), "delete(v:val, 'rf')")
+   " call dein#recache_runtimepath()
+"End dein Scripts-------------------------
+set runtimepath+=~/.vim/custom_runtime
+
+"シンタックスハイライトを有効 TODO
+"###############################################################################
+syntax enable
+set syntax=markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+colo gruvbox
+set bg=dark 
+
+"インデント関係
+"###############################################################################
+set expandtab                   " タブを押すと空白が挿入されるようにする
+set tabstop=2                   " 一個のタブを空白何個分にとるか。
+set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
+set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
+set autoindent                  " 改行したりした時にインデントを保持してくれます。
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rs setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
+"検索関係
+"###############################################################################
+set incsearch                   " 文字検索時にリアルタイムで検索してくれます。
+set smartcase                   " 大文字小文字を区別せずに検索してくれます。
+set hlsearch                    " 検索した文字がハイライトされます。
+
+"その他
+"###############################################################################
+set autoread                    " 編集中に別のところで編集されたら自動で読み込みます。
+set showcmd                     " 入力中のコマンドを表示します。右下に表示されます。
+set whichwrap=b,s,<,>,[,]   " 行末、行頭で行を跨ぐことができるようになります。
+" highlight ColorColumn ctermbg=235 guibg=#2c2d27
+let &colorcolumn="100,".join(range(120,999),",")
+set noswapfile                  " swapファイルは使いません
+set directory=~/.vim/tmp
+set mouse+=a                    " マウスでカーソルの位置を指定できる
+set cursorline                  " 今いる行をハイライト
+set vb t_vb=                    " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
+set title                       " タイトルにパスを表示する
+set number                      " 行頭に数字を表示する
+set relativenumber  " 番号を相対表示にする
+set backspace=indent,eol,start  "deleteで改行を消す
+set wildmenu wildmode=longest,full 
+set pumheight=12
+set tags=.tags;~
+set display=lastline
+set showmatch
+set matchtime=1
+set viminfo='1000,f1,<500,:500,@500,/500
+set autowrite
+set termguicolors
+set writebackup " バックアップファイルを保存時に削除
+set textwidth=100
+set backupext=.bak
+packadd! matchit
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
+
+"Functions
+"###############################################################################
+tnoremap <Esc> <C-\><C-n>
+tnoremap jj <C-\><C-n>
+tnoremap <C-]> <C-\><C-n>
+let mapleader = "\<Space>"
+map <Leader>h :wincmd h<CR>
+map <Leader>k :wincmd k<CR>
+map <Leader>j :wincmd j<CR>
+map <Leader>l :wincmd l<CR>
+map <Leader>co :e ~/.vimrc<CR>
+map <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
+map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
+map <Leader>cc :e ~/.vim/custom_runtime<CR>
+map <Leader>qq :qa!<CR>
+map <Leader>ff :Telescope file_find<CR>
+map <Leader>gf :Telescope git_files<CR>
+map <Leader>gc :Telescope git_commits<CR>
+map <Leader>gs :Telescope git_status<CR>
+nnoremap <Leader>st :SourcetrailActivateToken <CR>
+nnoremap <Leader>sw :SetWin<CR>
+nnoremap <Leader>gd :YcmCompleter GoTo<CR>
+
+"プラグインの設定
+"###############################################################################
+set splitbelow
+set completeopt-=preview " プレビューウインドウを表示しない
+imap jj <esc>
+nnoremap j gj
+nnoremap k gk
+nnoremap gk k
+nnoremap gj j
+nnoremap Y y$
+nmap <C-p> <Plug>AirlineSelectPrevTab
+nmap <C-n> <Plug>AirlineSelectNextTab
+
+set foldmethod=marker
+au FileType cpp setlocal foldmarker={,}
+au FileType c setlocal foldmarker={,}
+au FileType cpp setlocal foldmarker={,}
+set nofoldenable
+
+set updatetime=2000
+let g:ycm_auto_hover='CursorHold'
