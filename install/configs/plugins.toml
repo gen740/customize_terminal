@@ -1,4 +1,14 @@
 [[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+" let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+'''
+
+[[plugins]] # アイコンの表示
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
 repo = 'majutsushi/tagbar'
 
 [[plugins]] # ファイルツリーの表示

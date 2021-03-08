@@ -1,3 +1,6 @@
+[[plugins]]
+repo = 'mbbill/undotree'
+
 [[plugins]] # 表組みをしてくれる。
 repo ='godlygeek/tabular' # << https://devhints.io/tabular
 
@@ -12,24 +15,12 @@ on_ft = ['txt', 'md']
 [[plugins]]
 repo = 'CoatiSoftware/vim-sourcetrail'
 
-
-[[plugins]] # アイコンの表示
-repo = 'ryanoasis/vim-devicons'
-
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
-
-[[plugins]] # gitをvimから使う 
+[[plugins]] # gitをvimから使う
 repo ='tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-" let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-'''
 
 [[plugins]]
 repo = 'tpope/vim-surround'

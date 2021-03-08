@@ -56,8 +56,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 ############################### Valiables ######################################
 export GIT_EDITOR=vim
 export PKG_CONFIG_PATH=/usr/local/Cellar/gtkmm/2.24.5_8/lib/pkgconfig
-export CXX="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
-export CC="/usr/local/Cellar/gcc/10.2.0_4/bin/gcc-10"
+# export CXX="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
+# export CC="/usr/local/Cellar/gcc/10.2.0_4/bin/gcc-10"
 export CMAKE_CXX_COMPILER="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
 
 ################################# Aliases ######################################
@@ -87,3 +87,4 @@ cdls ()
 alias cd="cdls"
 bindkey -v
 bindkey jj vi-cmd-mode
+export PATH=$PATH:~/.nodebrew/current/bin/

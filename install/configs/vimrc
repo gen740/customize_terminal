@@ -10,6 +10,7 @@ if dein#load_state('~/.vim/dein')
     call dein#add('nvim-lua/popup.nvim')
     call dein#add('nvim-lua/plenary.nvim')
     call dein#add('nvim-telescope/telescope.nvim')
+    call dein#add('neovim/nvim-lspconfig')
     if !has('nvim')
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
@@ -38,7 +39,7 @@ syntax enable
 set syntax=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
 colo gruvbox
-set bg=dark 
+set bg=dark
 
 "インデント関係
 "###############################################################################
@@ -56,9 +57,9 @@ augroup END
 
 "検索関係
 "###############################################################################
+set nohlsearch                    " 検索した文字がハイライトされます。
 set incsearch                   " 文字検索時にリアルタイムで検索してくれます。
 set smartcase                   " 大文字小文字を区別せずに検索してくれます。
-set hlsearch                    " 検索した文字がハイライトされます。
 
 "その他
 "###############################################################################
@@ -76,11 +77,14 @@ set title                       " タイトルにパスを表示する
 set number                      " 行頭に数字を表示する
 set relativenumber  " 番号を相対表示にする
 set backspace=indent,eol,start  "deleteで改行を消す
-set wildmenu wildmode=longest,full 
+set wildmenu wildmode=longest,full
 set pumheight=12
 set tags=.tags;~
 set display=lastline
+set hidden
 set showmatch
+set signcolumn=yes
+set scrolloff=8 " 余白を取るようになる
 set matchtime=1
 set viminfo='1000,f1,<500,:500,@500,/500
 set autowrite
@@ -115,7 +119,10 @@ map <Leader>gc :Telescope git_commits<CR>
 map <Leader>gs :Telescope git_status<CR>
 nnoremap <Leader>st :SourcetrailActivateToken <CR>
 nnoremap <Leader>sw :SetWin<CR>
+nnoremap <Leader>ut :UndoTreeToggle<CR>
 nnoremap <Leader>gd :YcmCompleter GoTo<CR>
+vnoremap j :m '>+1<cr>gv=gv
+vnoremap k :m '<-2<cr>gv=gv
 
 "プラグインの設定
 "###############################################################################
@@ -136,5 +143,21 @@ au FileType c setlocal foldmarker={,}
 au FileType cpp setlocal foldmarker={,}
 set nofoldenable
 
+highlight Normal guibg=none
+
 set updatetime=2000
 let g:ycm_auto_hover='CursorHold'
+"lua << EOF
+"require'lspconfig'.pyright.setup{}
+"EOF
+
+fun! TrimWhiteSpace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+
+augroup THE_PRIMEGEN
+  autocmd!
+  autocmd BufWritePre * :call TrimWhiteSpace()
+augroup END
