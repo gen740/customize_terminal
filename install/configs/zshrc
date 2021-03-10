@@ -63,7 +63,7 @@ export CMAKE_CXX_COMPILER="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
 ################################# Aliases ######################################
 alias v="nvim"
 alias vi="nvim"
-alias vim="nvim"
+alias vim="~/.config/.changeiTerm2backgroundImage.sh;nvim"
 alias ls="ls -GF"
 alias c=clear
 alias t="tree -N"
@@ -74,6 +74,7 @@ alias my_syncro='rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a" \
   --exclude="build*" --exclude="external"'
 alias cdb="cd ~/Garage/bamboo/control"
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+export PATH="/Users/fujimotogen/.iterm2:$PATH"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
@@ -85,6 +86,24 @@ cdls ()
     \cd "$@" && ls
 }
 alias cd="cdls"
-bindkey -v
-bindkey jj vi-cmd-mode
+it2check && (echo This is iTerm2; bindkey -v ; bindkey jj vi-cmd-mode) || (echo "")
 export PATH=$PATH:~/.nodebrew/current/bin/
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+function badge() {
+    printf "\e]1337;SetBadgeFormat=%s\a"\
+    $(echo -n "$1" | base64)
+}
+
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+thumbnails='/Users/fujimotogen/Shelf/WallPaper'
+images=(`ls $thumbnails`)
+num_images=${#images[*]}
+myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
+{
+  echo $myfilename;
+  base64filename=`echo "${myfilename}" | base64`;
+  echo "\033]1337;SetBackgroundImageFile=${base64filename}\a";
+}
+clear;

@@ -8,7 +8,7 @@ set cpo&vim
 
 function! s:clang_format()      " clang-format　をしてくれる関数
   let now_line = line(".")
-  :%! clang-format -style=file
+  :silent %! clang-format -style=file
   exec ":" . now_line
 endfunction
 

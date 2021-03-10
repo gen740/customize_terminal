@@ -48,10 +48,12 @@ set tabstop=2                   " 一個のタブを空白何個分にとるか�
 set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
 set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
 set autoindent                  " 改行したりした時にインデントを保持してくれます。
+set nowrap
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 set wrap
     autocmd BufNewFile,BufRead *.rs setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
@@ -67,7 +69,7 @@ set autoread                    " 編集中に別のところで編集された�
 set showcmd                     " 入力中のコマンドを表示します。右下に表示されます。
 set whichwrap=b,s,<,>,[,]   " 行末、行頭で行を跨ぐことができるようになります。
 " highlight ColorColumn ctermbg=235 guibg=#2c2d27
-let &colorcolumn="100,".join(range(120,999),",")
+let &colorcolumn="101,".join(range(121,121),",")
 set noswapfile                  " swapファイルは使いません
 set directory=~/.vim/tmp
 set mouse+=a                    " マウスでカーソルの位置を指定できる
@@ -92,6 +94,7 @@ set termguicolors
 set writebackup " バックアップファイルを保存時に削除
 set textwidth=100
 set backupext=.bak
+set shortmess=I
 packadd! matchit
 if has('persistent_undo')
   set undodir=~/.vim/undo
@@ -101,13 +104,18 @@ endif
 "Functions
 "###############################################################################
 tnoremap <Esc> <C-\><C-n>
-tnoremap jj <C-\><C-n>
 tnoremap <C-]> <C-\><C-n>
+" tmap jj <C-\><C-n>
 let mapleader = "\<Space>"
 map <Leader>h :wincmd h<CR>
 map <Leader>k :wincmd k<CR>
 map <Leader>j :wincmd j<CR>
 map <Leader>l :wincmd l<CR>
+map <Leader>sc :!rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a"
+      \ --exclude="*.cmake" --exclude="CMakeFiles" --exclude="Makefile"
+      \ --exclude="*.gch" --exclude="*.hex" --exclude="*.elf" --exclude=".git"
+      \ --exclude="build*" --exclude="external" --exclude=".clang"
+      \ ~/Garage/bamboo/control robotech@192.168.10.106:/home/robotech/SPRC2021_A/ <CR>
 map <Leader>co :e ~/.vimrc<CR>
 map <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
 map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
@@ -121,8 +129,8 @@ nnoremap <Leader>st :SourcetrailActivateToken <CR>
 nnoremap <Leader>sw :SetWin<CR>
 nnoremap <Leader>ut :UndoTreeToggle<CR>
 nnoremap <Leader>gd :YcmCompleter GoTo<CR>
-vnoremap j :m '>+1<cr>gv=gv
-vnoremap k :m '<-2<cr>gv=gv
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
 
 "プラグインの設定
 "###############################################################################
@@ -144,7 +152,7 @@ au FileType cpp setlocal foldmarker={,}
 set nofoldenable
 
 highlight Normal guibg=none
-
+highlight SignColumn guibg=none
 set updatetime=2000
 let g:ycm_auto_hover='CursorHold'
 "lua << EOF
@@ -160,4 +168,10 @@ endfun
 augroup THE_PRIMEGEN
   autocmd!
   autocmd BufWritePre * :call TrimWhiteSpace()
+augroup END
+
+augroup multiwin
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set cursorline
+  autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline
 augroup END
