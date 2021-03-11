@@ -7,10 +7,7 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('~/.vim/dein')
     call dein#begin('~/.vim/dein')
     call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
-    call dein#add('nvim-lua/popup.nvim')
-    call dein#add('nvim-lua/plenary.nvim')
-    call dein#add('nvim-telescope/telescope.nvim')
-    call dein#add('neovim/nvim-lspconfig')
+    " call dein#add('neovim/nvim-lspconfig')
     if !has('nvim')
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
@@ -28,13 +25,13 @@ if dein#check_install()
     call dein#install()
 endif
 "　必要なときにコメントアウトを戻してpluginを削除してください。
-   " call map(dein#check_clean(), "delete(v:val, 'rf')")
-   " call dein#recache_runtimepath()
+     " call map(dein#check_clean(), "delete(v:val, 'rf')")
+     " call dein#recache_runtimepath()
 "End dein Scripts-------------------------
 set runtimepath+=~/.vim/custom_runtime
 
-"シンタックスハイライトを有効 TODO
-"###############################################################################
+" シンタックスハイライトを有効 TODO
+" ###############################################################################
 syntax enable
 set syntax=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -47,15 +44,16 @@ set expandtab                   " タブを押すと空白が挿入されるよ�
 set tabstop=2                   " 一個のタブを空白何個分にとるか。
 set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
 set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
-set autoindent                  " 改行したりした時にインデントを保持してくれます。
 set nowrap
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 set wrap
+    autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
+    autocmd BufNewFile,BufRead *.txt setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
     autocmd BufNewFile,BufRead *.rs setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
+set autoindent                  " 改行したりした時にインデントを保持してくれます。
 
 "検索関係
 "###############################################################################
@@ -68,16 +66,13 @@ set smartcase                   " 大文字小文字を区別せずに検索し�
 set autoread                    " 編集中に別のところで編集されたら自動で読み込みます。
 set showcmd                     " 入力中のコマンドを表示します。右下に表示されます。
 set whichwrap=b,s,<,>,[,]   " 行末、行頭で行を跨ぐことができるようになります。
-" highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="101,".join(range(121,121),",")
 set noswapfile                  " swapファイルは使いません
 set directory=~/.vim/tmp
 set mouse+=a                    " マウスでカーソルの位置を指定できる
 set cursorline                  " 今いる行をハイライト
 set vb t_vb=                    " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
-set title                       " タイトルにパスを表示する
-set number                      " 行頭に数字を表示する
-set relativenumber  " 番号を相対表示にする
+set nu relativenumber  " 番号を相対表示にする
 set backspace=indent,eol,start  "deleteで改行を消す
 set wildmenu wildmode=longest,full
 set pumheight=12
@@ -104,6 +99,7 @@ endif
 "Functions
 "###############################################################################
 tnoremap <Esc> <C-\><C-n>
+tnoremap jj <C-\><C-n>
 tnoremap <C-]> <C-\><C-n>
 " tmap jj <C-\><C-n>
 let mapleader = "\<Space>"

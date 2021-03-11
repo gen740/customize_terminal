@@ -71,7 +71,7 @@ alias maketags="ctags -RV --sort=yes --exclude='build' -o .tags"
 alias my_syncro='rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a" \
   --exclude="*.cmake" --exclude="CMakeFiles" --exclude="Makefile" \
   --exclude="*.gch" --exclude="*.hex" --exclude="*.elf" --exclude=".git" \
-  --exclude="build*" --exclude="external"'
+  --exclude="build*"'
 alias cdb="cd ~/Garage/bamboo/control"
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH="/Users/fujimotogen/.iterm2:$PATH"

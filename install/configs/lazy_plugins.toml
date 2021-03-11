@@ -1,4 +1,103 @@
 [[plugins]]
+repo = 'nvim-lua/popup.nvim'
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+depends = ['popup.nvim', 'plenary.nvim']
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+
+[[plugins]]
+repo = 'valloric/youcompleteme'
+merged = 0
+on_i = 1
+depends = 'nvim-lspconfig'
+hook_add = '''
+let g:ycm_use_clangd = 1
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['/Users/fujimotogen/Garage/bamboo/control/*',
+                               \ '/Users/fujimotogen/Labo/*']
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_error_symbol = ''
+let g:ycm_warning_symbol = ''
+nmap <leader>d <plug>(YCMHover)
+augroup MyYCMCustom
+  autocmd!
+  autocmd FileType c,cpp let b:ycm_hover = {
+    \ 'command': 'GetDoc',
+    \ 'syntax': &filetype
+    \ }
+augroup END
+'''
+
+[[plugins]] # コメントアウトとか手軽にできるようになる。
+repo = "tpope/vim-commentary"
+on_event = 'BufEnter'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+let g:gitgutter_realtime = 1
+"let g:gitgutter_eager = 0
+'''
+
+[[plugins]] # アイコンの表示
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+
+[[plugins]]
+repo = 'octol/vim-cpp-enhanced-highlight'
+on_ft = 'cpp'
+hook_add = '''
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 1
+'''
+
+[[plugins]] # ファイルツリーの表示
+repo = "preservim/nerdtree"
+depends = ['vim-devicons']
+hook_add = '''
+map <C-q> :NERDTreeToggle<CR>
+let g:NERDTreeLimitedSyntax = 1
+'''
+
+[[plugins]]
+repo = "Xuyuanp/nerdtree-git-plugin"
+hook_add = '''
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+'''
+
+[[plugins]]
+repo = "rust-lang/rust.vim"
+on_ft = "Rust"
+hook_add = '''
+'''
+
+[[plugins]]
 repo = 'mbbill/undotree'
 
 [[plugins]] # 表組みをしてくれる。
@@ -27,3 +126,10 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'guns/xterm-color-table.vim'
+
+[[plugins]]
+repo = 'puremourning/vimspector'
+marged = 0
+hook_add = '''
+let g:vimspector_enable_mappings = 'HUMAN'
+'''
