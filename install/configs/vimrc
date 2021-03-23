@@ -65,76 +65,85 @@ set smartcase                   " 大文字小文字を区別せずに検索し�
 
 "その他
 "###############################################################################
-set autoread                    " 編集中に別のところで編集されたら自動で読み込みます。
-set showcmd                     " 入力中のコマンドを表示します。右下に表示されます。
-set whichwrap=b,s,<,>,[,]   " 行末、行頭で行を跨ぐことができるようになります。
-let &colorcolumn="81,".join(range(101,101),",")
-set noswapfile                  " swapファイルは使いません
-set directory=~/.vim/tmp
-set mouse+=a                    " マウスでカーソルの位置を指定できる
-set cursorline                  " 今いる行をハイライト
-set vb t_vb=                    " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
+set autoread                                     " 編集中に別のところで編集されたら自動で読み込みます。
+set showcmd                                      " 入力中のコマンドを表示します。右下に表示されます。
+set whichwrap=b,s,<,>,[,]                        " 行末、行頭で行を跨ぐことができるようになります。
+let &colorcolumn="81,".join(range(101,101),",")  " 81と101列目に線を入れる
+set noswapfile                                   " swapファイルは使いません
+set mouse+=a                                     " マウスでカーソルの位置を指定できる
+set cursorline                                   " 今いる行をハイライト
+set vb t_vb=                                     " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
 set belloff=all
-set nu relativenumber  " 番号を相対表示にする
-set backspace=indent,eol,start  "deleteで改行を消す
-set wildmenu wildmode=longest,full
-set pumheight=12
-set tags=.tags;~
-set display=lastline
-set hidden
-set showmatch
-set signcolumn=yes
-set scrolloff=8 " 余白を取るようになる
-set matchtime=1
-set viminfo='1000,f1,<500,:500,@500,/500
-set autowrite
-set termguicolors
-set writebackup " バックアップファイルを保存時に削除
-set backupext=.bak
-set shortmess=I
-set lazyredraw
-set nofixeol
-set ttyfast
-packadd! matchit
-if has('persistent_undo')
+set nu relativenumber                            " 番号を相対表示にする
+set backspace=indent,eol,start                   " deleteで改行を消す
+set wildmenu wildmode=longest,full               " 補完の形を決める（vim互換性）
+set pumheight=12                                 " 補完ウインドウの行数を決める
+set tags=.tags;~                                 " ctagsを遡って検索
+set display=lastline                             " 最後の行をできるだけ表示する
+set hidden                                       " 保存しなくてもバッファの切り替えができる
+set clipboard=unnamed,unnamedplus                " クリップボードとyankした内容を同期させる
+set showmatch                                    " 対応する括弧を強調表示する
+set matchtime=1000                               " showmatchまでの時間
+set signcolumn=yes                               " いろんなsignを出すための列を表示する
+set scrolloff=8                                  " 余白を取るようになる
+set viminfo='1000,f1,<500,:500,@500,/500         " viminfoに蓄える内容とその量を決める
+set autowrite                                    " normalモードに行くと勝手に保存してくれる
+set termguicolors                                " 色をバグらないようにする
+set writebackup                                  " バックアップファイルを保存時に削除
+set backupext=.bak                               " バックアップファイルの拡張子
+set shortmess=I                                  " 起動時のメッセージを表示しない
+set lazyredraw                                   " 出来るだけ再描画をしない
+set nofixeol                                     " 最後の行に勝手に改行を挿入しない
+packadd! matchit                                 " if endifみたいなのも括弧ジャンプができるようになる
+if has('persistent_undo')                        " undoファイルをずっと残す
   set undodir=~/.vim/undo
   set undofile
 endif
+set foldmethod=marker
+  au FileType cpp setlocal foldmarker={,}
+  au FileType c setlocal foldmarker={,}
+  au FileType cpp setlocal foldmarker={,}
+set nofoldenable
+set splitbelow
+set splitright
+set completeopt-=preview                         " プレビューウインドウを表示しない
 
-"Functions
+"KeyMapping
 "###############################################################################
+let mapleader = "\<Space>"                       " LeaderキーをSpaceに
+
 tnoremap <Esc> <C-\><C-n>
+tnoremap <C-]> <C-\><C-n>
 tnoremap jj <C-\><C-n>
 tnoremap <C-n> <DOWN>
 tnoremap <C-p> <UP>
 tnoremap <C-f> <RIGHT>
-tnoremap <C-]> <C-\><C-n>
-" tmap jj <C-\><C-n>
-let mapleader = "\<Space>"
 map <Leader>h :wincmd h<CR>
 map <Leader>k :wincmd k<CR>
 map <Leader>j :wincmd j<CR>
 map <Leader>l :wincmd l<CR>
-map <Leader>sc :!rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a"
-      \ --exclude="*.gch" --exclude="*.hex" --exclude="*.elf" --exclude=".git"
-      \ --exclude="build*"  --exclude=".clang"
-      \ ~/Garage/bamboo/control robotech@192.168.10.107:/home/robotech/SPRC2021_A/ <CR>
 map <Leader>co :e ~/.vimrc<CR>
 map <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
 map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
-map <Leader>cc :e ~/.vim/custom_runtime<CR>
+map <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
+map <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
 map <Leader>qq :qa!<CR>
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+
+"Plugin KeyMapping
+"###############################################################################
 map <Leader>ff :Telescope file_find<CR>
 map <Leader>gf :Telescope git_files<CR>
 map <Leader>gc :Telescope git_commits<CR>
 map <Leader>gs :Telescope git_status<CR>
 nnoremap <Leader>st :SourcetrailActivateToken <CR>
-nnoremap <Leader>sw :SetWin<CR>
 nnoremap <Leader>ut :UndoTreeToggle<CR>
 nnoremap <Leader>gd :YcmCompleter GoTo<CR>
-vnoremap J :m '>+1<cr>gv=gv
-vnoremap K :m '<-2<cr>gv=gv
+nmap <C-p> <Plug>AirlineSelectPrevTab
+nmap <C-n> <Plug>AirlineSelectNextTab
 
+nnoremap <Leader>sw :SetWin<CR>
 augroup MapRunCommand
     autocmd!
     autocmd BufNewFile,BufRead *.py nnoremap <Leader>r :ExecutePython<CR>
@@ -142,24 +151,15 @@ augroup MapRunCommand
 augroup END
 
 "###############################################################################
-set splitbelow
-set completeopt-=preview " プレビューウインドウを表示しない
-imap jj <esc>
+inoremap jj <esc>
 nnoremap j gj
 nnoremap k gk
 nnoremap gk k
 nnoremap gj j
 nnoremap Y y$
+inoremap <esc> <esc>:ChangIME<CR>
 inoremap <C-[> <esc>:ChangeIME<CR>
 nnoremap Y y$
-nmap <C-p> <Plug>AirlineSelectPrevTab
-nmap <C-n> <Plug>AirlineSelectNextTab
-
-set foldmethod=marker
-au FileType cpp setlocal foldmarker={,}
-au FileType c setlocal foldmarker={,}
-au FileType cpp setlocal foldmarker={,}
-set nofoldenable
 
 highlight Normal guibg=none
 highlight SignColumn guibg=none
@@ -205,4 +205,3 @@ endfunction
 
 " すでに :terminal が存在していればその :terminal を使用する
 command! -nargs=* Terminal call s:open(<q-args>)
-

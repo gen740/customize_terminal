@@ -10,7 +10,6 @@ cp  ./configs/vimrc  \Users\fujimoto\AppData\Local\nvim/init.vim -Force
 cp  ./configs/plugins.toml ~/.vim/dein/ -Force
 cp  ./configs/lazy_plugins.toml ~/.vim/dein/ -Force
 cp  ./configs/custom_runtime ~/.vim/ -Force -Recurse
-cp  ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim -Force -Recurse
 scoop install lua go nodejs llvm nvm
 nvm install 14.16.0
 nvm use 14.16.0

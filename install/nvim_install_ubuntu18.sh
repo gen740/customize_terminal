@@ -22,7 +22,6 @@ cp -f ./configs/vimrc ~/.config/nvim/init.vim
 cp -f ./configs/plugins.toml ~/.vim/dein/
 cp -f ./configs/lazy_plugins.toml ~/.vim/dein/
 cp -rf ./configs/custom_runtime ~/.vim/
-cp -r ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 cp "./fonts/MesloLGS NF Bold Italic.ttf" ~/Library/Fonts
 cp "./fonts/MesloLGS NF Regular.ttf" ~/Library/Fonts
