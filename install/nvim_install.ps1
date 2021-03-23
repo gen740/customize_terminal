@@ -12,5 +12,6 @@ cp  ./configs/lazy_plugins.toml ~/.vim/dein/ -Force
 cp  ./configs/custom_runtime ~/.vim/ -Force -Recurse
 cp  ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim -Force -Recurse
 scoop install lua go nodejs llvm
+nvim
 cd ~/.vim/dein/repos/github.com/valloric/youcompleteme
 ./install.py --all

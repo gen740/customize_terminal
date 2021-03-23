@@ -18,18 +18,6 @@ if ! [ -e ~/.cofig/nvim/ ]; then
     mkdir -p ~/.config/nvim/
 fi
 
-if ! [ -e ~/.vim/dein/ ]; then
-    if [ -f ~/.vim ]; then
-        echo "すでに\".vim\"ファイルが存在します。\"rm　~/.vim\"のコマンドなどで消去してください\n\n"
-        exit
-    fi
-    if [ -f ~/.vim/dein ]; then
-        echo "すでに\"dein\"ファイルが存在します。\"rm　~/.vim/dein\"のコマンドなどで消去してください\n\n"
-        exit
-    fi
-    mkdir -p ~/.vim/dein/
-fi
-
 cp -f ./configs/vimrc ~/.config/nvim/init.vim
 cp -f ./configs/plugins.toml ~/.vim/dein/
 cp -f ./configs/lazy_plugins.toml ~/.vim/dein/
@@ -75,3 +63,7 @@ while true ; do
           echo "もう一度打ち直してください\n\n" ;;
     esac
 done
+nvim
+brew install go node
+cd ~/.vim/dein/repos/github.com/valloric/youcompleteme
+./install.py --all
