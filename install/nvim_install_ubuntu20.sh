@@ -22,7 +22,7 @@ cp -f ./configs/vimrc ~/.config/nvim/init.vim
 cp -f ./configs/plugins.toml ~/.vim/dein/
 cp -f ./configs/lazy_plugins.toml ~/.vim/dein/
 
-sudo apt install clang-format lua
+sudo apt install clang-format lua cmake
 nvim
 read -p "Hit enter: "
 sudo apt install go node
