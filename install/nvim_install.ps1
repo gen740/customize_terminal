@@ -6,6 +6,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./installer.ps1 ~/.vim/dein
 
 mkdir -p ~/.config/nvim/ -Force
+
 cp  ./configs/vimrc  \Users\fujimoto\AppData\Local\nvim/init.vim -Force
 cp  ./configs/plugins.toml ~/.vim/dein/ -Force
 cp  ./configs/lazy_plugins.toml ~/.vim/dein/ -Force

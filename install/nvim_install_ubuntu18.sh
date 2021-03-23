@@ -1,8 +1,10 @@
-sudo apt update && upgrade
+sudo apt update && sudo apt upgrade
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
 sudo apt install neovim/bionic
 sudo apt install python3 python3-pip
+sudo apt install clang-format lua5.1 luarocks cmake g++-8
+sudo apt install golang-go nodejs npm
 python3 -m pip install neovim pynvim
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
@@ -25,16 +27,9 @@ cp -f ./configs/plugins.toml ~/.vim/dein/
 cp -f ./configs/lazy_plugins.toml ~/.vim/dein/
 cp -rf ./configs/custom_runtime ~/.vim/
 
-cp "./fonts/MesloLGS NF Bold Italic.ttf" ~/Library/Fonts
-cp "./fonts/MesloLGS NF Regular.ttf" ~/Library/Fonts
-cp "./fonts/MesloLGS NF Italic.ttf" ~/Library/Fonts
-cp "./fonts/MesloLGS NF Bold.ttf" ~/Library/Fonts
-
-sudo apt install clang-format lua cmake g++-8
 export CXX=g++-8
 export CMAKE_CXX_COMPILER=g++-8
 nvim
 read -p "Hit enter: "
-sudo apt install golang-go node
 cd ~/.vim/dein/repos/github.com/valloric/youcompleteme
 ./install.py --all

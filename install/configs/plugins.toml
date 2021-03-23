@@ -1,4 +1,11 @@
 [[plugins]]
+repo = 'jiangmiao/auto-pairs'
+merged = 0
+hook_add = '''
+let g:AutoPairsFlyMode = 1
+'''
+
+[[plugins]]
 merged = 0
 repo = 'skywind3000/asyncrun.vim'
 
