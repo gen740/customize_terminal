@@ -28,15 +28,14 @@ endif
      " call map(dein#check_clean(), "delete(v:val, 'rf')")
      " call dein#recache_runtimepath()
 "End dein Scripts-------------------------
-set runtimepath+=~/.vim/custom_runtime
 
 " シンタックスハイライトを有効 TODO
 " ###############################################################################
 syntax enable
-set syntax=markdown
-au BufRead,BufNewFile *.md set filetype=markdown
 colo gruvbox
 set bg=dark
+set syntax=markdown " Markdown用
+au BufRead,BufNewFile *.md set filetype=markdown
 
 "インデント関係
 "###############################################################################
@@ -45,7 +44,7 @@ set tabstop=2                   " 一個のタブを空白何個分にとるか�
 set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
 set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
 set nowrap
-augroup fileTypeIndent
+augroup fileTypeIndent " プログラミング言語別にインデントを変えられます
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
@@ -59,7 +58,7 @@ set autoindent                  " 改行したりした時にインデントを�
 
 "検索関係
 "###############################################################################
-set nohlsearch                    " 検索した文字がハイライトされます。
+set nohlsearch                  " 検索した文字がハイライトされます。
 set incsearch                   " 文字検索時にリアルタイムで検索してくれます。
 set smartcase                   " 大文字小文字を区別せずに検索してくれます。
 

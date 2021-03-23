@@ -1,15 +1,3 @@
-# [[plugins]]
-# repo = 'vim-syntastic/syntastic'
-# hook_add ='''
-# set statusline+=%#warningmsg#
-# set statusline+=%{SyntasticStatuslineFlag()}
-# set statusline+=%*
-# let g:syntastic_always_populate_loc_list = 1
-# let g:syntastic_auto_loc_list = 1
-# let g:syntastic_check_on_open = 1
-# let g:syntastic_check_on_wq = 0
-# '''
-
 [[plugins]]
 repo = 'nvim-lua/popup.nvim'
 
@@ -35,8 +23,8 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['/Users/fujimotogen/Garage/bamboo/control/*',
                                \ '/Users/fujimotogen/Home/*']
 let g:ycm_show_diagnostics_ui = 1
-let g:ycm_error_symbol = ''
-let g:ycm_warning_symbol = ''
+" let g:ycm_error_symbol = ''
+" let g:ycm_warning_symbol = ''
 nmap <leader>d <plug>(YCMHover)
 augroup MyYCMCustom
   autocmd!
@@ -66,10 +54,9 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'majutsushi/tagbar'
 
-
 [[plugins]]
 repo = 'octol/vim-cpp-enhanced-highlight'
-# on_ft = 'cpp'
+on_ft = 'cpp'
 hook_add = '''
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
@@ -80,30 +67,30 @@ let g:cpp_concepts_highlight = 1
 let g:cpp_no_function_highlight = 1
 '''
 
-[[plugins]] # ファイルツリーの表示
-repo = "preservim/nerdtree"
-depends = ['vim-devicons']
-hook_add = '''
-map <C-q> :NERDTreeToggle<CR>
-let g:NERDTreeLimitedSyntax = 1
-'''
+# [[plugins]] # ファイルツリーの表示
+# repo = "preservim/nerdtree"
+# depends = ['vim-devicons']
+# hook_add = '''
+# map <C-q> :NERDTreeToggle<CR>
+# let g:NERDTreeLimitedSyntax = 1
+# '''
 
-[[plugins]]
-repo = "Xuyuanp/nerdtree-git-plugin"
-hook_add = '''
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-'''
+# [[plugins]]
+# repo = "Xuyuanp/nerdtree-git-plugin"
+# hook_add = '''
+# let g:NERDTreeGitStatusIndicatorMapCustom = {
+#                 \ 'Modified'  :'✹',
+#                 \ 'Staged'    :'✚',
+#                 \ 'Untracked' :'✭',
+#                 \ 'Renamed'   :'➜',
+#                 \ 'Unmerged'  :'═',
+#                 \ 'Deleted'   :'✖',
+#                 \ 'Dirty'     :'✗',
+#                 \ 'Ignored'   :'☒',
+#                 \ 'Clean'     :'✔︎',
+#                 \ 'Unknown'   :'?',
+#                 \ }
+# '''
 
 [[plugins]]
 repo = 'mbbill/undotree'
@@ -119,9 +106,6 @@ on_ft = 'csv'
 repo = 'junegunn/goyo.vim'
 on_ft = ['txt', 'md']
 
-[[plugins]]
-repo = 'CoatiSoftware/vim-sourcetrail'
-
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
@@ -131,16 +115,6 @@ repo ='tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'guns/xterm-color-table.vim'
-
-[[plugins]]
-repo = 'puremourning/vimspector'
-marged = 0
-hook_add = '''
-let g:vimspector_enable_mappings = 'HUMAN'
-'''
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'

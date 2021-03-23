@@ -21,15 +21,12 @@ fi
 cp -f ./configs/vimrc ~/.config/nvim/init.vim
 cp -f ./configs/plugins.toml ~/.vim/dein/
 cp -f ./configs/lazy_plugins.toml ~/.vim/dein/
-<<<<<<< HEAD
 cp -rf ./configs/custom_runtime ~/.vim/
 
 cp "./fonts/MesloLGS NF Bold Italic.ttf" ~/Library/Fonts
 cp "./fonts/MesloLGS NF Regular.ttf" ~/Library/Fonts
 cp "./fonts/MesloLGS NF Italic.ttf" ~/Library/Fonts
 cp "./fonts/MesloLGS NF Bold.ttf" ~/Library/Fonts
-=======
->>>>>>> b83208dd6bf73aecaf360c92a535b4d074fbd2da
 
 sudo apt install clang-format lua
 nvim
