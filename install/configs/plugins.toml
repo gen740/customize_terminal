@@ -1,3 +1,13 @@
+[[plugins]]
+merged = 0
+repo = 'skywind3000/asyncrun.vim'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+
+[[plugins]]
+repo = 'kshenoy/vim-signature'
+
 [[plugins]] # Airlineのテーマ
 repo = 'vim-airline/vim-airline-themes'
 
@@ -29,7 +39,7 @@ let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#wordcount#enabled = 1
-let g:airline_theme = 'murmur' " ubaryd,
+let g:airline_theme = 'gruvbox' " ubaryd,
 set showtabline=2
 set statusline=2                " ステータスラインの記述
 set laststatus=2                " 下のステータスライン
@@ -41,8 +51,7 @@ repo = 'yggdroot/indentline'
 hook_add =
 '''
 let g:indentLine_char = '┊'
-" let g:indentLine_char = '|'
-let g:indentLine_conceallevel=2
+let g:indentLine_conceallevel=1
 let g:indentLine_concealcursor=""
 set conceallevel=1
 set concealcursor-=incv

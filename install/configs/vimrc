@@ -51,7 +51,9 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
     autocmd BufNewFile,BufRead *.txt setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
-    autocmd BufNewFile,BufRead *.rs setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.rs let g:rust_recommended_style = 1
+	  autocmd BufNewFile,BufRead *.rs let g:rustfmt_autosave = 1
+    autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 set autoindent                  " 改行したりした時にインデントを保持してくれます。
 
@@ -66,12 +68,13 @@ set smartcase                   " 大文字小文字を区別せずに検索し�
 set autoread                    " 編集中に別のところで編集されたら自動で読み込みます。
 set showcmd                     " 入力中のコマンドを表示します。右下に表示されます。
 set whichwrap=b,s,<,>,[,]   " 行末、行頭で行を跨ぐことができるようになります。
-let &colorcolumn="101,".join(range(121,121),",")
+let &colorcolumn="81,".join(range(101,101),",")
 set noswapfile                  " swapファイルは使いません
 set directory=~/.vim/tmp
 set mouse+=a                    " マウスでカーソルの位置を指定できる
 set cursorline                  " 今いる行をハイライト
 set vb t_vb=                    " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
+set belloff=all
 set nu relativenumber  " 番号を相対表示にする
 set backspace=indent,eol,start  "deleteで改行を消す
 set wildmenu wildmode=longest,full
@@ -87,9 +90,11 @@ set viminfo='1000,f1,<500,:500,@500,/500
 set autowrite
 set termguicolors
 set writebackup " バックアップファイルを保存時に削除
-set textwidth=100
 set backupext=.bak
 set shortmess=I
+set lazyredraw
+set nofixeol
+set ttyfast
 packadd! matchit
 if has('persistent_undo')
   set undodir=~/.vim/undo
@@ -100,6 +105,9 @@ endif
 "###############################################################################
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj <C-\><C-n>
+tnoremap <C-n> <DOWN>
+tnoremap <C-p> <UP>
+tnoremap <C-f> <RIGHT>
 tnoremap <C-]> <C-\><C-n>
 " tmap jj <C-\><C-n>
 let mapleader = "\<Space>"
@@ -108,10 +116,9 @@ map <Leader>k :wincmd k<CR>
 map <Leader>j :wincmd j<CR>
 map <Leader>l :wincmd l<CR>
 map <Leader>sc :!rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a"
-      \ --exclude="*.cmake" --exclude="CMakeFiles" --exclude="Makefile"
       \ --exclude="*.gch" --exclude="*.hex" --exclude="*.elf" --exclude=".git"
-      \ --exclude="build*" --exclude="external" --exclude=".clang"
-      \ ~/Garage/bamboo/control robotech@192.168.10.106:/home/robotech/SPRC2021_A/ <CR>
+      \ --exclude="build*"  --exclude=".clang"
+      \ ~/Garage/bamboo/control robotech@192.168.10.107:/home/robotech/SPRC2021_A/ <CR>
 map <Leader>co :e ~/.vimrc<CR>
 map <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
 map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
@@ -128,7 +135,12 @@ nnoremap <Leader>gd :YcmCompleter GoTo<CR>
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
 
-"プラグインの設定
+augroup MapRunCommand
+    autocmd!
+    autocmd BufNewFile,BufRead *.py nnoremap <Leader>r :ExecutePython<CR>
+    autocmd BufNewFile,BufRead *.rs nnoremap <Leader>r :ExecuteRust<CR>
+augroup END
+
 "###############################################################################
 set splitbelow
 set completeopt-=preview " プレビューウインドウを表示しない
@@ -137,6 +149,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gk k
 nnoremap gj j
+nnoremap Y y$
+inoremap <C-[> <esc>:ChangeIME<CR>
 nnoremap Y y$
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
@@ -161,9 +175,16 @@ fun! TrimWhiteSpace()
   call winrestview(l:save)
 endfun
 
+fun! TrimBlankLine()
+  let l:save = winsaveview()
+  keeppatterns %s/\n\n\n\+/\r\r/e
+  call winrestview(l:save)
+endfun
+
 augroup THE_PRIMEGEN
   autocmd!
   autocmd BufWritePre * :call TrimWhiteSpace()
+  autocmd BufWritePre * :call TrimBlankLine()
 augroup END
 
 augroup multiwin
@@ -171,3 +192,17 @@ augroup multiwin
   autocmd BufEnter,FocusGained,InsertLeave * set cursorline
   autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline
 augroup END
+
+function! s:open(args) abort
+    if empty(term_list())
+        execute "terminal" a:args
+    else
+        let bufnr = term_list()[0]
+        execute term_getsize(bufnr)[0] . "new"
+        execute "buffer + " bufnr
+    endif
+endfunction
+
+" すでに :terminal が存在していればその :terminal を使用する
+command! -nargs=* Terminal call s:open(<q-args>)
+

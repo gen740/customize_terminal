@@ -1,3 +1,16 @@
+##################################### Preset ###################################
+cd Home
+# thumbnails='/Users/fujimotogen/Home/Shelf/WallPaper'
+# images=(`ls $thumbnails`)
+# num_images=${#images[*]}
+# myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
+# {
+#   echo $myfilename;
+#   base64filename=`echo "${myfilename}" | base64`;
+#   echo "\033]1337;SetBackgroundImageFile=${base64filename}\a";
+# }
+
+################################### P10K ########################################
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -34,8 +47,9 @@ zinit light zdharma/fast-syntax-highlighting
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fpath=(/path/to/homebrew/share/zsh-completions $fpath)
 
-autoload -U compinit
-compinit -u
+autoload -U compinit compinit -u
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
 
 ################################# Histories ####################################
 export HISTFILE=${HOME}/.zsh_history # 履歴ファイルの保存先
@@ -44,21 +58,25 @@ export SAVEHIST=20000 # 履歴ファイルに保存される履歴の件数
 setopt hist_ignore_dups # 開始と終了を記録
 setopt EXTENDED_HISTORY
 
-# autoload -Uz compinit && compinit -u
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' menu select
 
 ############################### PATH ###########################################
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/Users/fujimotogen/.bin:$PATH"
+export PATH="/Users/fujimotogen/.iterm2:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 ############################### Valiables ######################################
 export GIT_EDITOR=vim
 export PKG_CONFIG_PATH=/usr/local/Cellar/gtkmm/2.24.5_8/lib/pkgconfig
-# export CXX="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
-# export CC="/usr/local/Cellar/gcc/10.2.0_4/bin/gcc-10"
+export CXX="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
+export CC="/usr/local/Cellar/gcc/10.2.0_4/bin/gcc-10"
 export CMAKE_CXX_COMPILER="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
+export PATH=$PATH:~/.nodebrew/current/bin/
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 ################################# Aliases ######################################
 alias v="nvim"
@@ -67,43 +85,25 @@ alias vim="~/.config/.changeiTerm2backgroundImage.sh;nvim"
 alias ls="ls -GF"
 alias c=clear
 alias t="tree -N"
+alias ff="cd ~/Home"
+alias w3m="w3m -sixel -o display_image=1"
 alias maketags="ctags -RV --sort=yes --exclude='build' -o .tags"
 alias my_syncro='rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a" \
   --exclude="*.cmake" --exclude="CMakeFiles" --exclude="Makefile" \
   --exclude="*.gch" --exclude="*.hex" --exclude="*.elf" --exclude=".git" \
   --exclude="build*"'
 alias cdb="cd ~/Garage/bamboo/control"
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-export PATH="/Users/fujimotogen/.iterm2:$PATH"
 
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/ruby/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
-export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
-
-cdls ()
-{
-    \cd "$@" && ls
-}
-alias cd="cdls"
-it2check && (echo This is iTerm2; bindkey -v ; bindkey jj vi-cmd-mode) || (echo "")
-export PATH=$PATH:~/.nodebrew/current/bin/
+bindkey -v
+bindkey jj vi-cmd-mode
+bindkey ^F forward-char
+bindkey ^N down-line-or-history
+bindkey ^P up-line-or-history
+export EDITOR="nvim"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
 function badge() {
     printf "\e]1337;SetBadgeFormat=%s\a"\
     $(echo -n "$1" | base64)
 }
-
-
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-thumbnails='/Users/fujimotogen/Shelf/WallPaper'
-images=(`ls $thumbnails`)
-num_images=${#images[*]}
-myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
-{
-  echo $myfilename;
-  base64filename=`echo "${myfilename}" | base64`;
-  echo "\033]1337;SetBackgroundImageFile=${base64filename}\a";
-}
-clear;
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
