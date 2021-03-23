@@ -1,0 +1,16 @@
+scoop install python
+python3 -m pip install neovim
+python3 im pip install pynvim
+Invoke-WebRequest https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.ps1 -OutFile installer.ps1
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+./installer.ps1 ~/.vim/dein
+
+mkdir -p ~/.config/nvim/ -Force
+cp  ./configs/vimrc  \Users\fujimoto\AppData\Local\nvim/init.vim -Force
+cp  ./configs/plugins.toml ~/.vim/dein/ -Force
+cp  ./configs/lazy_plugins.toml ~/.vim/dein/ -Force
+cp  ./configs/custom_runtime ~/.vim/ -Force -Recurse
+cp  ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim -Force -Recurse
+scoop install lua go nodejs llvm
+cd ~/.vim/dein/repos/github.com/valloric/youcompleteme
+./install.py --all
