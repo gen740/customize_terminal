@@ -11,7 +11,14 @@ cp  ./configs/plugins.toml ~/.vim/dein/ -Force
 cp  ./configs/lazy_plugins.toml ~/.vim/dein/ -Force
 cp  ./configs/custom_runtime ~/.vim/ -Force -Recurse
 cp  ./colors ~/.vim/dein/repos/github.com/Shougo/dein.vim -Force -Recurse
-scoop install lua go nodejs llvm
+scoop install lua go nodejs llvm nvm
+nvm install 14.16.0
+nvm use 14.16.0
 nvim
+
+Write-Host "いずれかのキーを押してくださ"
+$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 cd ~/.vim/dein/repos/github.com/valloric/youcompleteme
+Start-Sleep -s 2
 ./install.py --all
+cd ~/
