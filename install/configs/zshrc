@@ -1,5 +1,5 @@
 ##################################### Preset ###################################
-cd Home
+cd ~/Home
 # thumbnails='/Users/fujimotogen/Home/Shelf/WallPaper'
 # images=(`ls $thumbnails`)
 # num_images=${#images[*]}
@@ -68,11 +68,11 @@ export PATH="/Users/fujimotogen/.iterm2:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 ############################### Valiables ######################################
-export GIT_EDITOR=vim
+export GIT_EDITOR=nvim
 export PKG_CONFIG_PATH=/usr/local/Cellar/gtkmm/2.24.5_8/lib/pkgconfig
-export CXX="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
-export CC="/usr/local/Cellar/gcc/10.2.0_4/bin/gcc-10"
-export CMAKE_CXX_COMPILER="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
+# export CXX="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
+# export CC="/usr/local/Cellar/gcc/10.2.0_4/bin/gcc-10"
+# export CMAKE_CXX_COMPILER="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
 export PATH=$PATH:~/.nodebrew/current/bin/
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
