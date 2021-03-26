@@ -157,6 +157,4 @@ nnoremap k gk
 nnoremap gk k
 nnoremap gj j
 nnoremap Y y$
-inoremap <esc> <esc>:ChangIME<CR>
-inoremap <C-[> <esc>:ChangeIME<CR>
 nnoremap Y y$
