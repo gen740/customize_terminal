@@ -1,3 +1,4 @@
+iwr -useb get.scoop.sh | iex
 scoop install python
 python3 -m pip install neovim
 python3 -m pip install pynvim
