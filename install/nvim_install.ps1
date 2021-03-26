@@ -1,6 +1,6 @@
 scoop install python
 python3 -m pip install neovim
-python3 m pip install pynvim
+python3 -m pip install pynvim
 Invoke-WebRequest https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.ps1 -OutFile installer.ps1
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./installer.ps1 ~/.vim/dein
