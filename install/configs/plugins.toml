@@ -1,3 +1,10 @@
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+merged = 0
+hook_add = '''
+let g:AutoPairsFlyMode = 1
+'''
+
 [[plugins]] # カラースキーム
 repo = 'morhetz/gruvbox'
 
