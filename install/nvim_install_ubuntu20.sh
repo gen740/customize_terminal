@@ -23,6 +23,7 @@ if ! [ -e ~/.cofig/nvim/ ]; then
 fi
 
 cp -f ./configs/vimrc ~/.config/nvim/init.vim
+cp -f ./configs/nvimrc ~/.nvimrc.vim
 cp -f ./configs/plugins.toml ~/.vim/dein/
 cp -f ./configs/lazy_plugins.toml ~/.vim/dein/
 cp -rf ./configs/custom_runtime ~/.vim/

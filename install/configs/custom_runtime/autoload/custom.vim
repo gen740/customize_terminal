@@ -1,26 +1,3 @@
-function custom#SetWindows()
-  :Tagbar
-  execute "normal! \<c-w>\l"
-  :vertical resize 25
-  execute "normal! \<c-w>\h"
-  :NERDTreeToggle
-  execute "normal! \<c-w>\<c-w>"
-  if (&ft=='py' || &ft=='python')
-    call OpenExecuteWindow("Python")
-    silent execute ".!echo Python3 Console"
-  elseif (&ft=='rust')
-    call OpenExecuteWindow("Rust")
-    silent execute ".!echo Rust Console"
-  endif
-  setlocal readonly
-  setlocal nomodifiable
-  :vs
-  execute "normal! \<c-w>\l"
-  :term
-  execute "normal! \<c-w>\k"
-  :resize 44
-endfunction
-
 function! OpenExecuteWindow(name)
   silent execute "update | edit"
   " get file path of current file
@@ -53,56 +30,18 @@ function! OpenExecuteWindow(name)
   %delete _
 endfunction
 
-function! custom#ExecutePython()
+function custom#SetWindows()
   let s:cur_win_id = win_getid()
-  let s:current_buffer_file_path = expand("%")
-  call OpenExecuteWindow("Python")
-  silent execute ".!python3 " . shellescape(s:current_buffer_file_path, 1)
-  " add the console output
-  setlocal readonly
-  setlocal nomodifiable
+  :Tagbar
+  :NERDTreeToggle
   call win_gotoid(s:cur_win_id)
+  :sp
+  :term
+  call win_gotoid(s:cur_win_id)
+  :resize 44
 endfunction
 
-function! custom#ExecuteRust()
-  let s:cur_win_id = win_getid()
-  call OpenExecuteWindow("Rust")
-  silent execute ".!cargo run "
-  setlocal readonly
-  setlocal nomodifiable
-  call win_gotoid(s:cur_win_id)
-endfunction
-
-function! custom#BuildRust()
-  let s:cur_win_id = win_getid()
-  call OpenExecuteWindow("Rust")
-  silent execute ".!cargo build "
-  setlocal readonly
-  setlocal nomodifiable
-  call win_gotoid(s:cur_win_id)
-endfunction
-
-function! custom#Run()
-  let s:cur_win_id = win_getid()
-  call OpenExecuteWindow("Executor")
-  silent execute "!" . g:custom_run_conf_sh . "> %"
-  setlocal readonly
-  setlocal nomodifiable
-  call win_gotoid(s:cur_win_id)
-endfunction
-
-function! custom#Build()
-  let s:cur_win_id = win_getid()
-  call OpenExecuteWindow("Executor")
-  setlocal bufhidden=delete
-  setlocal buftype=nofile
-  setlocal noswapfile
-  :silent AsyncRun !sleep 3; echo test_success > %; sleep 3; echo done > %;
-  :e
-  setlocal nobuflisted
-  setlocal readonly
-  setlocal nomodifiable
-  call win_gotoid(s:cur_win_id)
+function custom#rerunPreviousCommands()
 endfunction
 
 fun! custom#Term(...) abort
