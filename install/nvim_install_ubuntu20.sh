@@ -1,9 +1,7 @@
 sudo apt update && sudo apt upgrade
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt update
-sudo apt install neovim/focal
+sudo apt install neovim
 sudo apt install python3 python3-pip
-sudo apt install clang-format lua5.1 luarocks cmake g++-8
+sudo apt install clang-format cmake g++-8
 sudo apt install golang-go nodejs npm
 python3 -m pip install neovim pynvim
 
