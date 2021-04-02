@@ -1,13 +1,4 @@
 ##################################### Preset ###################################
-# thumbnails='/Users/fujimotogen/Home/Shelf/WallPaper'
-# images=(`ls $thumbnails`)
-# num_images=${#images[*]}
-# myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
-# {
-#   echo $myfilename;
-#   base64filename=`echo "${myfilename}" | base64`;
-#   echo "\033]1337;SetBackgroundImageFile=${base64filename}\a";
-# }
 
 ################################### P10K ########################################
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -63,6 +54,7 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/Users/fujimotogen/.bin:$PATH"
 export PATH="/Users/fujimotogen/.iterm2:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 ############################### Valiables ######################################
@@ -75,6 +67,7 @@ export PATH=$PATH:~/.nodebrew/current/bin/
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+export BAT_THEME='gruvbox-dark'
 
 ################################# Aliases ######################################
 alias v="~/.config/.changeiTerm2backgroundImageFavorite.sh;nvim"
@@ -90,7 +83,6 @@ alias my_syncro='rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a" \
   --exclude="*.cmake" --exclude="CMakeFiles" --exclude="Makefile" \
   --exclude="*.gch" --exclude="*.hex" --exclude="*.elf" --exclude=".git" \
   --exclude="build*"'
-alias cdb="cd ~/Garage/bamboo/control"
 
 bindkey -v
 bindkey jj vi-cmd-mode
@@ -101,7 +93,36 @@ export EDITOR="nvim"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
 function badge() {
-    printf "\e]1337;SetBadgeFormat=%s\a"\
+  printf "\e]1337;SetBadgeFormat=%s\a"\
     $(echo -n "$1" | base64)
+  }
+
+function change() {
+  thumbnails='/Users/fujimotogen/Home/Shelf/WallPaper'
+  images=(`ls $thumbnails`)
+  num_images=${#images[*]}
+  myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
+  echo $myfilename;
+  base64filename=`echo "${myfilename}" | base64`;
+  echo "\033]1337;SetBackgroundImageFile=${base64filename}\a";
+  unset $RANDOM
 }
+
+function change() {
+  thumbnails='/Users/fujimotogen/Home/Shelf/WallPaper'
+  images=(`ls $thumbnails`)
+  num_images=${#images[*]}
+  myfilename="${thumbnails}/`echo ${images[$((RANDOM%$num_images))]}`"
+  echo $myfilename;
+  base64filename=`echo "${myfilename}" | base64`;
+  echo "\033]1337;SetBackgroundImageFile=${base64filename}\a";
+  unset $RANDOM
+}
+
+function blackout() {
+  echo "\033]1337;SetBackgroundImageFile=\a";
+}
+
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

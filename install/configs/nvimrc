@@ -24,6 +24,8 @@ filetype plugin indent on
 if dein#check_install()
     call dein#install()
 endif
+call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
 "　必要なときにコメントアウトを戻してpluginを削除してください。
      " call map(dein#check_clean(), "delete(v:val, 'rf')")
      " call dein#recache_runtimepath()
@@ -81,10 +83,11 @@ set pumheight=12                                 " 補完ウインドウの行�
 set tags=.tags;~                                 " ctagsを遡って検索
 set display=lastline                             " 最後の行をできるだけ表示する
 set hidden                                       " 保存しなくてもバッファの切り替えができる
-set clipboard=unnamed,unnamedplus                " クリップボードとyankした内容を同期させる
+" set clipboard=unnamed,unnamedplus                " クリップボードとyankした内容を同期させる
 set showmatch                                    " 対応する括弧を強調表示する
 set matchtime=1000                               " showmatchまでの時間
 set signcolumn=yes                               " いろんなsignを出すための列を表示する
+" set signcolumn=number
 set scrolloff=8                                  " 余白を取るようになる
 set viminfo='1000,f1,<500,:500,@500,/500         " viminfoに蓄える内容とその量を決める
 set autowrite                                    " normalモードに行くと勝手に保存してくれる
@@ -139,19 +142,18 @@ vnoremap J :m '>+1<cr>gv=gv
 
 "Plugin KeyMapping
 "###############################################################################
-map <Leader>tf :Telescope file_find<CR>
-map <Leader>tg :Telescope git_files<CR>
-map <Leader>tc :Telescope git_commits<CR>
-map <Leader>ts :Telescope git_status<CR>
-nnoremap <Leader>st :SourcetrailActivateToken <CR>
+map <Leader>gf :FzfPreviewGitFiles<CR>
+map <Leader>gs :FzfPreviewGitStatus<CR>
+map <Leader>gb :FzfPreviewGitBranches<CR>
+map <Leader>zfab :FzfPreviewAllBuffers<CR>
+nnoremap <Leader>st :SourcetrailActivateToken<CR>
 nnoremap <Leader>ut :UndoTreeToggle<CR>
 nnoremap <Leader>gd :YcmCompleter GoTo<CR>
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 
 nnoremap <Leader>sw :SetWin<CR>
-nnoremap <Leader>r <C-w>ji<C-p><C-m><C-\><C-n><C-w>k
-":ReRunPreviousCommands<CR>
+nnoremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
 map <buffer> <Leader>f :TrimUselesses<CR>
 autocmd BufRead,BufNewFile *.py map <buffer> <Leader>f :PEPFMT<CR>
 autocmd BufRead,BufNewFile *.[ch]pp map <buffer> <Leader>f :CFamilyFMT<CR>
@@ -166,6 +168,9 @@ nnoremap k gk
 nnoremap gk k
 nnoremap gj j
 nnoremap Y y$
+nnoremap + "*
+vnoremap + "*
+inoremap <C-d> <Del>
 inoremap <esc> <esc>:ChangIME<CR>
 inoremap <C-[> <C-[>:ChangeIME<CR>
 nnoremap Y y$

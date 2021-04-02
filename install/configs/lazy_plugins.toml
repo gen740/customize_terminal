@@ -1,33 +1,11 @@
 # [[plugins]]
-# repo = 'vim-syntastic/syntastic'
-# hook_add ='''
-# set statusline+=%#warningmsg#
-# set statusline+=%{SyntasticStatuslineFlag()}
-# set statusline+=%*
-# let g:syntastic_always_populate_loc_list = 1
-# let g:syntastic_auto_loc_list = 1
-# let g:syntastic_check_on_open = 1
-# let g:syntastic_check_on_wq = 0
-# '''
-
-[[plugins]]
-repo = 'nvim-lua/popup.nvim'
-
-[[plugins]]
-repo = 'nvim-lua/plenary.nvim'
-
-[[plugins]]
-repo = 'nvim-telescope/telescope.nvim'
-depends = ['popup.nvim', 'plenary.nvim']
-
-[[plugins]]
-repo = 'neovim/nvim-lspconfig'
+# repo = 'neovim/nvim-lspconfig'
 
 [[plugins]]
 repo = 'valloric/youcompleteme'
 merged = 0
 on_event = "VimEnter"
-depends = 'nvim-lspconfig'
+# depends = 'nvim-lspconfig'
 hook_add = '''
 let g:ycm_use_clangd = 1
 let g:ycm_show_diagnostics_ui = 1
@@ -63,22 +41,6 @@ let g:gitgutter_realtime = 1
 [[plugins]] # アイコンの表示
 repo = 'ryanoasis/vim-devicons'
 
-[[plugins]]
-repo = 'majutsushi/tagbar'
-
-[[plugins]]
-repo = 'octol/vim-cpp-enhanced-highlight'
-# on_ft = 'cpp'
-hook_add = '''
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
-let g:cpp_no_function_highlight = 1
-'''
-
 [[plugins]] # ファイルツリーの表示
 repo = "preservim/nerdtree"
 depends = ['vim-devicons']
@@ -102,6 +64,22 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
+'''
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+[[plugins]]
+repo = 'octol/vim-cpp-enhanced-highlight'
+# on_ft = 'cpp'
+hook_add = '''
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 1
 '''
 
 [[plugins]]
