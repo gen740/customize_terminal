@@ -24,8 +24,6 @@ filetype plugin indent on
 if dein#check_install()
     call dein#install()
 endif
-call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
 "　必要なときにコメントアウトを戻してpluginを削除してください。
      " call map(dein#check_clean(), "delete(v:val, 'rf')")
      " call dein#recache_runtimepath()
@@ -35,10 +33,10 @@ set runtimepath+=~/.vim/custom_runtime
 " シンタックスハイライトを有効 TODO
 " ###############################################################################
 syntax enable
-set syntax=markdown
-au BufRead,BufNewFile *.md set filetype=markdown
-colo gruvbox
 set bg=dark
+colo gruvbox
+highlight Normal guibg=none
+highlight SignColumn guibg=none
 
 "インデント関係
 "###############################################################################
@@ -52,154 +50,91 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
+    autocmd BufRead,BufNewFile *.md set filetype=markdown
     autocmd BufNewFile,BufRead *.txt setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
     autocmd BufNewFile,BufRead *.rs let g:rust_recommended_style = 1
 	  autocmd BufNewFile,BufRead *.rs let g:rustfmt_autosave = 1
     autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd FileType c setlocal foldmarker={,}
+    autocmd FileType cpp setlocal foldmarker={,}
+    autocmd FileType cpp setlocal foldmarker={,}
 augroup END
 set autoindent                  " 改行したりした時にインデントを保持してくれます。
 
 "検索関係
 "###############################################################################
-set nohlsearch                    " 検索した文字がハイライトされます。
-set incsearch                   " 文字検索時にリアルタイムで検索してくれます。
-set smartcase                   " 大文字小文字を区別せずに検索してくれます。
-
-"その他
-"###############################################################################
-set autoread                                     " 編集中に別のところで編集されたら自動で読み込みます。
-set showcmd                                      " 入力中のコマンドを表示します。右下に表示されます。
-set whichwrap=b,s,<,>,[,]                        " 行末、行頭で行を跨ぐことができるようになります。
-let &colorcolumn="81,".join(range(101,101),",")  " 81と101列目に線を入れる
-set noswapfile                                   " swapファイルは使いません
-set mouse+=a                                     " マウスでカーソルの位置を指定できる
-set cursorline                                   " 今いる行をハイライト
-set vb t_vb=                                     " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
-set belloff=all
-set nu relativenumber                            " 番号を相対表示にする
-set backspace=indent,eol,start                   " deleteで改行を消す
-set wildmenu wildmode=longest,full               " 補完の形を決める（vim互換性）
-set pumheight=12                                 " 補完ウインドウの行数を決める
-set tags=.tags;~                                 " ctagsを遡って検索
-set display=lastline                             " 最後の行をできるだけ表示する
-set hidden                                       " 保存しなくてもバッファの切り替えができる
-" set clipboard=unnamed,unnamedplus                " クリップボードとyankした内容を同期させる
-set showmatch                                    " 対応する括弧を強調表示する
-set matchtime=1000                               " showmatchまでの時間
-set signcolumn=yes                               " いろんなsignを出すための列を表示する
-" set signcolumn=number
-set scrolloff=8                                  " 余白を取るようになる
-set viminfo='1000,f1,<500,:500,@500,/500         " viminfoに蓄える内容とその量を決める
-set autowrite                                    " normalモードに行くと勝手に保存してくれる
-set termguicolors                                " 色をバグらないようにする
-set writebackup                                  " バックアップファイルを保存時に削除
-set backupext=.bak                               " バックアップファイルの拡張子
-set shortmess=I                                  " 起動時のメッセージを表示しない
-set lazyredraw                                   " 出来るだけ再描画をしない
-set nofixeol                                     " 最後の行に勝手に改行を挿入しない
-packadd! matchit                                 " if endifみたいなのも括弧ジャンプができるようになる
-if has('persistent_undo')                        " undoファイルをずっと残す
+let &colorcolumn="81,".join(range(101,101),",") " 81と101列目に線を入れる
+packadd! matchit                                " if endifみたいなのも括弧ジャンプができるようになる
+set autoread                                    " 編集中に別のところで編集されたら自動で読み込みます。
+set autowrite                                   " normalモードに行くと勝手に保存してくれる
+set backspace=indent,eol,start                  " deleteで改行を消す
+set backupext=.bak                              " バックアップファイルの拡張子
+" set clipboard=unnamed,unnamedplus             " クリップボードとyankした内容を同期させる
+set completeopt-=preview                        " プレビューウインドウを表示しない
+set cursorline                                  " 今いる行をハイライト
+set display=lastline                            " 最後の行をできるだけ表示する
+set foldmethod=marker
+set hidden                                      " 保存しなくてもバッファの切り替えができる
+set incsearch                                   " 文字検索時にリアルタイムで検索してくれます。
+set lazyredraw                                  " 出来るだけ再描画をしない
+set matchtime=1000                              " showmatchまでの時間
+set mouse+=a                                    " マウスでカーソルの位置を指定できる
+set nofoldenable
+set nohlsearch                                  " 検索した文字がハイライトされます。
+set noswapfile                                  " swapファイルは使いません
+set nu relativenumber                           " 番号を相対表示にする
+set pumheight=12                                " 補完ウインドウの行数を決める
+set scrolloff=8                                 " 余白を取るようになる
+set shortmess=I                                 " 起動時のメッセージを表示しない
+set showcmd                                     " 入力中のコマンドを表示します。右下に表示されます。
+set showmatch                                   " 対応する括弧を強調表示する
+" set signcolumn=number                         " neovim0.5.0の機能
+set signcolumn=yes                              " いろんなsignを出すための列を表示する
+set smartcase                                   " 大文字小文字を区別せずに検索してくれます。
+set splitbelow                                  " splitすると下に分かれる
+set splitright                                  " splitすると右に分かれる
+set tags=.tags;~                                " ctagsを遡って検索
+set termguicolors                               " 色をバグらないようにする
+set updatetime=1000
+set vb t_vb=                                    " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
+set viminfo='1000,f1,<500,:500,@500,/500        " viminfoに蓄える内容とその量を決める
+set whichwrap=b,s,<,>,[,]                       " 行末、行頭で行を跨ぐことができるようになります。
+set wildmenu wildmode=longest,full              " 補完の形を決める（vim互換性）
+set writebackup                                 " バックアップファイルを保存時に削除
+if has('persistent_undo')                       " undoファイルをずっと残す
   set undodir=~/.vim/undo
   set undofile
 endif
-set foldmethod=marker
-  au FileType cpp setlocal foldmarker={,}
-  au FileType c setlocal foldmarker={,}
-  au FileType cpp setlocal foldmarker={,}
-set nofoldenable
-set splitbelow
-set splitright
-set completeopt-=preview                         " プレビューウインドウを表示しない
 
 "KeyMapping
 "###############################################################################
 let mapleader = "\<Space>"                       " LeaderキーをSpaceに
-
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-]> <C-\><C-n>
-tnoremap jj <C-\><C-n>
-tnoremap <C-n> <DOWN>
-tnoremap <C-p> <UP>
-tnoremap <C-f> <RIGHT>
-tnoremap <C-b> <LEFT>
-inoremap <C-f> <RIGHT>
-inoremap <C-b> <LEFT>
-imap <C-h> <BS>
-map <Leader>h :wincmd h<CR>
-map <Leader>k :wincmd k<CR>
-map <Leader>j :wincmd j<CR>
-map <Leader>l :wincmd l<CR>
+map <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
+map <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
+map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
 map <Leader>co :e ~/.nvimrc<CR>
 map <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
-map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
-map <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
-map <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
-map <Leader>on :only<CR>
-map <Leader>qq :qa!<CR>
-
-vnoremap K :m '<-2<cr>gv=gv
-vnoremap J :m '>+1<cr>gv=gv
+map <buffer> <Leader>f :TrimUselesses<CR>
+nnoremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
+nnoremap <Leader>sw :SetWin<CR>
 
 "Plugin KeyMapping
 "###############################################################################
+map <Leader>gb :FzfPreviewGitBranches<CR>
 map <Leader>gf :FzfPreviewGitFiles<CR>
 map <Leader>gs :FzfPreviewGitStatus<CR>
-map <Leader>gb :FzfPreviewGitBranches<CR>
 map <Leader>zfab :FzfPreviewAllBuffers<CR>
-nnoremap <Leader>st :SourcetrailActivateToken<CR>
-nnoremap <Leader>ut :UndoTreeToggle<CR>
-nnoremap <Leader>gd :YcmCompleter GoTo<CR>
-nmap <C-p> <Plug>AirlineSelectPrevTab
+nmap <leader>d <plug>(YCMHover)
 nmap <C-n> <Plug>AirlineSelectNextTab
+nmap <C-p> <Plug>AirlineSelectPrevTab
+nnoremap <Leader>gd :YcmCompleter GoTo<CR>
+nnoremap <Leader>ut :UndotreeToggle<CR>
 
-nnoremap <Leader>sw :SetWin<CR>
-nnoremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
-map <buffer> <Leader>f :TrimUselesses<CR>
-autocmd BufRead,BufNewFile *.py map <buffer> <Leader>f :PEPFMT<CR>
-autocmd BufRead,BufNewFile *.[ch]pp map <buffer> <Leader>f :CFamilyFMT<CR>
 autocmd BufRead,BufNewFile *.[ch] map <buffer> <Leader>f :CFamilyFMT<CR>
-autocmd BufRead,BufNewFile *.rs map <buffer> <Leader>f :RustFMT<CR>
+autocmd BufRead,BufNewFile *.[ch]pp map <buffer> <Leader>f :CFamilyFMT<CR>
+autocmd BufRead,BufNewFile *.py map <buffer> <Leader>f :PEPFMT<CR>
 autocmd BufRead,BufNewFile *.rlib map <buffer> <Leader>f :RustFMT<CR>
-
-"###############################################################################
-inoremap jj <esc>
-nnoremap j gj
-nnoremap k gk
-nnoremap gk k
-nnoremap gj j
-nnoremap Y y$
-nnoremap + "*
-vnoremap + "*
-inoremap <C-d> <Del>
-inoremap <esc> <esc>:ChangIME<CR>
-inoremap <C-[> <C-[>:ChangeIME<CR>
-nnoremap Y y$
-
-highlight Normal guibg=none
-highlight SignColumn guibg=none
-set updatetime=2000
-let g:ycm_auto_hover='CursorHold'
-"lua << EOF
-"require'lspconfig'.pyright.setup{}
-"EOF
-
+autocmd BufRead,BufNewFile *.rs map <buffer> <Leader>f :RustFMT<CR>
 autocmd TermOpen * setlocal nonumber norelativenumber
-
-augroup multiwin
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set cursorline
-  autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline
-augroup END
-
-function! s:open(args) abort
-    if empty(term_list())
-        execute "terminal" a:args
-    else
-        let bufnr = term_list()[0]
-        execute term_getsize(bufnr)[0] . "new"
-        execute "buffer + " bufnr
-    endif
-endfunction
-
-" すでに :terminal が存在していればその :terminal を使用する
-command! -nargs=* Terminal call s:open(<q-args>)
+autocmd BufEnter,FocusGained,InsertLeave * set cursorline
+autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline
