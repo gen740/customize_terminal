@@ -1,1 +1,2 @@
+s -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 cat ./configs/zshrc >> ~/.zshrc

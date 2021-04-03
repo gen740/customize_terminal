@@ -1,4 +1,5 @@
 sudo apt update && sudo apt upgrade
+sudo apt install neovim
 sudo apt install python3 python3-pip
 sudo apt install clang-format cmake g++-8
 sudo apt install golang-go nodejs npm
@@ -20,6 +21,7 @@ if ! [ -e ~/.cofig/nvim/ ]; then
 fi
 
 cp -f ./configs/vimrc ~/.config/nvim/init.vim
+cp -f ./configs/nvimrc ~/.nvimrc
 cp -f ./configs/plugins.toml ~/.vim/dein/
 cp -f ./configs/lazy_plugins.toml ~/.vim/dein/
 cp -rf ./configs/custom_runtime ~/.vim/
