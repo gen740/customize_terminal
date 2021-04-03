@@ -1,14 +1,23 @@
 [[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0
+
+[[plugins]]
+repo = 'yuki-yano/fzf-preview.vim'
+rev = 'release/remote'
+
+[[plugins]]
 repo = 'jiangmiao/auto-pairs'
 merged = 0
 hook_add = '''
 let g:AutoPairsFlyMode = 1
 '''
 
-[[plugins]] # カラースキーム
+[[plugins]]
 repo = 'morhetz/gruvbox'
 
-[[plugins]] # マークの表示
+[[plugins]]
 repo = 'kshenoy/vim-signature'
 
 [[plugins]] # Airlineのテーマ
@@ -22,27 +31,12 @@ let g:airline_detect_modified=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter ='default'
 let g:airline#extensions#branch#enabled = 1
-" let g:airline#extensions#denite#enabled = 1
 let g:airline#extensions#fugitiveline#enabled = 1
-let g:airline#extensions#bufferline#enabled = 1
 let g:airline_section_y = airline#section#create_right(['neomake_custom','ffenc'])
 let g:airline_stl_path_style = 'short'
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = '☰ '
-" let g:airline_symbols.maxlinenr = ''
-" let g:airline_symbols.dirty='⚡'
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = ''
-" let g:airline#extensions#tabline#right_sep = ' '
-" let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#wordcount#enabled = 1
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'gruvbox' " ubaryd,
 set showtabline=2
 set statusline=2                " ステータスラインの記述
 set laststatus=2                " 下のステータスライン
@@ -53,8 +47,7 @@ set noshowmode                  " デフォルトのステータスラインを�
 repo = 'yggdroot/indentline'
 hook_add =
 '''
-" let g:indentLine_char = '┊'
-let g:indentLine_char = '|'
+let g:indentLine_char = '┊'
 let g:indentLine_conceallevel=1
 let g:indentLine_concealcursor=""
 set conceallevel=1
