@@ -80,6 +80,9 @@ hi StartifySlash   ctermfg=240
 hi StartifySpecial ctermfg=240
 '''
 
+[[plugins]] # gitをvimから使う
+repo ='tpope/vim-fugitive'
+
 [[plugins]] # Airlineのテーマ
 repo = 'vim-airline/vim-airline-themes'
 

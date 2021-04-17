@@ -107,5 +107,3 @@ repo = 'majutsushi/tagbar'
 # repo = 'cespare/vim-toml'
 # on_ft = 'toml'
 
-# [[plugins]] # gitをvimから使う
-# repo ='tpope/vim-fugitive'

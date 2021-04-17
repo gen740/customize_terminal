@@ -6,14 +6,9 @@ endif
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('~/.vim/dein')
   call dein#begin('~/.vim/dein')
-  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  let g:config_dir  = expand('~/.vim/dein')
-  let s:toml_file   = g:config_dir . '/plugins.toml'
-  let s:lazy_toml_file   = g:config_dir . '/lazy_plugins.toml'
+  let s:config_dir  = expand('~/.vim/dein')
+  let s:toml_file   = s:config_dir . '/plugins.toml'
+  let s:lazy_toml_file = s:config_dir . '/lazy_plugins.toml'
   call dein#load_toml(s:toml_file, {'lazy': 0})       " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:lazy_toml_file, {'lazy': 1})  " TOML を読み込み、キャッシュしておく
   call dein#end()
@@ -128,7 +123,7 @@ map <Leader>k :silent wincmd k<CR>
 map <Leader>l :silent wincmd l<CR>
 map <Leader>on :only<CR>
 map <Leader>qq :qa!<CR>
-nnoremap + "*
+" nnoremap + "*
 nnoremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
 nnoremap <Leader>sm :SetWinWithoutMinimap<CR>
 nnoremap <Leader>sw :SetWin<CR>
@@ -160,19 +155,18 @@ map <Leader>df :FzfPreviewDirectoryFiles
 map <Leader>gb :FzfPreviewGitBranches<CR>
 map <Leader>gf :FzfPreviewGitFiles<CR>
 map <Leader>gs :FzfPreviewGitStatus<CR>
-map <Leader>zfab :FzfPreviewAllBuffers<CR>
+" map <Leader>zfab :FzfPreviewAllBuffers<CR>
 
-map <Leader>ur :NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
 nmap <C-q> :NERDTreeToggle<CR>
 
-autocmd BufRead,BufNewFile *.tex nmap <Leader>r <Leader>ll<Leader>lv
-autocmd BufRead,BufNewFile *.tex nnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
-autocmd BufRead,BufNewFile *.tex vnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
+" autocmd BufRead,BufNewFile *.tex nmap <Leader>r <Leader>ll<Leader>lv
+" autocmd BufRead,BufNewFile *.tex nnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
+" autocmd BufRead,BufNewFile *.tex vnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
 nmap <C-n> <Plug>AirlineSelectNextTab
 nmap <C-p> <Plug>AirlineSelectPrevTab
-nmap <Leader>d <plug>(YCMHover)
+" nmap <Leader>d <plug>(YCMHover)
 nnoremap <Leader>gd :YcmCompleter GoTo<CR>
-nnoremap <Leader>ut :UndotreeToggle<CR>
+" nnoremap <Leader>ut :UndotreeToggle<CR>
 
 autocmd BufEnter,FocusGained,InsertLeave * set cursorline
 autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline
@@ -182,4 +176,3 @@ autocmd BufRead,BufNewFile *.py map <buffer> <Leader>f :silen PEPFMT<CR>
 autocmd BufRead,BufNewFile *.rlib map <buffer> <Leader>f :silent RustFMT<CR>
 autocmd BufRead,BufNewFile *.rs map <buffer> <Leader>f :silent RustFMT<CR>
 autocmd TermOpen * setlocal nonumber norelativenumber
-
