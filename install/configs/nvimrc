@@ -5,71 +5,77 @@ if &compatible
 endif
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('~/.vim/dein')
-    call dein#begin('~/.vim/dein')
-    call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
-    " call dein#add('neovim/nvim-lspconfig')
-    if !has('nvim')
-        call dein#add('roxma/nvim-yarp')
-        call dein#add('roxma/vim-hug-neovim-rpc')
-    endif
-    let g:config_dir  = expand('~/.vim/dein')
-    let s:toml_file   = g:config_dir . '/plugins.toml'
-    let s:lazy_toml_file   = g:config_dir . '/lazy_plugins.toml'
-    call dein#load_toml(s:toml_file, {'lazy': 0})  " TOML を読み込み、キャッシュしておく
-    call dein#load_toml(s:lazy_toml_file, {'lazy': 1})  " TOML を読み込み、キャッシュしておく
-    call dein#end()
-    call dein#save_state()
+  call dein#begin('~/.vim/dein')
+  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+  " call dein#add('neovim/nvim-lspconfig')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  let g:config_dir  = expand('~/.vim/dein')
+  let s:toml_file   = g:config_dir . '/plugins.toml'
+  let s:lazy_toml_file   = g:config_dir . '/lazy_plugins.toml'
+  call dein#load_toml(s:toml_file, {'lazy': 0})  " TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:lazy_toml_file, {'lazy': 1})  " TOML を読み込み、キャッシュしておく
+  call dein#end()
+  call dein#save_state()
 endif
 filetype plugin indent on
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
 "　必要なときにコメントアウトを戻してpluginを削除してください。
-     " call map(dein#check_clean(), "delete(v:val, 'rf')")
-     " call dein#recache_runtimepath()
+" call map(dein#check_clean(), "delete(v:val, 'rf')")
+" call dein#recache_runtimepath()
 "End dein Scripts-------------------------
 set runtimepath+=~/.vim/custom_runtime
 
 " シンタックスハイライトを有効 TODO
 " ###############################################################################
 syntax enable
-set bg=dark
-colo gruvbox
+set background=dark
+set iskeyword-=:
+colo gruvbox "one
 highlight Normal guibg=none
 highlight SignColumn guibg=none
 
 "インデント関係
 "###############################################################################
+set autoindent                  " 改行したりした時にインデントを保持してくれます。
 set expandtab                   " タブを押すと空白が挿入されるようにする
-set tabstop=2                   " 一個のタブを空白何個分にとるか。
+set nowrap
 set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
 set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
-set nowrap
+set tabstop=2                   " 一個のタブを空白何個分にとるか。
 augroup fileTypeIndent
-    autocmd!
-    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    autocmd BufNewFile,BufRead *.txt setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
-    autocmd BufNewFile,BufRead *.rs let g:rust_recommended_style = 1
-	  autocmd BufNewFile,BufRead *.rs let g:rustfmt_autosave = 1
-    autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd FileType c setlocal foldmarker={,}
-    autocmd FileType cpp setlocal foldmarker={,}
-    autocmd FileType cpp setlocal foldmarker={,}
+  autocmd!
+  autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap 
+  autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
+  autocmd BufRead,BufNewFile *.ipynb setlocal filetype=markdown
+  autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
+  autocmd BufRead,BufNewFile *.md nnoremap o A<CR>
+  autocmd BufNewFile,BufRead *.txt setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
+  autocmd BufNewFile,BufRead *.rs let g:rust_recommended_style = 1
+  autocmd BufNewFile,BufRead *.rs let g:rustfmt_autosave = 1
+  autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType c setlocal foldmarker={,}
+  autocmd FileType cpp setlocal foldmarker={,}
+  autocmd FileType cpp setlocal foldmarker={,}
 augroup END
-set autoindent                  " 改行したりした時にインデントを保持してくれます。
 
 "検索関係
 "###############################################################################
-let &colorcolumn="81,".join(range(101,101),",") " 81と101列目に線を入れる
+let &colorcolumn="101" " .join(range(101,101),",") " 81と101列目に線を入れる
 packadd! matchit                                " if endifみたいなのも括弧ジャンプができるようになる
-set autoread                                    " 編集中に別のところで編集されたら自動で読み込みます。
-set autowrite                                   " normalモードに行くと勝手に保存してくれる
-set backspace=indent,eol,start                  " deleteで改行を消す
-set backupext=.bak                              " バックアップファイルの拡張子
+" set autoread                                    " 編集中に別のところで編集されたら自動で読み込みます。
+" set backspace=indent,eol,start                  " deleteで改行を消す
 " set clipboard=unnamed,unnamedplus             " クリップボードとyankした内容を同期させる
+" set signcolumn=number                         " neovim0.5.0の機能
+set mouse+=a                                    " マウスでカーソルの位置を指定できる
+set autowrite                                   " normalモードに行くと勝手に保存してくれる
+set backupext=.bak                              " バックアップファイルの拡張子
 set completeopt-=preview                        " プレビューウインドウを表示しない
 set cursorline                                  " 今いる行をハイライト
 set display=lastline                            " 最後の行をできるだけ表示する
@@ -78,7 +84,6 @@ set hidden                                      " 保存しなくてもバッフ
 set incsearch                                   " 文字検索時にリアルタイムで検索してくれます。
 set lazyredraw                                  " 出来るだけ再描画をしない
 set matchtime=1000                              " showmatchまでの時間
-set mouse+=a                                    " マウスでカーソルの位置を指定できる
 set nofoldenable
 set nohlsearch                                  " 検索した文字がハイライトされます。
 set noswapfile                                  " swapファイルは使いません
@@ -88,15 +93,14 @@ set scrolloff=8                                 " 余白を取るようになる
 set shortmess=I                                 " 起動時のメッセージを表示しない
 set showcmd                                     " 入力中のコマンドを表示します。右下に表示されます。
 set showmatch                                   " 対応する括弧を強調表示する
-" set signcolumn=number                         " neovim0.5.0の機能
 set signcolumn=yes                              " いろんなsignを出すための列を表示する
 set smartcase                                   " 大文字小文字を区別せずに検索してくれます。
 set splitbelow                                  " splitすると下に分かれる
 set splitright                                  " splitすると右に分かれる
+set iskeyword+=:
 set tags=.tags;~                                " ctagsを遡って検索
 set termguicolors                               " 色をバグらないようにする
 set updatetime=1000
-set vb t_vb=                                    " ベルをオフにするこれを使用すると、いちいちビープ音が鳴らない
 set viminfo='1000,f1,<500,:500,@500,/500        " viminfoに蓄える内容とその量を決める
 set whichwrap=b,s,<,>,[,]                       " 行末、行頭で行を跨ぐことができるようになります。
 set wildmenu wildmode=longest,full              " 補完の形を決める（vim互換性）
@@ -108,33 +112,101 @@ endif
 
 "KeyMapping
 "###############################################################################
+
+inoremap <C-[> <C-[>:ChangeIME<CR>
+inoremap <C-b> <LEFT>
+inoremap <C-f> <RIGHT>
+inoremap <esc> <esc>:ChangeIME<CR>
 let mapleader = "\<Space>"                       " LeaderキーをSpaceに
+map <Leader>bb :Bookmark 
+map <Leader>bo :!source ~/.config/zsh/custom_func.zsh && blackout<CR><CR><C-l>
+map <Leader>ca :w<CR>:silent %y+<CR>
+map <Leader>cbif :!source ~/.config/zsh/custom_func.zsh && change<CR><CR><C-l>
+map <Leader>cbin :!source ~/.config/zsh/custom_func.zsh && change_f<CR><CR><C-l>
 map <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
 map <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
 map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
 map <Leader>co :e ~/.nvimrc<CR>
 map <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
-map <buffer> <Leader>f :TrimUselesses<CR>
+map <Leader>h :silent wincmd h<CR>
+map <Leader>j :silent wincmd j<CR>
+map <Leader>k :silent wincmd k<CR>
+map <Leader>l :silent wincmd l<CR>
+map <Leader>on :only<CR>
+map <Leader>qq :qa!<CR>
+map <Leader>f :TrimUselesses<CR>
+nnoremap + "*
+nnoremap <Leader>ar :w<CR><C-w>jiAtCodeCheck<C-m><C-\><C-n><C-w>k
 nnoremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
+
 nnoremap <Leader>sw :SetWin<CR>
+nnoremap <Leader>sm :SetWinWithoutMinimap<CR>
+nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
+nnoremap Y y$
+nnoremap Y y$
+nnoremap gj j
+nnoremap gk k
+nnoremap j gj
+nnoremap k gk
+tnoremap <C-]> <C-\><C-n>
+tnoremap <C-b> <LEFT>
+tnoremap <C-f> <RIGHT>
+tnoremap <C-n> <DOWN>
+tnoremap <C-p> <UP>
+tnoremap <Esc> <C-\><C-n>
+tnoremap jj <C-\><C-n>
+vnoremap + "*
+vnoremap <Leader>s :sort
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+vnoremap U <esc>
+vnoremap u <esc>
 
 "Plugin KeyMapping
 "###############################################################################
+
+map <Leader>bl :BLines!<CR>
+map <Leader>df :FzfPreviewDirectoryFiles
 map <Leader>gb :FzfPreviewGitBranches<CR>
 map <Leader>gf :FzfPreviewGitFiles<CR>
 map <Leader>gs :FzfPreviewGitStatus<CR>
 map <Leader>zfab :FzfPreviewAllBuffers<CR>
-nmap <leader>d <plug>(YCMHover)
+
+map <Leader>ur :NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
+nmap <C-q> :NERDTreeToggle<CR>
+
+autocmd BufRead,BufNewFile *.tex nmap <Leader>r <Leader>ll<Leader>lv
+autocmd BufRead,BufNewFile *.tex nnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
+autocmd BufRead,BufNewFile *.tex vnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
 nmap <C-n> <Plug>AirlineSelectNextTab
 nmap <C-p> <Plug>AirlineSelectPrevTab
+nmap <Leader>d <plug>(YCMHover)
 nnoremap <Leader>gd :YcmCompleter GoTo<CR>
+nnoremap <Leader>st :SourcetrailActivateToken<CR>
 nnoremap <Leader>ut :UndotreeToggle<CR>
 
-autocmd BufRead,BufNewFile *.[ch] map <buffer> <Leader>f :CFamilyFMT<CR>
-autocmd BufRead,BufNewFile *.[ch]pp map <buffer> <Leader>f :CFamilyFMT<CR>
-autocmd BufRead,BufNewFile *.py map <buffer> <Leader>f :PEPFMT<CR>
-autocmd BufRead,BufNewFile *.rlib map <buffer> <Leader>f :RustFMT<CR>
-autocmd BufRead,BufNewFile *.rs map <buffer> <Leader>f :RustFMT<CR>
-autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd BufEnter,FocusGained,InsertLeave * set cursorline
 autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline
+autocmd BufRead,BufNewFile *.[ch] map <buffer> <Leader>f :silent CFamilyFMT<CR>
+autocmd BufRead,BufNewFile *.[chi]pp map <buffer> <Leader>f :silent CFamilyFMT<CR>
+autocmd BufRead,BufNewFile *.py map <buffer> <Leader>f :silen PEPFMT<CR>
+autocmd BufRead,BufNewFile *.rlib map <buffer> <Leader>f :silent RustFMT<CR>
+autocmd BufRead,BufNewFile *.rs map <buffer> <Leader>f :silent RustFMT<CR>
+autocmd TermOpen * setlocal nonumber norelativenumber
+
+source $VIMRUNTIME/menu.vim
+set wildmenu
+set cpo-=<
+set wcm=<C-Z>
+map <F4> :emenu <C-Z>
+
+" Kite
+" ###################################################################################################
+let g:kite_supported_languages = ['*']
+let g:kite_auto_complete=0
+let g:kite_completions=0
+let g:kite_snippets=0
+let g:kite_previous_placeholder = '<C-k>'
+let g:kite_next_placeholder = '<C-l>'
+set completeopt+=noinsert
+set completeopt+=menuone

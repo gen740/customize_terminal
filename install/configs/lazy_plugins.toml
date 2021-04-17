@@ -1,7 +1,44 @@
 [[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown', 'md', 'ipynb']
+hook_add = '''
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
+set conceallevel=1
+'''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'
+
+[[plugins]]
+repo = 'vim-latex/vim-latex'
+merged = 0
+on_ft = 'tex'
+hook_add = '''
+let g:Tex_SmartKeyBS = 0
+let g:Tex_SmartKeyQuote = 0
+let g:Tex_SmartKeyDot = 0
+let g:Imap_UsePlaceHolders = 0
+let g:Tex_CompileRule_pdf = 'lualatex $* > /dev/null'
+let g:Tex_CompileRule_dvi = 'lualatex $* > /dev/null'
+'''
+
+[[plugins]] # アイコンの表示
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]] # ファイルツリーの表示
+repo = "preservim/nerdtree"
+on_event = "VimEnter"
+depends = 'vim-devicons'
+hook_add = '''
+let g:NERDTreeLimitedSyntax = 1
+'''
+
+[[plugins]]
 repo = 'valloric/youcompleteme'
 merged = 0
 on_event = "VimEnter"
+# depends = 'nvim-lspconfig'
 hook_add = '''
 let g:ycm_use_clangd = 1
 let g:ycm_show_diagnostics_ui = 1
@@ -29,17 +66,6 @@ hook_add = '''
 let g:gitgutter_map_keys=0
 let g:gitgutter_realtime = 1
 "let g:gitgutter_eager = 0
-'''
-
-[[plugins]] # アイコンの表示
-repo = 'ryanoasis/vim-devicons'
-
-[[plugins]] # ファイルツリーの表示
-repo = "preservim/nerdtree"
-depends = ['vim-devicons']
-hook_add = '''
-map <C-q> :NERDTreeToggle<CR>
-let g:NERDTreeLimitedSyntax = 1
 '''
 
 [[plugins]]
@@ -89,6 +115,9 @@ on_ft = 'csv'
 repo = 'junegunn/goyo.vim'
 on_ft = ['txt', 'md']
 
+[[plugins]]
+repo = 'CoatiSoftware/vim-sourcetrail'
+
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
@@ -97,19 +126,8 @@ on_ft = 'toml'
 repo ='tpope/vim-fugitive'
 
 [[plugins]]
-repo = 'tpope/vim-surround'
-
-[[plugins]]
 repo = 'puremourning/vimspector'
 marged = 0
 hook_add = '''
 let g:vimspector_enable_mappings = 'HUMAN'
-'''
-
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = 'markdown'
-hook_add = '''
-let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
-set conceallevel=1
 '''
