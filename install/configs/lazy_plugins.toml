@@ -1,7 +1,19 @@
+[[plugins]] # アイコンの表示
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]] # ファイルツリーの表示
+repo = "preservim/nerdtree"
+on_event = "VimEnter"
+depends = 'vim-devicons'
+hook_add = '''
+let g:NERDTreeLimitedSyntax = 1
+'''
+
 [[plugins]]
 repo = 'valloric/youcompleteme'
 merged = 0
 on_event = "VimEnter"
+# depends = 'nvim-lspconfig'
 hook_add = '''
 let g:ycm_use_clangd = 1
 let g:ycm_show_diagnostics_ui = 1
@@ -29,17 +41,6 @@ hook_add = '''
 let g:gitgutter_map_keys=0
 let g:gitgutter_realtime = 1
 "let g:gitgutter_eager = 0
-'''
-
-[[plugins]] # アイコンの表示
-repo = 'ryanoasis/vim-devicons'
-
-[[plugins]] # ファイルツリーの表示
-repo = "preservim/nerdtree"
-depends = ['vim-devicons']
-hook_add = '''
-map <C-q> :NERDTreeToggle<CR>
-let g:NERDTreeLimitedSyntax = 1
 '''
 
 [[plugins]]
@@ -89,6 +90,9 @@ on_ft = 'csv'
 repo = 'junegunn/goyo.vim'
 on_ft = ['txt', 'md']
 
+[[plugins]]
+repo = 'CoatiSoftware/vim-sourcetrail'
+
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
@@ -97,7 +101,7 @@ on_ft = 'toml'
 repo ='tpope/vim-fugitive'
 
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'guns/xterm-color-table.vim'
 
 [[plugins]]
 repo = 'puremourning/vimspector'

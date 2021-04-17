@@ -1,4 +1,57 @@
 [[plugins]]
+repo = 'mhinz/vim-startify'
+merged = 0
+hook_add = '''
+function! s:nerdtreeBookmarks()
+    let bookmarks = systemlist("cut -d' ' -f 2- ~/.NERDTreeBookmarks")
+    let bookmarks = bookmarks[0:-2] " Slices an empty last line
+    return map(bookmarks, "{'line': v:val, 'path': v:val}")
+endfunction
+let g:startify_enable_special      = 1
+let g:startify_files_number        = 5
+let g:startify_relative_path       = 1
+let g:startify_change_to_dir       = 1
+let g:startify_update_oldfiles     = 1
+let g:startify_session_autoload    = 1
+let g:startify_session_persistence = 1
+let g:startify_skiplist = [
+        \ 'COMMIT_EDITMSG',
+        \ 'bundle/.*/doc',
+        \ '/data/repo/neovim/runtime/doc',
+        \ '/Users/mhi/local/vim/share/vim/vim74/doc',
+        \ ]
+let g:startify_bookmarks = [
+        \ { 'c': '~/.config/nvim/init.vim' },
+        \ { 'p': '~/.vim/dein/plugins.toml'},
+        \ ]
+let g:startify_custom_header = ['']
+let g:startify_custom_footer = ['', "", '']
+let g:startify_lists = [
+      \ { 'type': function('s:nerdtreeBookmarks'), 'header': ['   NERDTree Bookmarks']},
+      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
+hi StartifyBracket ctermfg=240
+hi StartifyFile    ctermfg=147
+hi StartifyFooter  ctermfg=240
+hi StartifyHeader  ctermfg=114
+hi StartifyNumber  ctermfg=215
+hi StartifyPath    ctermfg=245
+hi StartifySlash   ctermfg=240
+hi StartifySpecial ctermfg=240
+'''
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+merged = 0
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+merged = 0
+
+[[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
 merged = 0
@@ -6,12 +59,35 @@ merged = 0
 [[plugins]]
 repo = 'yuki-yano/fzf-preview.vim'
 rev = 'release/remote'
+hook_add = '''
+let g:fzf_preview_floating_window_rate = 0.85
+" let g:fzf_preview_direct_window_option = ''
+" let g:fzf_preview_default_fzf_options = { '--reverse': v:true, '--preview-window': 'wrap' }
+let g:fzf_preview_quit_map = 1
+let g:fzf_preview_buffers_jump = 1
+" let g:fzf_preview_if_binary_command = '[[ "$(file --mime {})" =~ binary ]]'
+" let g:fzf_binary_preview_command = 'echo "{} is a binary file"'
+let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"' " Installed ripgrep
+let g:fzf_preview_git_files_command = 'git ls-files --exclude-standard'
+let g:fzf_preview_directory_files_command = 'rg --files --hidden --follow --no-messages -g \!"* *"'
+let g:fzf_preview_git_status_command = 'git -c color.status=always status --short --untracked-files=all'
+let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading --color=never'
+let g:fzf_preview_mru_limit = 1000
+let g:fzf_preview_lines_command = 'bat --color=always --plain --number' " Installed bat
+let g:fzf_preview_grep_preview_cmd = expand('<sfile>:h:h') . '/bin/preview_fzf_grep'
+let g:fzf_preview_cache_directory = expand('~/.cache/vim/fzf_preview')
+let g:fzf_preview_fzf_color_option = 'border:#aaaaaa,pointer:#ffffff,bg+:#006400'
+let g:fzf_preview_fzf_preview_window_option = 'right:60%'
+let g:fzf_preview_use_dev_icons = 1
+let g:fzf_preview_dev_icon_prefix_string_length = 3
+let g:fzf_preview_dev_icons_limit = 5000
+'''
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
 merged = 0
 hook_add = '''
-let g:AutoPairsFlyMode = 1
+" let g:AutoPairsFlyMode = 1
 '''
 
 [[plugins]]
@@ -51,7 +127,7 @@ let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#wordcount#enabled = 1
-let g:airline_theme = 'gruvbox' " ubaryd,
+let g:airline_theme = 'minimalist'"'gruvbox' " ubaryd, understated
 set showtabline=2
 set statusline=2                " ステータスラインの記述
 set laststatus=2                " 下のステータスライン
@@ -72,9 +148,12 @@ autocmd FileType tex let g:indentLine_enabled=0
 
 [[plugins]]
 repo = 'honza/vim-snippets'
+merged = 0
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
+merged = 0
+depends = 'vim-snippets'
 hook_add = '''
 let g:UltiSnipsExpandTrigger='<C-k>'
 let g:UltiSnipsJumpForwardTrigger='<C-k>'
