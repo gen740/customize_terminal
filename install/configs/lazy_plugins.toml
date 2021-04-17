@@ -1,28 +1,3 @@
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = ['markdown', 'md', 'ipynb']
-hook_add = '''
-let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
-set conceallevel=1
-'''
-
-[[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = 'html'
-
-[[plugins]]
-repo = 'vim-latex/vim-latex'
-merged = 0
-on_ft = 'tex'
-hook_add = '''
-let g:Tex_SmartKeyBS = 0
-let g:Tex_SmartKeyQuote = 0
-let g:Tex_SmartKeyDot = 0
-let g:Imap_UsePlaceHolders = 0
-let g:Tex_CompileRule_pdf = 'lualatex $* > /dev/null'
-let g:Tex_CompileRule_dvi = 'lualatex $* > /dev/null'
-'''
-
 [[plugins]] # アイコンの表示
 repo = 'ryanoasis/vim-devicons'
 
@@ -38,7 +13,6 @@ let g:NERDTreeLimitedSyntax = 1
 repo = 'valloric/youcompleteme'
 merged = 0
 on_event = "VimEnter"
-# depends = 'nvim-lspconfig'
 hook_add = '''
 let g:ycm_use_clangd = 1
 let g:ycm_show_diagnostics_ui = 1
@@ -55,79 +29,83 @@ augroup MyYCMCustom
 augroup END
 '''
 
-[[plugins]] # コメントアウトとか手軽にできるようになる。
-repo = "tpope/vim-commentary"
-on_event = 'BufEnter'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-on_event = "VimEnter"
-hook_add = '''
-let g:gitgutter_map_keys=0
-let g:gitgutter_realtime = 1
-"let g:gitgutter_eager = 0
-'''
-
-[[plugins]]
-repo = "Xuyuanp/nerdtree-git-plugin"
-hook_add = '''
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-'''
-
 [[plugins]]
 repo = 'majutsushi/tagbar'
 
-[[plugins]]
-repo = 'octol/vim-cpp-enhanced-highlight'
-on_ft = 'cpp'
-hook_add = '''
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
-let g:cpp_no_function_highlight = 1
-'''
+# [[plugins]] # markdownに便利なものを追加してくれる
+# repo = 'plasticboy/vim-markdown'
+# on_ft = ['markdown', 'md', 'ipynb']
+# hook_add = '''
+# let g:vim_markdown_fenced_languages = ['c++=cpp', 'nvim=vim', 'bash=sh', 'ini=dosini']
+# set conceallevel=1
+# '''
 
-[[plugins]]
-repo = 'mbbill/undotree'
+# [[plugins]] # latexを使えるようにする
+# repo = 'vim-latex/vim-latex'
+# merged = 0
+# on_ft = 'tex'
+# hook_add = '''
+# let g:Tex_SmartKeyBS = 0
+# let g:Tex_SmartKeyQuote = 0
+# let g:Tex_SmartKeyDot = 0
+# let g:Imap_UsePlaceHolders = 0
+# let g:Tex_CompileRule_pdf = 'lualatex $* > /dev/null'
+# let g:Tex_CompileRule_dvi = 'lualatex $* > /dev/null'
+# '''
 
-[[plugins]] # 表組みをしてくれる。
-repo ='godlygeek/tabular' # << https://devhints.io/tabular
+# [[plugins]] # gitの変更をマークにしてつけてくれる
+# repo = 'airblade/vim-gitgutter'
+# on_event = "VimEnter"
+# hook_add = '''
+# let g:gitgutter_map_keys=0
+# let g:gitgutter_realtime = 1
+# "let g:gitgutter_eager = 0
+# '''
 
-[[plugins]]
-repo = "chrisbra/csv.vim"
-on_ft = 'csv'
+# [[plugins]] # NerdTreeにgitの変更とかのアイコンを表示してくれる
+# repo = "Xuyuanp/nerdtree-git-plugin"
+# merged = 0
+# hook_add = '''
+# let g:NERDTreeGitStatusIndicatorMapCustom = {
+#                 \ 'Modified'  :'✹',
+#                 \ 'Staged'    :'✚',
+#                 \ 'Untracked' :'✭',
+#                 \ 'Renamed'   :'➜',
+#                 \ 'Unmerged'  :'═',
+#                 \ 'Deleted'   :'✖',
+#                 \ 'Dirty'     :'✗',
+#                 \ 'Ignored'   :'☒',
+#                 \ 'Clean'     :'✔︎',
+#                 \ 'Unknown'   :'?',
+#                 \ }
+# '''
 
-[[plugins]]
-repo = 'junegunn/goyo.vim'
-on_ft = ['txt', 'md']
+# [[plugins]] # C++のハイライトを強化してくれる
+# repo = 'octol/vim-cpp-enhanced-highlight'
+# on_ft = 'cpp'
+# hook_add = '''
+# let g:cpp_class_scope_highlight = 1
+# let g:cpp_member_variable_highlight = 1
+# let g:cpp_class_decl_highlight = 1
+# let g:cpp_posix_standard = 1
+# let g:cpp_experimental_template_highlight = 1
+# let g:cpp_concepts_highlight = 1
+# let g:cpp_no_function_highlight = 1
+# '''
 
-[[plugins]]
-repo = 'CoatiSoftware/vim-sourcetrail'
+# [[plugins]] # undo履歴をTree状に表示してくれる :UndotreeToggle
+# repo = 'mbbill/undotree'
 
-[[plugins]] # toml syntax
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
+# [[plugins]] # 表組みをしてくれる。
+# repo ='godlygeek/tabular' # << https://devhints.io/tabular
 
-[[plugins]] # gitをvimから使う
-repo ='tpope/vim-fugitive'
+# [[plugins]] # CSVファイルを綺麗に整形して表示してくれる
+# repo = "chrisbra/csv.vim"
+# on_ft = 'csv'
 
-[[plugins]]
-repo = 'puremourning/vimspector'
-marged = 0
-hook_add = '''
-let g:vimspector_enable_mappings = 'HUMAN'
-'''
+# [[plugins]] # toml syntax
+# repo = 'cespare/vim-toml'
+# on_ft = 'toml'
+
+# [[plugins]] # gitをvimから使う
+# repo ='tpope/vim-fugitive'
