@@ -34,6 +34,7 @@ set runtimepath+=~/.vim/custom_runtime
 " ###############################################################################
 syntax enable
 set background=dark
+set iskeyword-=:
 colo gruvbox "one
 highlight Normal guibg=none
 highlight SignColumn guibg=none
@@ -52,6 +53,8 @@ augroup fileTypeIndent
   autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap 
   autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
+  autocmd BufRead,BufNewFile *.ipynb setlocal filetype=markdown
+  autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
   autocmd BufRead,BufNewFile *.md nnoremap o A<CR>
   autocmd BufNewFile,BufRead *.txt setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
   autocmd BufNewFile,BufRead *.rs let g:rust_recommended_style = 1
@@ -70,7 +73,7 @@ packadd! matchit                                " if endifみたいなのも括�
 " set backspace=indent,eol,start                  " deleteで改行を消す
 " set clipboard=unnamed,unnamedplus             " クリップボードとyankした内容を同期させる
 " set signcolumn=number                         " neovim0.5.0の機能
-" set mouse+=a                                    " マウスでカーソルの位置を指定できる
+set mouse+=a                                    " マウスでカーソルの位置を指定できる
 set autowrite                                   " normalモードに行くと勝手に保存してくれる
 set backupext=.bak                              " バックアップファイルの拡張子
 set completeopt-=preview                        " プレビューウインドウを表示しない
@@ -94,6 +97,7 @@ set signcolumn=yes                              " いろんなsignを出すた�
 set smartcase                                   " 大文字小文字を区別せずに検索してくれます。
 set splitbelow                                  " splitすると下に分かれる
 set splitright                                  " splitすると右に分かれる
+set iskeyword+=:
 set tags=.tags;~                                " ctagsを遡って検索
 set termguicolors                               " 色をバグらないようにする
 set updatetime=1000
@@ -108,13 +112,17 @@ endif
 
 "KeyMapping
 "###############################################################################
-let mapleader = "\<Space>"                       " LeaderキーをSpaceに
+
 inoremap <C-[> <C-[>:ChangeIME<CR>
 inoremap <C-b> <LEFT>
 inoremap <C-f> <RIGHT>
 inoremap <esc> <esc>:ChangeIME<CR>
+let mapleader = "\<Space>"                       " LeaderキーをSpaceに
 map <Leader>bb :Bookmark 
+map <Leader>bo :!source ~/.config/zsh/custom_func.zsh && blackout<CR><CR><C-l>
 map <Leader>ca :w<CR>:silent %y+<CR>
+map <Leader>cbif :!source ~/.config/zsh/custom_func.zsh && change<CR><CR><C-l>
+map <Leader>cbin :!source ~/.config/zsh/custom_func.zsh && change_f<CR><CR><C-l>
 map <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
 map <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
 map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
@@ -126,11 +134,13 @@ map <Leader>k :silent wincmd k<CR>
 map <Leader>l :silent wincmd l<CR>
 map <Leader>on :only<CR>
 map <Leader>qq :qa!<CR>
-map <buffer> <Leader>f :TrimUselesses<CR>
+map <Leader>f :TrimUselesses<CR>
 nnoremap + "*
 nnoremap <Leader>ar :w<CR><C-w>jiAtCodeCheck<C-m><C-\><C-n><C-w>k
 nnoremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
+
 nnoremap <Leader>sw :SetWin<CR>
+nnoremap <Leader>sm :SetWinWithoutMinimap<CR>
 nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
 nnoremap Y y$
 nnoremap Y y$
@@ -154,15 +164,22 @@ vnoremap u <esc>
 
 "Plugin KeyMapping
 "###############################################################################
+
+map <Leader>bl :BLines!<CR>
 map <Leader>df :FzfPreviewDirectoryFiles
 map <Leader>gb :FzfPreviewGitBranches<CR>
 map <Leader>gf :FzfPreviewGitFiles<CR>
 map <Leader>gs :FzfPreviewGitStatus<CR>
-map <Leader>ur :NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
 map <Leader>zfab :FzfPreviewAllBuffers<CR>
+
+map <Leader>ur :NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
+nmap <C-q> :NERDTreeToggle<CR>
+
+autocmd BufRead,BufNewFile *.tex nmap <Leader>r <Leader>ll<Leader>lv
+autocmd BufRead,BufNewFile *.tex nnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
+autocmd BufRead,BufNewFile *.tex vnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
 nmap <C-n> <Plug>AirlineSelectNextTab
 nmap <C-p> <Plug>AirlineSelectPrevTab
-nmap <C-q> :NERDTreeToggle<CR>
 nmap <Leader>d <plug>(YCMHover)
 nnoremap <Leader>gd :YcmCompleter GoTo<CR>
 nnoremap <Leader>st :SourcetrailActivateToken<CR>
@@ -176,3 +193,20 @@ autocmd BufRead,BufNewFile *.py map <buffer> <Leader>f :silen PEPFMT<CR>
 autocmd BufRead,BufNewFile *.rlib map <buffer> <Leader>f :silent RustFMT<CR>
 autocmd BufRead,BufNewFile *.rs map <buffer> <Leader>f :silent RustFMT<CR>
 autocmd TermOpen * setlocal nonumber norelativenumber
+
+source $VIMRUNTIME/menu.vim
+set wildmenu
+set cpo-=<
+set wcm=<C-Z>
+map <F4> :emenu <C-Z>
+
+" Kite
+" ###################################################################################################
+let g:kite_supported_languages = ['*']
+let g:kite_auto_complete=0
+let g:kite_completions=0
+let g:kite_snippets=0
+let g:kite_previous_placeholder = '<C-k>'
+let g:kite_next_placeholder = '<C-l>'
+set completeopt+=noinsert
+set completeopt+=menuone

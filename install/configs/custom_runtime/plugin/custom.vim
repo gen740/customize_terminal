@@ -40,14 +40,16 @@ fun! s:trimUseless()
   call winrestview(l:save)
 endfun
 
-command! SetWin call custom#SetWindows()
-command! ChangeIME call s:change_ime()
-command! CFamilyFMT call s:clang_format()
-command! RustFMT call s:rust_format()
-command! PEPFMT call s:autopep8_format()
-command! TrimUselesses call s:trimUseless()
 command! Atcoder call custom#Atcoder()
 command! AtcoderEmpty call custom#AtcoderEmpty()
+command! CFamilyFMT call s:clang_format()
+command! ChangeIME call s:change_ime()
+command! PEPFMT call s:autopep8_format()
+command! RustFMT call s:rust_format()
+command! SetWin call custom#SetWindows()
+command! SetWinWithoutMinimap call custom#SetWindows_without_minimap()
+command! TrimUselesses call s:trimUseless()
+command! VimShowHlGroup echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

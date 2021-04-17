@@ -1,6 +1,5 @@
 ##################################### Preset ###################################
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-cd ~/Home
 
 ################################### P10K ########################################
 ### Added by Zinit's installer
@@ -58,6 +57,7 @@ export CMAKE_CXX_COMPILER="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export CXX="/usr/local/Cellar/gcc/10.2.0_4/bin/g++-10"
 export EDITOR='nvim'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export GIT_EDITOR=nvim
 export HISTFILE=${HOME}/.zsh_history # 履歴ファイルの保存先
 export HISTSIZE=2000 # メモリに保存される履歴の件数
@@ -65,6 +65,7 @@ export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 export PKG_CONFIG_PATH=/usr/local/Cellar/gtkmm/2.24.5_8/lib/pkgconfig
 export SAVEHIST=20000 # 履歴ファイルに保存される履歴の件数
+export TERM='screen-256color'
 # export PYTHON_CONFIGURE_OPTS="--enable-framework" # youcompleteme のエラーを防ぐ
 
 #################################### source ####################################
@@ -74,23 +75,24 @@ source ~/.config/zsh/custom_func.zsh
 
 ################################# Aliases ######################################
 it2check && {
-  alias v='change_f; mynvim'
-  alias vi='change; mynvim'
-  alias vim='mynvim'
+  alias v='nvim'
+  alias vi='change_f; nvim'
+  alias vim='change; nvim'
   ~/.config/.changeiTerm2backgroundImage.sh
 } || { 
-  alias v='change_f; mynvim'
-  alias vi='change; mynvim'
-  alias vim='mynvim'
+  alias v='nvim'
+  alias vi='change_f; nvim'
+  alias vim='change; nvim'
   ~/.config/.changeHyperBackgroundimage.sh
 }
 alias activate='source bin/activate'
-alias c=clear
+alias att='mpv /System/Library/Sounds/Funk.aiff'
 alias ff='cd ~/Home'
+alias find='fd -HI .'
 alias lounch='git add --all; git commit -m "Update"'
 alias ls='ls -GF'
 alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
-alias nvim='mynvim'
+alias nvim='nvim'
 alias t='tree -N'
 alias w3m='w3m -sixel -o display_image=1'
 alias my_syncro='rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a" --exclude="*.cmake"    \

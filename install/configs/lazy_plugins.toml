@@ -1,3 +1,28 @@
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown', 'md', 'ipynb']
+hook_add = '''
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
+set conceallevel=1
+'''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'
+
+[[plugins]]
+repo = 'vim-latex/vim-latex'
+merged = 0
+on_ft = 'tex'
+hook_add = '''
+let g:Tex_SmartKeyBS = 0
+let g:Tex_SmartKeyQuote = 0
+let g:Tex_SmartKeyDot = 0
+let g:Imap_UsePlaceHolders = 0
+let g:Tex_CompileRule_pdf = 'lualatex $* > /dev/null'
+let g:Tex_CompileRule_dvi = 'lualatex $* > /dev/null'
+'''
+
 [[plugins]] # アイコンの表示
 repo = 'ryanoasis/vim-devicons'
 
@@ -101,19 +126,8 @@ on_ft = 'toml'
 repo ='tpope/vim-fugitive'
 
 [[plugins]]
-repo = 'guns/xterm-color-table.vim'
-
-[[plugins]]
 repo = 'puremourning/vimspector'
 marged = 0
 hook_add = '''
 let g:vimspector_enable_mappings = 'HUMAN'
-'''
-
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = 'markdown'
-hook_add = '''
-let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
-set conceallevel=1
 '''
