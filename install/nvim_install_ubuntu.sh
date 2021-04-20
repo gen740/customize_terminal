@@ -1,7 +1,7 @@
 sudo apt update && sudo apt upgrade
-sudo apt install python3 python3-pip
-sudo apt install clang-format cmake g++-8
-sudo apt install golang-go nodejs npm
+sudo apt -y install python3 python3-pip
+sudo apt -y install clang-format cmake g++-8
+sudo apt -y install golang-go nodejs npm
 python3 -m pip install neovim pynvim
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
