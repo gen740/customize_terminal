@@ -6,7 +6,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! s:change_ime()
-  :silent !osascript "/Users/fujimotogen/.vim/custom_runtime/external/ime.scpt"
+  :silent !osascript "/Users/fujimotogen/.vim/custom_runtime/external/ime.scpt"&
 endfunction
 
 function! s:clang_format()
@@ -37,6 +37,7 @@ endfunction
 fun! s:trimUseless()
   let l:save = winsaveview()
   keeppatterns %s/\n\+$/\r/ge
+  keeppatterns %s/\s\+$//e
   call winrestview(l:save)
 endfun
 

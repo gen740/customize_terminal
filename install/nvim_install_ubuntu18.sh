@@ -1,5 +1,4 @@
 sudo apt update && sudo apt upgrade
-sudo apt install neovim
 sudo apt install python3 python3-pip
 sudo apt install clang-format cmake g++-8
 sudo apt install golang-go nodejs npm
@@ -19,6 +18,12 @@ if ! [ -e ~/.cofig/nvim/ ]; then
   fi
   mkdir -p ~/.config/nvim/
 fi
+
+cd ~/.config
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage --appimage-extract
+mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 cp -f ./configs/vimrc ~/.config/nvim/init.vim
 cp -f ./configs/nvimrc ~/.nvimrc

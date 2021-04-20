@@ -1,11 +1,12 @@
-##################################### Preset ###################################
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-
-################################### P10K ########################################
-### Added by Zinit's installer
+source ~/.config/zsh/custom_func.zsh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -16,16 +17,18 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-zinit light-mode for zinit-zsh/z-a-rust zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl zinit-zsh/z-a-bin-gem-node
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
 ### End of Zinit's installer chunk
+################################# Plugins ########################################################
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
-zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-fpath=(/path/to/homebrew/share/zsh-completions $fpath)
-autoload -U compinit compinit -u
+zinit light zsh-users/zsh-autosuggestions
 
 LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
 export LS_COLORS
@@ -68,13 +71,9 @@ export SAVEHIST=20000 # 履歴ファイルに保存される履歴の件数
 export TERM='screen-256color'
 # export PYTHON_CONFIGURE_OPTS="--enable-framework" # youcompleteme のエラーを防ぐ
 
-#################################### source ####################################
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.config/zsh/custom_func.zsh
 
 ################################# Aliases ######################################
-it2check && {
+it2check > /dev/null && {
   alias v='nvim'
   alias vi='change_f; nvim'
   alias vim='change; nvim'
@@ -90,6 +89,7 @@ alias att='mpv /System/Library/Sounds/Funk.aiff'
 alias ff='cd ~/Home'
 alias find='fd -HI .'
 alias lounch='git add --all; git commit -m "Update"'
+# alias ls='gls -p --color'
 alias ls='ls -GF'
 alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
 alias nvim='nvim'
@@ -105,7 +105,30 @@ bindkey jj vi-cmd-mode
 bindkey ^F forward-char
 bindkey ^N down-line-or-history
 bindkey ^P up-line-or-history
+bindkey "^?" backward-delete-char
+bindkey "^h" backward-delete-char
+
+
 
 if [[ ! -n $TMUX ]]; then
   tmux new-session
 fi
+
+#################################### source ####################################
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=11
+typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=' ' #     
+typeset -g POWERLEVEL9K_FOLDER_ICON=''
+typeset -g POWERLEVEL9K_HOME_ICON=''
+typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
+typeset -g POWERLEVEL9K_FOLDER_ICON=''
+typeset -g POWERLEVEL9K_ETC_ICON=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
+typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
