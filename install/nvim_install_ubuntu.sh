@@ -1,11 +1,11 @@
-sudo apt update && sudo apt upgrade
+sudo apt -y update && sudo apt -y upgrade
 sudo apt -y install python3 python3-pip
 sudo apt -y install clang-format cmake g++-8
 sudo apt -y install golang-go nodejs npm
 python3 -m pip install neovim pynvim
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt-get update
-sudo apt-get install neovim
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get -y update
+sudo apt-get -y install neovim
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh ~/.vim/dein
