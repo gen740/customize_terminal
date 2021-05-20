@@ -1,17 +1,6 @@
-############################################## Lazy_plugin ############################################
-[[plugins]] # コメントアウトとか手軽にできるようになる。
-repo = "tpope/vim-commentary"
-on_event = 'BufEnter'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-on_event = "VimEnter"
-hook_add = '''
-let g:gitgutter_map_keys=0
-let g:gitgutter_realtime = 1
-"let g:gitgutter_eager = 0
-'''
-
+#===================================================================================================
+# Lazy_plugin
+#===================================================================================================
 [[plugins]]
 repo = 'majutsushi/tagbar'
 
@@ -29,14 +18,15 @@ let g:vimspector_enable_mappings = 'HUMAN'
 '''
 
 [[plugins]]
-repo = 'wfxr/minimap.vim'
+repo = 'lilydjwg/colorizer'
+merged = 0
 hook_add = '''
-let g:minimap_highlight = 'CursorLine'
-let g:minimap_width = 25
-let g:minimap_highlight_range = 1
+let g:colorizer_nomap=1
 '''
 
-############################################## FileType ############################################
+#===================================================================================================
+# FileType
+#===================================================================================================
 [[plugins]]
 repo = "chrisbra/csv.vim"
 on_ft = 'csv'
@@ -45,26 +35,13 @@ on_ft = 'csv'
 repo = 'junegunn/goyo.vim'
 on_ft = ['txt', 'md']
 
-[[plugins]]
-repo = 'octol/vim-cpp-enhanced-highlight'
-on_ft = 'cpp'
-hook_add = '''
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
-let g:cpp_no_function_highlight = 1
-'''
-
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
-on_ft = ['markdown', 'md', 'ipynb']
+on_ft = ['markdown', 'md']
 hook_add = '''
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
 set conceallevel=1
@@ -86,4 +63,3 @@ let g:Imap_UsePlaceHolders = 0
 let g:Tex_CompileRule_pdf = 'lualatex $* > /dev/null'
 let g:Tex_CompileRule_dvi = 'lualatex $* > /dev/null'
 '''
-

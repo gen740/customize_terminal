@@ -1,4 +1,17 @@
-############################################ Plugins ###############################################
+#==================================================================================================
+# Plugins
+#===================================================================================================
+[[plugins]] # コメントアウトとか手軽にできるようになる。
+repo = "tpope/vim-commentary"
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+let g:gitgutter_map_keys=0
+let g:gitgutter_realtime = 1
+"let g:gitgutter_eager = 0
+'''
+
 [[plugins]]
 repo = 'justinmk/vim-sneak'
 
@@ -9,15 +22,14 @@ repo = 'tpope/vim-repeat'
 repo = 'tpope/vim-surround'
 merged = 0
 
-# [[plugins]]
-# repo = 'jiangmiao/auto-pairs'
-# merged = 0
-# hook_add = '''
-# " let g:AutoPairsFlyMode = 1
-# '''
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
 
 [[plugins]]
 repo = 'morhetz/gruvbox'
+hook_add = '''
+colo gruvbox
+'''
 
 [[plugins]]
 repo = 'kshenoy/vim-signature'
@@ -26,12 +38,16 @@ repo = 'kshenoy/vim-signature'
 repo ='tpope/vim-fugitive'
 
 [[plugins]]
+repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
 repo = 'yggdroot/indentline'
 hook_add = '''
 let g:indentLine_color_gui = "#555555"
 autocmd BufNewFile,BufRead *.tex let g:indentLine_color_gui = "#888888"
 autocmd BufNewFile,BufRead *.tex hi Statement guifg=#ff4477
-let g:indentLine_char = '┊'
+" let g:indentLine_char = '┊'
+let g:indentLine_char = '│'
 let g:indentLine_conceallevel=1
 let g:indentLine_concealcursor=""
 set conceallevel=1
@@ -39,7 +55,9 @@ set concealcursor-=incv
 autocmd FileType tex let g:indentLine_enabled=0
 '''
 
-############################################## Startify ############################################
+#===================================================================================================
+# Startify
+#===================================================================================================
 [[plugins]]
 repo = 'mhinz/vim-startify'
 hook_add = '''
@@ -49,7 +67,7 @@ function! s:nerdtreeBookmarks()
     return map(bookmarks, "{'line': v:val, 'path': v:val}")
 endfunction
 let g:startify_enable_special      = 1
-let g:startify_files_number        = 10
+let g:startify_files_number        = 20
 let g:startify_relative_path       = 1
 let g:startify_change_to_dir       = 1
 let g:startify_update_oldfiles     = 1
@@ -61,8 +79,7 @@ let g:startify_skiplist = [
         \ '/data/repo/neovim/runtime/doc',
         \ '/Users/mhi/local/vim/share/vim/vim74/doc',
         \ ]
-let g:startify_bookmarks = [
-        \ ]
+let g:startify_bookmarks = [ ]
 let g:startify_custom_header = ['']
 let g:startify_custom_footer = ['', "", '']
 let g:startify_lists = [
@@ -72,17 +89,19 @@ let g:startify_lists = [
       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
       \ { 'type': 'commands',  'header': ['   Commands']       },
       \ ]
-hi StartifyBracket ctermfg=240
-hi StartifyFile    ctermfg=147
-hi StartifyFooter  ctermfg=240
-hi StartifyHeader  ctermfg=114
-hi StartifyNumber  ctermfg=215
-hi StartifyPath    ctermfg=245
-hi StartifySlash   ctermfg=240
-hi StartifySpecial ctermfg=240
+" hi StartifyBracket ctermfg=240
+" hi StartifyFile    ctermfg=147
+" hi StartifyFooter  ctermfg=240
+" hi StartifyHeader  ctermfg=114
+" hi StartifyNumber  ctermfg=215
+" hi StartifyPath    ctermfg=245
+" hi StartifySlash   ctermfg=240
+" hi StartifySpecial ctermfg=240
 '''
 
-############################################## Airline #############################################
+#===================================================================================================
+# Airline
+#===================================================================================================
 [[plugins]] # Airlineのテーマ
 repo = 'vim-airline/vim-airline-themes'
 
@@ -93,7 +112,7 @@ hook_add = '''
 " let g:airline#extensions#denite#enabled = 1
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#default#layout = [[ 'a', 'b', 'c' ], [ 'x', 'y', 'z' ]] ", 'error', 'warning']]
+let g:airline#extensions#default#layout = [[ 'a', 'b', 'c' ], [ 'x', 'y', 'z', 'error', 'warning']]
 let g:airline#extensions#fzf#enabled = 1
 let g:airline#extensions#fugitiveline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -110,8 +129,8 @@ let g:airline_left_alt_sep = ''
 let g:airline_left_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
-let g:airline_section_error = airline#section#create([' ' . '%{youcompleteme#GetErrorCount()}'])
-let g:airline_section_warning = airline#section#create([' ' . '%{youcompleteme#GetWarningCount()}'])
+" let g:airline_section_error = airline#section#create([' ' . '%{youcompleteme#GetErrorCount()}'])
+" let g:airline_section_warning = airline#section#create([' ' . '%{youcompleteme#GetWarningCount()}'])
 let g:airline_stl_path_style = 'short'
 let g:airline_theme = 'minimalist' " minimalist''gruvbox'  ubaryd, understated violet solalized
 set laststatus=2                " 下のステータスライン
@@ -119,7 +138,10 @@ set noshowmode                  " デフォルトのステータスラインを�
 set showtabline=2
 set statusline=2                " ステータスラインの記述
 '''
-############################################## Snippetd ############################################
+
+#===================================================================================================
+# Snippet
+#===================================================================================================
 [[plugins]]
 repo = 'honza/vim-snippets'
 merged = 0
@@ -128,63 +150,60 @@ merged = 0
 repo = 'SirVer/ultisnips'
 merged = 0
 depends = 'vim-snippets'
-hook_add = '''
-'''
 
-############################################## NerdTree ############################################
-[[plugins]] # アイコンの表示
-repo = 'ryanoasis/vim-devicons'
-
+#===================================================================================================
+# Fern
+#===================================================================================================
 [[plugins]]
-repo = "Xuyuanp/nerdtree-git-plugin"
-hook_add = '''
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-'''
+repo = 'lambdalisue/fern.vim'
+hook_add ='''
+autocmd Filetype fern setlocal nonu norelativenumber
 
-[[plugins]] # ファイルツリーの表示
-repo = "preservim/nerdtree"
-depends = ['vim-devicons', 'nerdtree-git-plugin']
-hook_add = '''
-let g:NERDTreeLimitedSyntax = 1
-'''
+function! s:init_fern() abort
+  nmap <buffer> n <Plug>(fern-action-new-path)
+  nmap <buffer> d <Plug>(fern-action-remove)
+  nmap <buffer> m <Plug>(fern-action-move)
+endfunction
 
-########################################### YouCompleteMe ##########################################
-[[plugins]]
-repo = 'valloric/youcompleteme'
-merged = 0
-hook_add = '''
-let g:ycm_use_clangd = 1
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_extra_conf_globlist = ['/Users/fujimotogen/Garage/bamboo/control/*',
-                               \ '/Users/fujimotogen/Home/*']
-let g:ycm_auto_hover='CursorHold'
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_error_symbol = ''
-let g:ycm_warning_symbol = ''
-augroup MyYCMCustom
-  autocmd!
-  autocmd FileType c,cpp let b:ycm_hover = {'command': 'GetDoc', 'syntax': &filetype}
+augroup my-fern
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
 augroup END
 '''
 
-################################################ FZF ###############################################
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+hook_add = '''
+let g:fern#renderer = "nerdfont"
+'''
+
+[[plugins]]
+repo = 'LumaKernel/fern-mapping-fzf.vim'
+depends = ['fzf', 'fern.vim']
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-git-status.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-mapping-git.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-bookmark.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-hijack.vim'
+
+#===================================================================================================
+# FZF
+#===================================================================================================
 [[plugins]]
 repo = 'yuki-yano/fzf-preview.vim'
 merged = 0
 rev = 'release/remote'
-# depends = ['fzf', 'fzf.vim']
+depends = ['fzf', 'fzf.vim']
 hook_add = '''
 " let g:fzf_preview_floating_window_rate = 0.95
 " let g:fzf_preview_direct_window_option = ''
@@ -218,4 +237,11 @@ let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,
 [[plugins]]
 repo = 'junegunn/fzf'
 merged = 0
-ruild = './install --all'
+build = './install --all'
+
+#===================================================================================================
+# COC
+#===================================================================================================
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merged = 0

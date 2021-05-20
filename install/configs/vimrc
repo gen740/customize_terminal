@@ -1,2 +1,2 @@
-source $HOME/.nvimrc
 set runtimepath+=$HOME/.nvimrc
+source $HOME/.nvimrc

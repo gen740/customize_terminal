@@ -1,4 +1,6 @@
-"################################ DEIN ########################################
+"===================================================================================================
+" Dein
+"===================================================================================================
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -24,74 +26,39 @@ endif
 "End dein Scripts-------------------------
 set runtimepath+=~/.vim/custom_runtime
 
-" シンタックスハイライトを有効
-" ###############################################################################
-syntax enable
-set background=dark
-set iskeyword-=:
-colo gruvbox "one
-highlight Normal guibg=none
-highlight SignColumn guibg=none
-
-"インデント関係
-"###############################################################################
-set autoindent                  " 改行したりした時にインデントを保持してくれます。
-set expandtab                   " タブを押すと空白が挿入されるようにする
-set nowrap                      " 折り返しをしない
-set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
-set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
-set tabstop=2                   " 一個のタブを空白何個分にとるか。
-augroup fileTypeIndent
-  autocmd!
-  autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd BufNewFile,BufRead *.rb setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
-  autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
-  autocmd BufRead,BufNewFile *.ipynb setlocal filetype=markdown
-  autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
-  autocmd BufRead,BufNewFile *.md nnoremap o A<CR>
-  autocmd BufNewFile,BufRead *.txt setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
-  autocmd BufNewFile,BufRead *.rs let g:rust_recommended_style = 1
-  autocmd BufNewFile,BufRead *.rs let g:rustfmt_autosave = 1
-  autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd FileType c setlocal foldmarker={,}
-  autocmd FileType cpp setlocal foldmarker={,}
-  autocmd FileType cpp setlocal foldmarker={,}
-augroup END
-
-"検索関係
-"###############################################################################
-let &colorcolumn="101" " .join(range(101,101),",") " 81と101列目に線を入れる
-packadd! matchit                                " if endifみたいなのも括弧ジャンプができるようになる
-" set autoread                                  " 編集中に別のところで編集されたら自動で読み込みます。
-" set backspace=indent,eol,start                " deleteで改行を消す
-" set clipboard=unnamed,unnamedplus             " クリップボードとyankした内容を同期させる
-" set signcolumn=number                         " neovim0.5.0の機能
-set mouse+=a                                    " マウスでカーソルの位置を指定できる
+"===================================================================================================
+" Search
+"===================================================================================================
+" (  )
+" packadd! matchit                                " if endifみたいなのも括弧ジャンプができるようになる
+" set completeopt-=preview                        " プレビューウインドウを表示しない
+" set iskeyword+=:                                " :をキーワードにする
+" set lazyredraw                                  " 出来るだけ再描画をしない
+" set matchtime=5                              " showmatchまでの時間
+" set showcmd                                     " 入力中のコマンドを表示します。右下に表示されます。
+" set showmatch                                   " 対応する括弧を強調表示する
+let &colorcolumn="101" " .join(range(101,101),",") " 101列目に線を入れる
+set autoread                                    " 編集中に別のところで編集されたら自動で読み込みます。
 set autowrite                                   " normalモードに行くと勝手に保存してくれる
 set backupext=.bak                              " バックアップファイルの拡張子
-set completeopt-=preview                        " プレビューウインドウを表示しない
 set cursorline                                  " 今いる行をハイライト
 set display=lastline                            " 最後の行をできるだけ表示する
 set foldmethod=marker                           " 折り畳みをマーカーにする
 set hidden                                      " 保存しなくてもバッファの切り替えができる
 set incsearch                                   " 文字検索時にリアルタイムで検索してくれます。
-set lazyredraw                                  " 出来るだけ再描画をしない
-set matchtime=1000                              " showmatchまでの時間
+set mouse+=a                                    " マウスでカーソルの位置を指定できる
 set nofoldenable                                " 自動的に折り畳みをしない
 set nohlsearch                                  " 検索した文字がハイライトされます。
 set noswapfile                                  " swapファイルは使いません
 set nu relativenumber                           " 番号を相対表示にする
+set path+=**                                    " Vimのパスに親のパスを追加
 set pumheight=12                                " 補完ウインドウの行数を決める
 set scrolloff=8                                 " 余白を取るようになる
-set shortmess=I                                 " 起動時のメッセージを表示しない
-set showcmd                                     " 入力中のコマンドを表示します。右下に表示されます。
-set showmatch                                   " 対応する括弧を強調表示する
-set signcolumn=yes                              " いろんなsignを出すための列を表示する
-set smartcase                                   " 大文字小文字を区別せずに検索してくれます。
+set signcolumn=yes                              " サイドにマーカー用の行を作成
+set smartcase                                   " 大文字を入力したときにだけ大文字小文字を区別します
+set ignorecase                                  " 大文字小文字を区別せずに検索してくれます。
 set splitbelow                                  " splitすると下に分かれる
 set splitright                                  " splitすると右に分かれる
-set iskeyword+=:
 set tags=.tags;~                                " ctagsを遡って検索
 set termguicolors                               " 色をバグらないようにする
 set updatetime=1000
@@ -104,65 +71,68 @@ if has('persistent_undo')                       " undoファイルをずっと�
   set undofile
 endif
 
-"KeyMapping
-"###############################################################################
-
-inoremap <C-[> <C-[>:ChangeIME<CR>
-inoremap <C-b> <LEFT>
-inoremap <C-f> <RIGHT>
-inoremap <esc> <esc>:ChangeIME<CR>
+"===================================================================================================
+" Keymapping
+"===================================================================================================
 let mapleader = "\<Space>"                       " LeaderキーをSpaceに
-let g:UltiSnipsExpandTrigger='<C-k>'
-let g:UltiSnipsJumpForwardTrigger='<C-j>'
-let g:UltiSnipsJumpBackwardTrigger='<C-l>'
-map <Leader>ar :w<CR><C-w>jiAtCodeCheck<C-m><C-\><C-n><C-w>k
-map <Leader>bb :Bookmark
-map <Leader>bl :BLines!<CR>
-map <Leader>bo :!source ~/.config/zsh/custom_func.zsh && blackout<CR><CR><C-l>
-map <Leader>ca :w<CR>:silent %y+<CR>
-map <Leader>cbif :!source ~/.config/zsh/custom_func.zsh && change<CR><CR><C-l>
-map <Leader>cbin :!source ~/.config/zsh/custom_func.zsh && change_f<CR><CR><C-l>
-map <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
-map <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
-map <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
-map <Leader>co :e ~/.nvimrc<CR>
-map <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
-map <Leader>d <plug>(YCMHover)
-map <Leader>df :FzfPreviewDirectoryFiles
-map <Leader>f :TrimUselesses<CR>
-map <Leader>gad :silent Git ada<CR>
-map <Leader>gb :FzfPreviewGitBranches<CR>
-map <Leader>gco :silent Git commit<CR>
-map <Leader>gd :YcmCompleter GoTo<CR>
-map <Leader>gf :FzfPreviewGitFiles<CR>
-map <Leader>gph :silent Git push origin HEAD<CR>
-map <Leader>gs :FzfPreviewGitStatus<CR>
-map <Leader>h :silent wincmd h<CR>
-map <Leader>j :silent wincmd j<CR>
-map <Leader>k :silent wincmd k<CR>
-map <Leader>l :silent wincmd l<CR>
-map <Leader>on :only<CR>
-map <Leader>qq :qa!<CR>
-noremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
-map <Leader>sf :Startify<CR>
-map <Leader>sm :SetWinWithoutMinimap<CR>
-map <Leader>st :SourcetrailActivateToken<CR>
-map <Leader>ss :resize 35<CR>
-map <Leader>sw :SetWin<CR>
-map <Leader>ur :NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
-map <Leader>ut :UndotreeToggle<CR>
-map <Leader>zfab :FzfPreviewAllBuffers<CR>
-map <silent> <Leader><Leader> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
+inoremap <C-[> <C-[>:ChangeIME<CR>
+inoremap <esc> <esc>:ChangeIME<CR>
+
+imap <C-k> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
 nmap <C-n> <Plug>AirlineSelectNextTab
 nmap <C-p> <Plug>AirlineSelectPrevTab
-nmap <C-q> :NERDTreeToggle<CR>
-nnoremap + "*
+nmap <C-q> :Fern %:h -drawer -toggle<CR>
+nmap <Leader>ar :w<CR><C-w>jiAtCodeCheck<C-m><C-\><C-n><C-w>k
+nmap <Leader>at :call custom#AlignTable()<CR>
+nmap <Leader>bb :Bookmark
+nmap <Leader>bl :BLines!<CR>
+nmap <Leader>bo :!source ~/.config/zsh/custom_func.zsh && blackout<CR><CR><C-l>
+nmap <Leader>ca :w<CR>:silent %y+<CR>
+nmap <Leader>cbin :!source ~/.config/zsh/custom_func.zsh && change<CR><CR><C-l>
+nmap <Leader>cbif :!source ~/.config/zsh/custom_func.zsh && change_f<CR><CR><C-l>
+nmap <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
+nmap <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
+nmap <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
+nmap <Leader>co :e ~/.nvimrc<CR>
+nmap <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
+nmap <Leader>ci :e ~/.config/nvim/init.vim<CR>
+nmap <Leader>cr :so ~/.config/nvim/init.vim<CR>
+nmap <Leader>d <plug>(YCMHover)
+nmap <Leader>df :FzfPreviewDirectoryFiles
+nmap <Leader>f :TrimUselesses<CR>
+nmap <Leader>gad : Git ada<CR>
+nmap <Leader>gb :FzfPreviewGitBranches<CR>
+nmap <Leader>gco :silent Git commit<CR>
+nmap <Leader>gd :YcmCompleter GoTo<CR>
+nmap <Leader>gf :FzfPreviewGitFiles<CR>
+nmap <Leader>gph :Git push origin HEAD<CR>
+nmap <Leader>gs :FzfPreviewGitStatus<CR>
+nmap <Leader>h :wincmd h<CR>
+nmap <Leader>j :wincmd j<CR>
+nmap <Leader>k :wincmd k<CR>
+nmap <Leader>l :wincmd l<CR>
+nmap <Leader>on :only<CR>
+nmap <Leader>sf :Startify<CR>
+nmap <Leader>rs :resize 
+nmap <Leader>sw :SetWin<CR>
+nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>ut :UndotreeToggle<CR>
+nmap <Leader>zfab :FzfPreviewAllBuffers<CR>
+nmap <silent> <Leader><Leader> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
 nnoremap Y y$
 nnoremap Y y$
 nnoremap gj j
 nnoremap gk k
 nnoremap j gj
 nnoremap k gk
+nnoremap yy "*yy
+noremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
 tnoremap <C-]> <C-\><C-n>
 tnoremap <C-b> <LEFT>
 tnoremap <C-f> <RIGHT>
@@ -171,35 +141,76 @@ tnoremap <C-p> <UP>
 tnoremap <Esc> <C-\><C-n>
 tnoremap jj <C-\><C-n>
 vmap <Leader>s :sort
-vnoremap + "*
-vnoremap J :m '>+1<cr>gv=gv
-vnoremap K :m '<-2<cr>gv=gv
 vnoremap U <esc>
 vnoremap u <esc>
 
 autocmd BufEnter,FocusGained,InsertLeave * set cursorline
 autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline
+autocmd ColorScheme * highlight Normal guibg=none
+autocmd ColorScheme * highlight SignColumn guibg=none
 autocmd BufRead,BufNewFile *.[ch] map <buffer> <Leader>f :silent CFamilyFMT<CR>
 autocmd BufRead,BufNewFile *.[chi]pp map <buffer> <Leader>f :silent CFamilyFMT<CR>
-autocmd BufRead,BufNewFile *.py map <buffer> <Leader>f :silen PEPFMT<CR>
+autocmd FileType python map <buffer> <Leader>f :silen PEPFMT<CR>
 autocmd BufRead,BufNewFile *.rlib map <buffer> <Leader>f :silent RustFMT<CR>
 autocmd BufRead,BufNewFile *.rs map <buffer> <Leader>f :silent RustFMT<CR>
 autocmd BufRead,BufNewFile *.tex nmap <Leader>r <Leader>ll<Leader>lv
-autocmd BufRead,BufNewFile *.tex nnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
-autocmd BufRead,BufNewFile *.tex vnoremap <Leader>k <Plug>Tex_FastEnvironmentInsert
+autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
+autocmd BufRead,BufNewFile *.tex nnoremap <C-k> <Plug>Tex_FastEnvironmentInsert
+autocmd BufRead,BufNewFile *.tex vnoremap <C-k> <Plug>Tex_FastEnvironmentInsert
 autocmd TermOpen * setlocal nonumber norelativenumber
 
-" source $VIMRUNTIME/menu.vim
-" set wildmenu
-" set cpo-=<
-" set wcm=<C-Z>
-" map <F4> :emenu <C-Z>
+"===================================================================================================
+" Indent
+"===================================================================================================
+set autoindent                  " 改行したりした時にインデントを保持してくれます。
+set expandtab                   " タブを押すと空白が挿入されるようにする
+set nowrap                      " 折り返しをしない
+set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
+set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
+set tabstop=2                   " 一個のタブを空白何個分にとるか。
+augroup fileTypeIndent
+  autocmd!
+  autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType markdown setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType markdown setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
+  autocmd FileType markdown setlocal filetype=markdown
+  autocmd FileType tex setlocal filetype=tex
+  autocmd FileType markdown nnoremap o A<CR>
+  autocmd FileType text setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
+  autocmd FileType rust let g:rust_recommended_style = 1
+  autocmd FileType rust let g:rustfmt_autosave = 1
+  autocmd FileType rust setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType c setlocal foldmarker={,}
+  autocmd FileType cpp setlocal foldmarker={,}
+  autocmd FileType cpp setlocal foldmarker={,}
+augroup END
 
-" Kite
-" ###################################################################################################
-" let g:kite_supported_languages = ['*']
-" let g:kite_auto_complete=0
-" let g:kite_completions=0
-" let g:kite_snippets=0
-" let g:kite_previous_placeholder = '<C-k>'
-" let g:kite_next_placeholder = '<C-l>'
+"===================================================================================================
+" Python Configuration
+"===================================================================================================
+let g:python_host_prog='~/.pyenv/versions/neovim-2/bin/python'
+let g:python3_host_prog='~/.pyenv/versions/neovim-3/bin/python'
+
+"===================================================================================================
+" Tabular
+"===================================================================================================
+inoremap \| \|<C-o>:call custom#AlignTable()<CR><C-o>$
+
+"===================================================================================================
+" Tree sitter
+"===================================================================================================
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true              -- false will disable the whole extension
+  },
+  indent = {
+    enable = true              -- false will disable the whole extension
+  },
+  incremental_selection = {
+    enable = true              -- false will disable the whole extension
+  }
+}
+EOF
+

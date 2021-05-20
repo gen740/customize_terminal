@@ -6,7 +6,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! s:change_ime()
-  :silent !osascript "/Users/fujimotogen/.vim/custom_runtime/external/ime.scpt"&
+  :silent !osascript "/Users/fujimotogen/.vim/custom_runtime/external/ime.scpt"
 endfunction
 
 function! s:clang_format()
@@ -14,7 +14,7 @@ function! s:clang_format()
   call s:trimUseless()
   :silent %! clang-format -style=file
   call winrestview(l:save)
-  :w
+  :silent w
 endfunction
 
 function! s:rust_format()
@@ -23,7 +23,7 @@ function! s:rust_format()
   :silent ! rustfmt %
   :silent edit
   call winrestview(l:save)
-  :w
+  :silent w
 endfunction
 
 function! s:autopep8_format()
@@ -31,7 +31,7 @@ function! s:autopep8_format()
   :silent %!autopep8 --aggressive -
   keeppatterns %s/\s\+$//e
   call winrestview(l:save)
-  :w
+  :silent w
 endfunction
 
 fun! s:trimUseless()
@@ -39,6 +39,7 @@ fun! s:trimUseless()
   keeppatterns %s/\n\+$/\r/ge
   keeppatterns %s/\s\+$//e
   call winrestview(l:save)
+  :silent w
 endfun
 
 command! Atcoder call custom#Atcoder()
@@ -54,3 +55,4 @@ command! VimShowHlGroup echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1))
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
+
