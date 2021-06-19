@@ -1,0 +1,140 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# ==================================================================================================
+# Zinit
+# ==================================================================================================
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+# ==================================================================================================
+# Plugins
+# ==================================================================================================
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+
+LS_COLORS='di=34:fi=0:ln=33:pi=5:so=5:bd=5:cd=5:or=0101:mi=0:ex=35:*.rpm=90'
+export LS_COLORS
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select=2
+setopt hist_ignore_dups # 開始と終了を記録
+setopt EXTENDED_HISTORY
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+
+# ==================================================================================================
+# PATH
+# ==================================================================================================
+export PATH="/Users/fujimotogen/.local/bin:$PATH"
+export PATH="/Users/fujimotogen/.nodebrew/current/bin/:$PATH"
+export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/qt@5/bin:$PATH"
+
+
+# ==================================================================================================
+# Variables
+# ==================================================================================================
+# export CXX="/usr/local/bin/g++-11"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(pyenv init --path)"
+eval "$(rbenv init -)"
+export CC="/usr/bin/clang"
+export CMAKE_CXX_COMPILER="/usr/local/bin/g++-11"
+export CPPFLAGS="-I/usr/local/opt/qt@5/include"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export CPPFLAGS="-std=c++17"
+export CXX=/usr/local/opt/llvm/bin/clang++
+export EDITOR='nvim'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export GIT_EDITOR=nvim
+export HISTFILE=${HOME}/.config/zsh/.zsh_history # 履歴ファイルの保存先
+export HISTSIZE=5000 # メモリに保存される履歴の件数
+export LDFLAGS="-L/usr/local/opt/qt@5/lib"
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
+export OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
+export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
+export PKG_CONFIG_PATH="/usr/local/opt/qt@5/lib/pkgconfig"
+export PYENV_ROOT="$HOME/.pyenv"
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
+export Qt5_DIR=/usr/local/opt/qt5
+export SAVEHIST=20000 # 履歴ファイルに保存される履歴の件数
+export TERM='screen-256color'
+source /Users/fujimotogen/.config/zsh/custom_func.zsh
+
+# ==================================================================================================
+# Ailias
+# ==================================================================================================
+alias v='nvim'
+alias vv='change; nvim'
+alias vi='change_f; nvim'
+alias activate='source bin/activate'
+alias att='mpv /System/Library/Sounds/Funk.aiff'
+alias ff='cd ~/Home'
+alias find='fd -HI .'
+alias lounch='git add --all; git commit -m "Update"'
+alias ls='ls -GF'
+alias la='ls -aGF'
+alias maketags='ctags -RV --sort=yes --exclude="build" -o .tags'
+alias w3m='w3m -sixel -o display_image=1'
+alias my_syncro='rsync -avz --exclude="*.o" --exclude="*.so" --exclude="*.a" --exclude="*.cmake"    \
+  --exclude="CMakeFiles" --exclude="Makefile" --exclude="*.gch" --exclude="*.hex" --exclude="*.elf" \
+  --exclude=".git" --exclude="build*"'
+
+# ==================================================================================================
+# Key bindings and tmux
+# ==================================================================================================
+bindkey -v
+bindkey ^F forward-char
+bindkey ^N down-line-or-history
+bindkey ^P up-line-or-history
+bindkey "^?" backward-delete-char
+bindkey "^h" backward-delete-char
+
+if [[ ! -n $TMUX ]]; then
+  tmux new-session
+fi
+
+# ==================================================================================================
+# Appearance
+# ==================================================================================================
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=11
+typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=' ﬌' #     
+typeset -g POWERLEVEL9K_FOLDER_ICON=''
+typeset -g POWERLEVEL9K_HOME_ICON=''
+typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
+typeset -g POWERLEVEL9K_FOLDER_ICON=''
+typeset -g POWERLEVEL9K_ETC_ICON=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION=''
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIOWR_CONTENT_EXPANSION='▶'
+typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=20
+# G1t8-4QkI-re@P
