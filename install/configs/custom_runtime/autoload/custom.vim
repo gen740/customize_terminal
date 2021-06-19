@@ -1,4 +1,6 @@
 function! OpenExecuteWindow(name)
+  " 空のバッファを作りコマンドの出力を流し込めるようにします。
+  " vimのquickfixを使用することを推奨します。
   silent execute "update | edit"
   " get file path of current file
   let s:output_buffer_name = a:name
@@ -28,21 +30,6 @@ function! OpenExecuteWindow(name)
   setlocal noreadonly
   setlocal modifiable
   %delete _
-endfunction
-
-function custom#SetWindowsWithTagbar()
-  let s:cur_win_id = win_getid()
-  let g:cur_win_height = winheight(0)
-  let g:cur_win_width = winwidth(0)
-  :Tagbar
-  silent execute 'vertical resize' . g:cur_win_width * 6 / 7
-  :Fern %:h -drawer -toggle
-  silent execute 'vertical resize' . g:cur_win_width / 7
-  call win_gotoid(s:cur_win_id)
-  :sp
-  :term
-  call win_gotoid(s:cur_win_id)
-  silent execute 'resize' . g:cur_win_height*3/4
 endfunction
 
 function custom#SetWindows()

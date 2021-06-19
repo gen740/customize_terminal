@@ -1,6 +1,13 @@
 #==================================================================================================
 # Plugins
 #===================================================================================================
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+'''
+
 [[plugins]] # コメントアウトとか手軽にできるようになる。
 repo = "tpope/vim-commentary"
 
@@ -35,7 +42,7 @@ colo gruvbox
 repo = 'kshenoy/vim-signature'
 
 [[plugins]] # gitをvimから使う
-repo ='tpope/vim-fugitive'
+repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
@@ -55,49 +62,49 @@ set concealcursor-=incv
 autocmd FileType tex let g:indentLine_enabled=0
 '''
 
-#===================================================================================================
-# Startify
-#===================================================================================================
-[[plugins]]
-repo = 'mhinz/vim-startify'
-hook_add = '''
-function! s:nerdtreeBookmarks()
-    let bookmarks = systemlist("cut -d' ' -f 2- ~/.NERDTreeBookmarks")
-    let bookmarks = bookmarks[0:-2] " Slices an empty last line
-    return map(bookmarks, "{'line': v:val, 'path': v:val}")
-endfunction
-let g:startify_enable_special      = 1
-let g:startify_files_number        = 20
-let g:startify_relative_path       = 1
-let g:startify_change_to_dir       = 1
-let g:startify_update_oldfiles     = 1
-let g:startify_session_autoload    = 1
-let g:startify_session_persistence = 1
-let g:startify_skiplist = [
-        \ 'COMMIT_EDITMSG',
-        \ 'bundle/.*/doc',
-        \ '/data/repo/neovim/runtime/doc',
-        \ '/Users/mhi/local/vim/share/vim/vim74/doc',
-        \ ]
-let g:startify_bookmarks = [ ]
-let g:startify_custom_header = ['']
-let g:startify_custom_footer = ['', "", '']
-let g:startify_lists = [
-      \ { 'type': function('s:nerdtreeBookmarks'), 'header': ['   NERDTree Bookmarks']},
-      \ { 'type': 'files',     'header': ['   MRU']            },
-      \ { 'type': 'sessions',  'header': ['   Sessions']       },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-      \ { 'type': 'commands',  'header': ['   Commands']       },
-      \ ]
-" hi StartifyBracket ctermfg=240
-" hi StartifyFile    ctermfg=147
-" hi StartifyFooter  ctermfg=240
-" hi StartifyHeader  ctermfg=114
-" hi StartifyNumber  ctermfg=215
-" hi StartifyPath    ctermfg=245
-" hi StartifySlash   ctermfg=240
-" hi StartifySpecial ctermfg=240
-'''
+##===================================================================================================
+## Startify
+##===================================================================================================
+#[[plugins]]
+#repo = 'mhinz/vim-startify'
+#hook_add = '''
+#function! s:nerdtreeBookmarks()
+#    let bookmarks = systemlist("cut -d' ' -f 2- ~/.NERDTreeBookmarks")
+#    let bookmarks = bookmarks[0:-2] " Slices an empty last line
+#    return map(bookmarks, "{'line': v:val, 'path': v:val}")
+#endfunction
+#let g:startify_enable_special      = 1
+#let g:startify_files_number        = 20
+#let g:startify_relative_path       = 1
+#let g:startify_change_to_dir       = 1
+#let g:startify_update_oldfiles     = 1
+#let g:startify_session_autoload    = 1
+#let g:startify_session_persistence = 1
+#let g:startify_skiplist = [
+#        \ 'COMMIT_EDITMSG',
+#        \ 'bundle/.*/doc',
+#        \ '/data/repo/neovim/runtime/doc',
+#        \ '/Users/mhi/local/vim/share/vim/vim74/doc',
+#        \ ]
+#let g:startify_bookmarks = [ ]
+#let g:startify_custom_header = ['']
+#let g:startify_custom_footer = ['', "", '']
+#let g:startify_lists = [
+#      \ { 'type': function('s:nerdtreeBookmarks'), 'header': ['   NERDTree Bookmarks']},
+#      \ { 'type': 'files',     'header': ['   MRU']            },
+#      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+#      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+#      \ { 'type': 'commands',  'header': ['   Commands']       },
+#      \ ]
+#" hi StartifyBracket ctermfg=240
+#" hi StartifyFile    ctermfg=147
+#" hi StartifyFooter  ctermfg=240
+#" hi StartifyHeader  ctermfg=114
+#" hi StartifyNumber  ctermfg=215
+#" hi StartifyPath    ctermfg=245
+#" hi StartifySlash   ctermfg=240
+#" hi StartifySpecial ctermfg=240
+#'''
 
 #===================================================================================================
 # Airline
@@ -112,7 +119,7 @@ hook_add = '''
 " let g:airline#extensions#denite#enabled = 1
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#default#layout = [[ 'a', 'b', 'c' ], [ 'x', 'y', 'z', 'error', 'warning']]
+let g:airline#extensions#default#layout = [[ 'a', 'b', 'c' ], [ 'x', 'y', 'z']]
 let g:airline#extensions#fzf#enabled = 1
 let g:airline#extensions#fugitiveline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -129,10 +136,8 @@ let g:airline_left_alt_sep = ''
 let g:airline_left_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
-" let g:airline_section_error = airline#section#create([' ' . '%{youcompleteme#GetErrorCount()}'])
-" let g:airline_section_warning = airline#section#create([' ' . '%{youcompleteme#GetWarningCount()}'])
 let g:airline_stl_path_style = 'short'
-let g:airline_theme = 'minimalist' " minimalist''gruvbox'  ubaryd, understated violet solalized
+let g:airline_theme = 'violet' " minimalist''gruvbox'  ubaryd, understated violet solalized
 set laststatus=2                " 下のステータスライン
 set noshowmode                  " デフォルトのステータスラインを消す
 set showtabline=2
@@ -146,10 +151,10 @@ set statusline=2                " ステータスラインの記述
 repo = 'honza/vim-snippets'
 merged = 0
 
-[[plugins]]
-repo = 'SirVer/ultisnips'
-merged = 0
-depends = 'vim-snippets'
+# [[plugins]]
+# repo = 'SirVer/ultisnips'
+# merged = 0
+# depends = 'vim-snippets'
 
 #===================================================================================================
 # Fern
@@ -245,3 +250,5 @@ build = './install --all'
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merged = 0
+hook_add = '''
+'''

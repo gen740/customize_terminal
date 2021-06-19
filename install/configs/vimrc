@@ -1,2 +1,267 @@
-set runtimepath+=$HOME/.nvimrc
-source $HOME/.nvimrc
+"===================================================================================================
+" Dein
+"===================================================================================================
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.vim/dein')
+  call dein#begin('~/.vim/dein')
+  let s:config_dir     = expand('~/.vim/dein')
+  let s:toml_file      = s:config_dir . '/plugins.toml'
+  let s:lazy_toml_file = s:config_dir . '/lazy_plugins.toml'
+  call dein#load_toml(s:toml_file, {'lazy': 0})  " TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:lazy_toml_file, {'lazy': 1})  " TOML を読み込み、キャッシュしておく
+  call dein#end()
+  call dein#save_state()
+endif
+filetype plugin indent on
+if dein#check_install()
+  call dein#install()
+endif
+"　必要なときにコメントアウトを戻してpluginを削除してください。
+" call map(dein#check_clean(), "delete(v:val, 'rf')")
+" call dein#recache_runtimepath()
+"End dein Scripts-------------------------
+set runtimepath+=~/.vim/custom_runtime
+
+"===================================================================================================
+" Search
+"===================================================================================================
+packadd! matchit                                " if endifみたいなのも括弧ジャンプができるようになる
+let &colorcolumn="101" " .join(range(101,101),",") " 101列目に線を入れる
+set autoread                                    " 編集中に別のところで編集されたら自動で読み込みます。
+set autowrite                                   " normalモードに行くと勝手に保存してくれる
+set backupext=.bak                              " バックアップファイルの拡張子
+set clipboard=unnamed
+set completeopt-=preview                        " プレビューウインドウを表示しない
+set cursorline                                  " 今いる行をハイライト
+set display=lastline                            " 最後の行をできるだけ表示する
+set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=expr
+set hidden                                      " 保存しなくてもバッファの切り替えができる
+set ignorecase                                  " 大文字小文字を区別せずに検索してくれます。
+set incsearch                                   " 文字検索時にリアルタイムで検索してくれます。
+set iskeyword+=:                                " :をキーワードにする
+set lazyredraw                                  " 出来るだけ再描画をしない
+set matchtime=5                                 " showmatchまでの時間
+set mouse+=a                                    " マウスでカーソルの位置を指定できる
+set nobackup
+set nofoldenable                                " 自動的に折り畳みをしない
+set nohlsearch                                  " 検索した文字がハイライトされます。
+set noswapfile                                  " swapファイルは使いません
+set nowritebackup  
+set nu relativenumber                           " 番号を相対表示にする
+set path+=**                                    " Vimのパスに親のパスを追加
+set pumheight=12                                " 補完ウインドウの行数を決める
+set scrolloff=8                                 " 余白を取るようになる
+set shortmess+=c
+set showcmd                                     " 入力中のコマンドを表示します。右下に表示されます。
+set showmatch                                   " 対応する括弧を強調表示する
+set signcolumn=yes                              " サイドにマーカー用の行を作成
+set smartcase                                   " 大文字を入力したときにだけ大文字小文字を区別します
+set splitbelow                                  " splitすると下に分かれる
+set splitright                                  " splitすると右に分かれる
+set tags=.tags;~                                " ctagsを遡って検索
+set termguicolors                               " 色をバグらないようにする
+set updatetime=300
+set viminfo='1000,f1,<500,:500,@500,/500        " viminfoに蓄える内容とその量を決める
+set whichwrap=b,s,<,>,[,]                       " 行末、行頭で行を跨ぐことができるようになります。
+set wildmenu wildmode=longest,full              " 補完の形を決める（vim互換性）
+if has('persistent_undo')                       " undoファイルをずっと残す
+  set undodir=~/.vim/undo
+  set undofile
+endif
+
+"===================================================================================================
+" Keymapping
+"===================================================================================================
+let mapleader = "\<Space>"                       " LeaderキーをSpaceに
+
+inoremap <silent> <C-[> <C-[>:silent ChangeIME<CR>
+inoremap <silent> <esc> <esc>:silent ChangeIME<CR>
+nmap <C-n> <Plug>AirlineSelectNextTab
+nmap <C-p> <Plug>AirlineSelectPrevTab
+nmap <C-q> :Fern %:h -drawer -toggle<CR>
+nmap <Leader>ar :w<CR><C-w>jiAtCodeCheck<C-m><C-\><C-n><C-w>k
+nmap <Leader>at :call custom#AlignTable()<CR>
+nmap <Leader>bb :Bookmark
+nmap <Leader>bl :BLines!<CR>
+nmap <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
+nmap <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
+nmap <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
+nmap <Leader>co :e ~/.config/nvim/init.vim<CR>
+nmap <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
+nmap <Leader>cr :so ~/.config/nvim/init.vim<CR>
+nmap <Leader>df :FzfPreviewDirectoryFiles
+nmap <Leader>gad :Git ada<CR>
+nmap <Leader>gb :FzfPreviewGitBranches<CR>
+nmap <Leader>gco :silent Git commit<CR>
+nmap <Leader>gf :FzfPreviewGitFiles<CR>
+nmap <Leader>gph :Git push origin HEAD<CR>
+nmap <Leader>gs :FzfPreviewGitStatus<CR>
+nmap <Leader>h :wincmd h<CR>
+nmap <Leader>j :wincmd j<CR>
+nmap <Leader>k :wincmd k<CR>
+nmap <Leader>l :wincmd l<CR>
+nmap <Leader>rs :resize
+nmap <Leader>sw :SetWin<CR>
+nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>ut :UndotreeToggle<CR>
+nmap <Leader>vr :vertical resize
+nmap <Leader>zfab :FzfPreviewAllBuffers<CR>
+nmap <silent> <Leader><Leader> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
+noremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
+vmap <Leader>s :sort
+
+autocmd BufEnter,FocusGained,InsertLeave * set cursorline
+autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline
+autocmd ColorScheme * highlight Normal guibg=none
+autocmd ColorScheme * highlight SignColumn guibg=none
+autocmd ColorScheme * highlight EndOfBuffer guifg=#222222
+autocmd BufRead,BufNewFile *.[ch] nmap <silent><buffer> <Leader>f :silent CFamilyFMT<CR>
+autocmd BufRead,BufNewFile *.[chi]pp nmap <buffer> <Leader>f :silent CFamilyFMT<CR>
+autocmd FileType python nmap <buffer> <Leader>f :silen PEPFMT<CR>
+autocmd BufRead,BufNewFile *.rlib nmap <buffer> <Leader>f :silent RustFMT<CR>
+autocmd BufRead,BufNewFile *.rs nmap <buffer> <Leader>f :silent RustFMT<CR>
+autocmd BufRead,BufNewFile *.tex nmap <Leader>r <Leader>ll<Leader>lv
+autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
+autocmd BufRead,BufNewFile *.wiki setlocal filetype=tex
+autocmd BufRead,BufNewFile *.tex nnoremap <C-q> <Plug>Tex_FastEnvironmentInsert
+autocmd BufRead,BufNewFile *.tex vnoremap <C-q> <Plug>Tex_FastEnvironmentInsert
+autocmd TermOpen * setlocal nonumber norelativenumber
+
+"===================================================================================================
+" Indent
+"===================================================================================================
+set autoindent                  " 改行したりした時にインデントを保持してくれます。
+set expandtab                   " タブを押すと空白が挿入されるようにする
+set nowrap                      " 折り返しをしない
+set shiftwidth=2                " vimのインデントでいくつ空白を挿入するか
+set softtabstop=2               " tabを押した時に空白何個分のインデントをとるか。
+set tabstop=2                   " 一個のタブを空白何個分にとるか。
+augroup fileTypeIndent
+  autocmd!
+  autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType markdown setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType markdown setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
+  autocmd FileType markdown setlocal filetype=markdown
+  autocmd FileType markdown nnoremap o A<CR>
+  autocmd FileType text setlocal tabstop=4 softtabstop=4 shiftwidth=4 wrap
+  autocmd FileType rust let g:rust_recommended_style = 1
+  autocmd FileType rust let g:rustfmt_autosave = 1
+  autocmd FileType rust setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  " autocmd FileType c setlocal foldmarker={,}
+  " autocmd FileType cpp setlocal foldmarker={,}
+  " autocmd FileType cpp setlocal foldmarker={,}
+augroup END
+
+"===================================================================================================
+" Python Configuration
+"===================================================================================================
+let g:python_host_prog='~/.pyenv/versions/neovim-2/bin/python'
+let g:python3_host_prog='~/.pyenv/versions/neovim-3/bin/python'
+
+"===================================================================================================
+" Coc
+"===================================================================================================
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              " \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+imap <C-k> <Plug>(coc-snippets-expand)
+vmap <C-k> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-l>'
+xmap <leader>x  <Plug>(coc-convert-snippet)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <c-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <Leader>cd :CocDiagnostics<CR>
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+"===================================================================================================
+" Tabular
+"===================================================================================================
+" inoremap \| \|<C-o>:call custom#AlignTable()<CR><C-o>$
+
+"===================================================================================================
+" Tree sitter
+"===================================================================================================
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true              -- false will disable the whole extension
+  },
+  indent = {
+    enable = false,              -- false will disable the whole extension
+    -- disable = { "c", "cpp", "python"},
+  },
+  incremental_selection = {
+    enable = true              -- false will disable the whole extension
+  }
+}
+EOF
+
+"===================================================================================================
+" Background
+"===================================================================================================
+nmap <Leader>bo :!source ~/.config/zsh/custom_func.zsh && blackout<CR><CR><C-l>
+nmap <Leader>cbin :!source ~/.config/zsh/custom_func.zsh && change<CR><CR><C-l>
+nmap <Leader>cbif :!source ~/.config/zsh/custom_func.zsh && change_f<CR><CR><C-l>
+

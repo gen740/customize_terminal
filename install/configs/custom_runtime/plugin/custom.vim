@@ -6,13 +6,19 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! s:change_ime()
-  :silent !osascript "/Users/fujimotogen/.vim/custom_runtime/external/ime.scpt"
+  let OSTYPE = system('uname')
+  :echo OSTYPE
+  if OSTYPE == "Darwin\n"
+    " Mac OSの時はapple scriptを通じて英数キーを送る
+    :silent !osascript -e 'tell application "System Events"' -e 'key code 102' -e 'end tell'
+  endif
 endfunction
 
 function! s:clang_format()
   let l:save = winsaveview()
   call s:trimUseless()
-  :silent %! clang-format -style=file
+  " ローカルのclang-formatに設定を合わせる。
+  :silent %! clang-format -style=file 
   call winrestview(l:save)
   :silent w
 endfunction

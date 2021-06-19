@@ -1,6 +1,7 @@
-brew install python3
+brew install python3 node llvm
 python3 -m pip install neovim
 python3 -m pip install pynvim
+brew uninstall neovim
 brew install --HEAD neovim 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh ~/.vim/dein
@@ -26,10 +27,3 @@ cp "./fonts/MesloLGS NF Bold Italic.ttf" ~/Library/Fonts
 cp "./fonts/MesloLGS NF Regular.ttf" ~/Library/Fonts
 cp "./fonts/MesloLGS NF Italic.ttf" ~/Library/Fonts
 cp "./fonts/MesloLGS NF Bold.ttf" ~/Library/Fonts
-
-brew install clang-format lua
-nvim
-read -p "Hit enter: "
-brew install go node
-cd ~/.vim/dein/repos/github.com/valloric/youcompleteme
-./install.py --all
