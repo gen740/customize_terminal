@@ -27,10 +27,3 @@ cp -f ./configs/nvimrc ~/.nvimrc
 cp -f ./configs/plugins.toml ~/.vim/dein/
 cp -f ./configs/lazy_plugins.toml ~/.vim/dein/
 cp -rf ./configs/custom_runtime ~/.vim/
-
-export CXX=g++-8
-export CMAKE_CXX_COMPILER=g++-8
-nvim
-read -p "Hit enter: "
-cd ~/.vim/dein/repos/github.com/valloric/youcompleteme
-./install.py --all
