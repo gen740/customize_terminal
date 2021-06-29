@@ -16,34 +16,37 @@ nmap ga <Plug>(EasyAlign)
 nmap <C-n> <Plug>AirlineSelectNextTab
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-q> :Fern %:h -drawer -toggle<CR>
+nmap <Leader>aa :Git ada<CR>
+nmap <Leader>ac :silent Git commit<CR>
+nmap <Leader>ap :Git push origin HEAD<CR>
 nmap <Leader>ar :w<CR><C-w>jiAtCodeCheck<C-m><C-\><C-n><C-w>k
 nmap <Leader>at :call custom#AlignTable()<CR>
 nmap <Leader>bb :Bookmark
 nmap <Leader>bl :BLines!<CR>
-nmap <Leader>vq :vertical copen<CR>:vertical resize 80<CR>:wincmd h<CR>
-nmap <Leader>qf :copen<CR>
-nmap <Leader>cn :cn<CR>
 nmap <Leader>cN :cp<CR>
 nmap <Leader>cca :e ~/.vim/custom_runtime/autoload/custom.vim<CR>
-nmap <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
 nmap <Leader>ccc :resize 50<CR>
+nmap <Leader>ccp :e ~/.vim/custom_runtime/plugin/custom.vim<CR>
 nmap <Leader>cl :e ~/.vim/dein/lazy_plugins.toml<CR>
+nmap <Leader>cn :cn<CR>
 nmap <Leader>co :e ~/.config/nvim/init.vim<CR>
 nmap <Leader>cp :e ~/.vim/dein/plugins.toml<CR>
 nmap <Leader>cr :so ~/.config/nvim/init.vim<CR>
-nmap <Leader>aa :Git ada<CR>
-nmap <Leader>ac :silent Git commit<CR>
-nmap <Leader>ap :Git push origin HEAD<CR>
+nmap <Leader>df :FzfPreviewDirectoryFiles
 nmap <Leader>gb :FzfPreviewGitBranches<CR>
 nmap <Leader>gf :FzfPreviewGitFiles<CR>
 nmap <Leader>gs :FzfPreviewGitStatus<CR>
-nmap <Leader>df :FzfPreviewDirectoryFiles
+nmap <Leader>qf :copen<CR>
 nmap <Leader>rs :resize
+nmap <Leader>rf :set foldmethod=expr<CR>
 nmap <Leader>sw :SetWin<CR>
 nmap <Leader>t :TagbarToggle<CR>
 nmap <Leader>ut :UndotreeToggle<CR>
+nmap <Leader>vq :vertical copen<CR>:vertical resize 80<CR>:wincmd h<CR>
 nmap <Leader>vr :vertical resize
 nmap <Leader>zfab :FzfPreviewAllBuffers<CR>
+nnoremap <Leader>lsy :hi Conceal guifg=#dddddd<CR>
+nnoremap <Leader>lsn :hi Conceal guifg=#555555<CR> 
 nnoremap <silent> <Left> :vertical resize -2<CR>
 nnoremap <silent> <Right> :vertical resize +2<CR>
 nnoremap <silent> <Down> :resize +2<CR>
@@ -52,8 +55,6 @@ noremap <Leader>r :w<CR><C-w>ji<C-p><C-m><C-\><C-n><C-w>k
 nmap <silent> <Leader><Leader> :let @/ = '\<' . expand('<cword>') . '\>'<CR>
 tmap <C-M-N> <C-\><C-N>
 vmap <Leader>s :sort
-nnoremap <Leader>lsy :hi Conceal guifg=#dddddd<CR>
-nnoremap <Leader>lsn :hi Conceal guifg=#555555<CR> 
 " }}}
 " ┼───────────────────────────────────────────────────────────────────────────────────────┼
 " │ {{{                              « Coc Keymappings »                                  │
@@ -66,8 +67,8 @@ nnoremap <Leader>lsn :hi Conceal guifg=#555555<CR>
 " inoremap <silent><expr> <c-space> coc#refresh()
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               " \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" imap <C-k> <Plug>(coc-snippets-expand)
-" vmap <C-k> <Plug>(coc-snippets-select)
+imap <C-k> <Plug>(coc-snippets-expand)
+vmap <C-k> <Plug>(coc-snippets-select)
 xmap <leader>x  <Plug>(coc-convert-snippet)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -104,7 +105,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif " }}}
 " ┼───────────────────────────────────────────────────────────────────────────────────────┼
-" │ {{{                                   « Othrs »                                       │
+" │ {{{                                  « Others »                                       │
 " ┼───────────────────────────────────────────────────────────────────────────────────────┼
 nmap <Leader>bo :!source ~/.config/zsh/custom_func.zsh && blackout<CR><CR><C-l>
 nmap <Leader>cbin :!source ~/.config/zsh/custom_func.zsh && change<CR><CR><C-l>

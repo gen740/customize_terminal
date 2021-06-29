@@ -190,7 +190,7 @@ EOF
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-autocmd FileType vim set foldmethod=marker 
+autocmd FileType vim setlocal foldmethod=marker 
 
 " }}}
 " ┼───────────────────────────────────────────────────────────────────────────────────────┼

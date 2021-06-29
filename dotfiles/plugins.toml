@@ -1,28 +1,21 @@
-#==================================================================================================
-# Plugins
-#===================================================================================================
-
-[[plugins]] # vim-latex-textobjの依存
+# ┼───────────────────────────────────────────────────────────────────────────────────────┼
+# │                                      « Plugins »                                      │
+# ┼───────────────────────────────────────────────────────────────────────────────────────┼
+[[plugins]] # vim-textobjects 
 merged = 0
 repo = 'kana/vim-textobj-user'
 
-# [[plugins]]
-# merged = 0
-# repo = 'rbonvall/vim-textobj-latex'
+[[plugins]] # vim textobjects latex
+merged = 0
+repo = 'rbonvall/vim-textobj-latex'
 
-[[plugins]]
-repo = 'preservim/nerdtree'
-
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-
-[[plugins]]
+[[plugins]] # easy align
 repo = 'junegunn/vim-easy-align'
 
-[[plugins]] # コメントアウトとか手軽にできるようになる。
+[[plugins]] # Comment out
 repo = "tpope/vim-commentary"
 
-[[plugins]]
+[[plugins]] # Git Gutter
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
 let g:gitgutter_map_keys=0
@@ -30,38 +23,38 @@ let g:gitgutter_realtime = 1
 "let g:gitgutter_eager = 0
 '''
 
-[[plugins]]
+[[plugins]] # vim Sneak
 repo = 'justinmk/vim-sneak'
 
-[[plugins]]
+[[plugins]] # vim repeat
 repo = 'tpope/vim-repeat'
 
-[[plugins]]
+[[plugins]] # vim surrond
 repo = 'tpope/vim-surround'
 merged = 0
 
-[[plugins]]
+[[plugins]] # Treesitter
 repo = 'nvim-treesitter/nvim-treesitter'
 
-[[plugins]]
+[[plugins]] # Treesitter textobjects
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 
-[[plugins]]
+[[plugins]] # Treesitter refactor
 repo = 'nvim-treesitter/nvim-treesitter-refactor'
 
-[[plugins]]
+[[plugins]] # Gruvbox
 repo = 'morhetz/gruvbox'
 
-[[plugins]]
+[[plugins]] # Signature
 repo = 'kshenoy/vim-signature'
 
-[[plugins]] # gitをvimから使う
+[[plugins]] # Fugitive
 repo = 'tpope/vim-fugitive'
 
-[[plugins]]
+[[plugins]] # Gina
 repo = 'lambdalisue/gina.vim'
 
-[[plugins]]
+[[plugins]] # IndentLine
 repo = 'yggdroot/indentline'
 hook_add = '''
 let g:indentLine_color_gui = "#555555"
@@ -110,13 +103,10 @@ autocmd FileType tex let g:indentLine_enabled=0
 # " hi StartifySpecial ctermfg=240
 # '''
 
-#===================================================================================================
-# Airline
-#===================================================================================================
-[[plugins]] # Airlineのテーマ
+[[plugins]] # Airline Theme
 repo = 'vim-airline/vim-airline-themes'
 
-[[plugins]] # ステータスラインの装飾
+[[plugins]] # Airline
 repo = 'vim-airline/vim-airline'
 hook_add = '''
 " let g:airline#extensions#bufferline#enabled = 1
@@ -148,17 +138,11 @@ set showtabline=2
 set statusline=2                " ステータスラインの記述
 '''
 
-#===================================================================================================
-# Snippet
-#===================================================================================================
-[[plugins]]
+[[plugins]] # Snippets
 repo = 'honza/vim-snippets'
 merged = 0
 
-#===================================================================================================
-# Fern
-#===================================================================================================
-[[plugins]]
+[[plugins]] # Fern
 repo = 'lambdalisue/fern.vim'
 hook_add = '''
 let g:fern#renderer = "nerdfont"
@@ -174,35 +158,32 @@ augroup my-fern
 augroup END
 '''
 
-[[plugins]]
+[[plugins]] # Nerd Font
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]] # Fern Nerd Font
 repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 
-[[plugins]]
+[[plugins]] # Fern fzf
 repo = 'LumaKernel/fern-mapping-fzf.vim'
 depends = ['fzf', 'fern.vim']
 
-[[plugins]]
-repo = 'lambdalisue/nerdfont.vim'
-
-[[plugins]]
+[[plugins]] # Fern Git Status
 repo = 'lambdalisue/fern-git-status.vim'
 
-[[plugins]]
+[[plugins]] # Fern Git Mapping
 repo = 'lambdalisue/fern-mapping-git.vim'
 
-[[plugins]]
+[[plugins]] # Fern Bookmarks
 repo = 'lambdalisue/fern-bookmark.vim'
 
-[[plugins]]
+[[plugins]] # Fern Hijack
 repo = 'lambdalisue/fern-hijack.vim'
 
-#===================================================================================================
-# FZF
-#===================================================================================================
-[[plugins]]
+[[plugins]] # Devicon
 repo = 'ryanoasis/vim-devicons'
 
-[[plugins]]
+[[plugins]] # Fzf Preview
 repo = 'yuki-yano/fzf-preview.vim'
 merged = 0
 rev = 'release/rpc'
@@ -232,31 +213,25 @@ let g:fzf_preview_quit_map = 1
 let g:fzf_preview_use_dev_icons = 1
 '''
 
-[[plugins]]
+[[plugins]] # Fzf
 repo = 'junegunn/fzf.vim'
 merged = 0
 
-[[plugins]]
+[[plugins]] # Fzf Oprgitnal
 repo = 'junegunn/fzf'
 merged = 0
 build = './install --all'
 
-#===================================================================================================
-# Telescope
-#===================================================================================================
-[[plugins]]
+[[plugins]] # Popup [Telescope Dependancies]
 repo = 'nvim-lua/popup.nvim'
 
-[[plugins]]
+[[plugins]] # Plenary [Telescope Dependancies]
 repo = 'nvim-lua/plenary.nvim'
 
-[[plugins]]
+[[plugins]] # Telescope
 repo ='nvim-telescope/telescope.nvim'
 
-#===================================================================================================
-# COC
-#===================================================================================================
-[[plugins]]
+[[plugins]] # Coc
 repo = 'neoclide/coc.nvim'
 merged = 0
 hook_add = '''
