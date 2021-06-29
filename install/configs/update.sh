@@ -1,9 +1,10 @@
-cp -f ~/.config/nvim/init.vim ./vimrc
-cp -f ~/.vim/dein/plugins.toml ./plugins.toml
-cp -f ~/.vim/dein/lazy_plugins.toml ./lazy_plugins.toml
+# bin/zsh!
+
+cp -rf ~/.config/nvim/* .
 cp -rf ~/.vim/custom_runtime .
 cp -f ~/.zshrc ./zshrc
 cp -f ~/.tmux.conf ./tmux.conf
+
 cp -rf ./* ../../dotfiles
 cp -f ~/.config/zsh/custom_func.zsh ../../dotfiles
 rm ../../dotfiles/update.sh

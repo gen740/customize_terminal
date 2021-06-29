@@ -114,7 +114,9 @@ mutal_sync() {
 }
 
 hcd() {
-  dirname=`fd . ~/Home/ -aHI --type d --exclude .git --exclude Labo/Qt | fzf`
+  dirname=`fd . ~/Home/ -aHI --type d --exclude .git --exclude Labo/Qt --exclude build --exclude _build \
+    --exclude .build --exclude qmk_firmware/lib --exclude mbed-os --exclude .cache --exclude node_modules \
+    --exclude cmake_build --exclude bin --exclude keyboards --exclude tests | fzf`
   if [[ $dirname == ""  ]]; then
   else
     pushd $dirname
@@ -135,4 +137,8 @@ fvi() {
   else
     nvim $filename
   fi
+}
+
+rosinit() {
+  source ~/ros2_foxy/ros2-osx/setup.zsh &> /dev/null
 }
