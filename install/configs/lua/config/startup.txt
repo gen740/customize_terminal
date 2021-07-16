@@ -1,0 +1,466 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.009  000.009: --- NVIM STARTING ---
+000.934  000.925: locale set
+001.678  000.745: inits 1
+001.703  000.025: window checked
+001.708  000.005: parsing arguments
+001.957  000.249: expanding arguments
+002.020  000.063: inits 2
+002.409  000.389: init highlight
+002.410  000.001: waiting for UI
+004.873  002.462: done waiting for UI
+004.893  000.020: initialized screen early for UI
+010.281  000.052  000.052: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/autoload/nvim_treesitter.vim
+151.185  145.787  145.736: sourcing /Users/fujimotogen/.config/nvim/init.lua
+151.212  000.531: sourcing vimrc file(s)
+158.723  000.036  000.036: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gdscript.vim
+158.889  000.039  000.039: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gomod.vim
+159.095  000.060  000.060: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/query.vim
+159.258  000.042  000.042: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/ftdetect/snippets.vim
+159.403  000.032  000.032: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/ftdetect/fugitive.vim
+159.635  000.085  000.085: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-markdown/ftdetect/markdown.vim
+161.446  010.096  009.802: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/filetype.vim
+162.799  000.075  000.075: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/ftplugin.vim
+163.710  000.061  000.061: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/indent.vim
+165.635  000.491  000.491: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+166.753  001.849  001.358: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/synload.vim
+166.937  002.260  000.411: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syntax.vim
+179.978  001.044  001.044: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/gzip.vim
+180.381  000.056  000.056: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/health.vim
+181.112  000.603  000.603: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/man.vim
+183.046  000.456  000.456: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+183.673  002.252  001.797: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/matchit.vim
+184.182  000.347  000.347: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/matchparen.vim
+185.628  001.252  001.252: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/netrwPlugin.vim
+186.072  000.020  000.020: sourcing /Users/fujimotogen/.local/share/nvim/rplugin.vim
+186.113  000.331  000.310: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/rplugin.vim
+186.580  000.261  000.261: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/shada.vim
+186.754  000.046  000.046: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/spellfile.vim
+187.225  000.288  000.288: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tarPlugin.vim
+187.519  000.175  000.175: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tohtml.vim
+187.726  000.077  000.077: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tutor.vim
+188.151  000.298  000.298: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/zipPlugin.vim
+188.515  000.044  000.044: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+188.897  000.102  000.102: sourcing /Users/fujimotogen/.vim/custom_runtime/plugin/custom.vim
+190.726  001.590  001.590: sourcing /Users/fujimotogen/.vim/JpFormat.vim/plugin/JpFormat.vim
+195.062  000.197  000.197: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+197.387  000.174  000.174: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+204.675  010.558  010.187: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/gruvbox/colors/gruvbox.vim
+207.682  000.046  000.046: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim
+207.815  000.046  000.046: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim
+207.935  000.032  000.032: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/csv.vim/ftdetect/csv.vim
+207.943  016.946  006.265: sourcing /Users/fujimotogen/.config/nvim/plugin/packer_compiled.lua
+209.693  020.277: loading plugins
+212.477  001.472  001.472: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/asyncrun.vim/plugin/asyncrun.vim
+213.350  000.405  000.405: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/plugin/dashboard.vim
+214.178  000.133  000.133: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-compe/plugin/compe.vim
+214.781  000.109  000.109: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-lspconfig/plugin/lspconfig.vim
+215.602  000.061  000.061: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua/plugin/toggleterm.vim
+216.551  000.173  000.173: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-tree.lua/plugin/tree.vim
+218.791  001.765  001.765: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/plugin/nvim-treesitter.vim
+219.218  000.034  000.034: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gdscript.vim
+219.316  000.025  000.025: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gomod.vim
+219.425  000.039  000.039: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/query.vim
+220.185  000.471  000.471: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor/plugin/nvim-treesitter-refactor.vim
+223.134  002.523  002.523: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim
+223.590  000.054  000.054: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-web-devicons/plugin/nvim-web-devicons.vim
+224.020  000.050  000.050: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/plenary.nvim/plugin/plenary.vim
+225.666  001.160  001.160: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/plugin/tagbar.vim
+226.753  000.417  000.417: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/telescope.nvim/plugin/telescope.vim
+227.812  000.114  000.114: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim
+227.907  000.707  000.593: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/plugin/UltiSnips.vim
+228.253  000.037  000.037: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/ftdetect/snippets.vim
+229.387  000.208  000.208: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/init.vim
+229.950  000.103  000.103: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/parts.vim
+230.323  000.035  000.035: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/formatter/short_path.vim
+231.679  000.222  000.222: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/util.vim
+231.792  003.071  002.502: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/plugin/airline.vim
+232.265  000.054  000.054: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/plugin/airline-themes.vim
+233.662  000.920  000.920: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-bookmarks/plugin/bookmark.vim
+234.250  000.167  000.167: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-closer/plugin/closer.vim
+234.813  000.179  000.179: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-commentary/plugin/commentary.vim
+235.394  000.194  000.194: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-easy-align/plugin/easy_align.vim
+240.048  004.222  004.222: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-easymotion/plugin/EasyMotion.vim
+241.872  001.338  001.338: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/plugin/fugitive.vim
+242.180  000.032  000.032: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/ftdetect/fugitive.vim
+242.635  000.061  000.061: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-markdown/ftdetect/markdown.vim
+243.401  000.141  000.141: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/utils.vim
+244.260  001.209  001.068: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/plugin/signature.vim
+244.726  000.056  000.056: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-snippets/plugin/vimsnippets.vim
+245.784  000.539  000.539: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-surround/plugin/surround.vim
+246.314  014.946: loading packages
+246.617  000.069  000.069: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/after/plugin/signature.vim
+247.026  000.128  000.128: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/after/plugin/UltiSnips_after.vim
+260.879  013.585  013.585: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-compe/after/plugin/compe.vim
+262.453  001.223  001.223: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/indentline/after/plugin/indentLine.vim
+263.585  002.266: loading after plugins
+263.611  000.026: inits 3
+266.318  002.707: reading ShaDa
+267.187  000.385  000.385: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions.vim
+267.526  000.078  000.078: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/quickfix.vim
+267.955  000.208  000.208: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline.vim
+268.313  000.062  000.062: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/netrw.vim
+268.976  000.092  000.092: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/section.vim
+269.604  000.238  000.238: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/highlighter.vim
+269.915  001.329  000.999: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/term.vim
+270.334  000.085  000.085: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tagbar.vim
+270.693  000.062  000.062: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/bookmark.vim
+271.227  000.249  000.249: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/branch.vim
+271.637  000.096  000.096: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/fugitiveline.vim
+272.063  000.089  000.089: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/nvimlsp.vim
+272.528  000.165  000.165: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/whitespace.vim
+273.206  000.103  000.103: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/po.vim
+273.682  000.203  000.203: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline.vim
+274.028  000.088  000.088: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/autoshow.vim
+274.613  000.209  000.209: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/tabs.vim
+275.125  000.194  000.194: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/buffers.vim
+275.588  000.068  000.068: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/keymap.vim
+276.997  000.095  000.095: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/searchcount.vim
+285.928  000.094  000.094: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/themes.vim
+286.164  000.594  000.499: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/autoload/airline/themes/luna.vim
+294.131  000.279  000.279: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/autoload/airline/themes/luna.vim
+318.071  000.176  000.176: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/builder.vim
+318.597  000.114  000.114: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/default.vim
+337.653  066.406: opening buffers
+363.817  000.146  000.146: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-closer/autoload/closer.vim
+366.103  000.220  000.220: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/sign.vim
+366.593  000.223  000.223: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/mark.vim
+369.150  030.907: BufEnter autocommands
+369.154  000.003: editing files in windows
+370.088  000.152  000.152: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/autoload/dashboard.vim
+370.432  000.087  000.087: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/buflist.vim
+370.882  000.052  000.052: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/autoload/dashboard/utils.vim
+372.157  000.137  000.137: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/autoload/dashboard/section.vim
+373.221  000.254  000.254: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/autoload/provider/clipboard.vim
+382.286  000.126  000.126: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/syntax/dashboard.vim
+382.979  000.014  000.014: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/syntax/dashboard.vim
+389.481  000.148  000.148: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-bookmarks/autoload/bm.vim
+389.813  019.689: VimEnter autocommands
+389.816  000.002: UIEnter autocommands
+389.818  000.003: before starting main loop
+390.971  000.220  000.220: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/ctrlspace.vim
+391.325  000.125  000.125: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/tabws.vim
+392.209  000.300  000.300: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/builder.vim
+423.944  010.888  010.888: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/autoload/fugitive.vim
+427.544  002.096  002.096: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar.vim
+428.273  000.202  000.202: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/debug.vim
+452.006  000.650  000.650: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/types/uctags.vim
+452.399  000.083  000.083: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/prototypes/typeinfo.vim
+465.005  060.621: first screen update
+465.010  000.004: --- NVIM STARTED ---
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.009  000.009: --- NVIM STARTING ---
+000.975  000.966: locale set
+001.618  000.643: inits 1
+001.652  000.033: window checked
+001.660  000.008: parsing arguments
+002.068  000.409: expanding arguments
+002.181  000.113: inits 2
+002.825  000.644: init highlight
+002.829  000.003: waiting for UI
+006.674  003.845: done waiting for UI
+006.706  000.032: initialized screen early for UI
+013.080  000.059  000.059: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/autoload/nvim_treesitter.vim
+158.710  151.318  151.259: sourcing /Users/fujimotogen/.config/nvim/init.lua
+158.737  000.713: sourcing vimrc file(s)
+165.759  000.023  000.023: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gdscript.vim
+165.844  000.020  000.020: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gomod.vim
+165.936  000.032  000.032: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/query.vim
+166.024  000.024  000.024: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/ftdetect/snippets.vim
+166.105  000.020  000.020: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/ftdetect/fugitive.vim
+166.214  000.050  000.050: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-markdown/ftdetect/markdown.vim
+167.402  008.523  008.355: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/filetype.vim
+168.265  000.060  000.060: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/ftplugin.vim
+169.136  000.056  000.056: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/indent.vim
+170.527  000.350  000.350: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+171.437  001.416  001.065: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/synload.vim
+171.572  001.710  000.295: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syntax.vim
+180.208  000.353  000.353: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/gzip.vim
+180.318  000.025  000.025: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/health.vim
+180.498  000.105  000.105: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/man.vim
+181.452  000.228  000.228: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+181.685  001.109  000.881: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/matchit.vim
+181.937  000.176  000.176: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/matchparen.vim
+182.436  000.420  000.420: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/netrwPlugin.vim
+182.787  000.019  000.019: sourcing /Users/fujimotogen/.local/share/nvim/rplugin.vim
+182.798  000.262  000.243: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/rplugin.vim
+183.013  000.125  000.125: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/shada.vim
+183.142  000.038  000.038: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/spellfile.vim
+183.390  000.159  000.159: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tarPlugin.vim
+183.601  000.121  000.121: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tohtml.vim
+183.722  000.037  000.037: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tutor.vim
+184.180  000.370  000.370: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/zipPlugin.vim
+184.655  000.043  000.043: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+185.869  000.542  000.542: sourcing /Users/fujimotogen/.vim/custom_runtime/plugin/custom.vim
+188.803  002.375  002.375: sourcing /Users/fujimotogen/.vim/JpFormat.vim/plugin/JpFormat.vim
+192.349  000.220  000.220: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+194.211  000.186  000.186: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+202.266  010.974  010.568: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/gruvbox/colors/gruvbox.vim
+206.248  000.063  000.063: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim
+206.405  000.039  000.039: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/csv.vim/ftdetect/csv.vim
+206.539  000.047  000.047: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim
+206.548  017.413  006.290: sourcing /Users/fujimotogen/.config/nvim/plugin/packer_compiled.lua
+207.743  014.985: loading plugins
+210.084  001.320  001.320: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/asyncrun.vim/plugin/asyncrun.vim
+210.763  000.258  000.258: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/plugin/dashboard.vim
+211.580  000.124  000.124: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-compe/plugin/compe.vim
+212.153  000.099  000.099: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-lspconfig/plugin/lspconfig.vim
+212.638  000.050  000.050: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua/plugin/toggleterm.vim
+213.142  000.126  000.126: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-tree.lua/plugin/tree.vim
+214.995  001.463  001.463: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/plugin/nvim-treesitter.vim
+215.399  000.028  000.028: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gdscript.vim
+215.495  000.025  000.025: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gomod.vim
+215.597  000.034  000.034: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/query.vim
+216.320  000.438  000.438: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor/plugin/nvim-treesitter-refactor.vim
+219.277  002.535  002.535: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim
+219.740  000.052  000.052: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-web-devicons/plugin/nvim-web-devicons.vim
+220.171  000.050  000.050: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/plenary.nvim/plugin/plenary.vim
+221.871  001.171  001.171: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/plugin/tagbar.vim
+222.936  000.436  000.436: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/telescope.nvim/plugin/telescope.vim
+223.839  000.088  000.088: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim
+223.923  000.603  000.515: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/plugin/UltiSnips.vim
+224.223  000.036  000.036: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/ftdetect/snippets.vim
+225.757  000.187  000.187: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/init.vim
+226.495  000.110  000.110: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/parts.vim
+226.879  000.037  000.037: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/formatter/short_path.vim
+228.317  000.224  000.224: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/util.vim
+228.432  003.869  003.311: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/plugin/airline.vim
+228.976  000.055  000.055: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/plugin/airline-themes.vim
+230.323  000.929  000.929: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-bookmarks/plugin/bookmark.vim
+230.925  000.158  000.158: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-closer/plugin/closer.vim
+231.582  000.185  000.185: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-commentary/plugin/commentary.vim
+232.301  000.251  000.251: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-easy-align/plugin/easy_align.vim
+237.330  004.528  004.528: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-easymotion/plugin/EasyMotion.vim
+239.664  001.731  001.731: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/plugin/fugitive.vim
+240.094  000.039  000.039: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/ftdetect/fugitive.vim
+240.563  000.060  000.060: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-markdown/ftdetect/markdown.vim
+241.456  000.158  000.158: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/utils.vim
+242.435  001.371  001.213: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/plugin/signature.vim
+242.923  000.058  000.058: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-snippets/plugin/vimsnippets.vim
+243.869  000.551  000.551: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-surround/plugin/surround.vim
+244.390  014.016: loading packages
+244.701  000.072  000.072: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/after/plugin/signature.vim
+245.101  000.131  000.131: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/after/plugin/UltiSnips_after.vim
+257.980  012.617  012.617: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-compe/after/plugin/compe.vim
+258.962  000.699  000.699: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/indentline/after/plugin/indentLine.vim
+260.158  002.248: loading after plugins
+260.177  000.019: inits 3
+262.529  002.353: reading ShaDa
+263.415  000.444  000.444: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions.vim
+263.755  000.078  000.078: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/quickfix.vim
+264.172  000.204  000.204: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline.vim
+264.537  000.064  000.064: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/netrw.vim
+265.200  000.090  000.090: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/section.vim
+265.853  000.259  000.259: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/highlighter.vim
+266.187  001.377  001.028: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/term.vim
+266.636  000.090  000.090: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tagbar.vim
+266.990  000.062  000.062: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/bookmark.vim
+267.530  000.252  000.252: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/branch.vim
+268.037  000.129  000.129: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/fugitiveline.vim
+268.565  000.097  000.097: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/nvimlsp.vim
+269.197  000.195  000.195: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/whitespace.vim
+270.423  000.132  000.132: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/po.vim
+270.957  000.223  000.223: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline.vim
+271.389  000.096  000.096: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/autoshow.vim
+272.386  000.212  000.212: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/tabs.vim
+273.277  000.222  000.222: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/buffers.vim
+273.915  000.074  000.074: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/keymap.vim
+275.360  000.092  000.092: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/searchcount.vim
+284.291  000.099  000.099: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/themes.vim
+284.524  000.600  000.501: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/autoload/airline/themes/luna.vim
+292.544  000.271  000.271: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/autoload/airline/themes/luna.vim
+318.495  000.176  000.176: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/builder.vim
+319.131  000.223  000.223: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/default.vim
+341.588  073.746: opening buffers
+373.228  000.227  000.227: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-closer/autoload/closer.vim
+375.890  000.247  000.247: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/sign.vim
+376.462  000.263  000.263: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/mark.vim
+379.333  037.008: BufEnter autocommands
+379.336  000.003: editing files in windows
+380.377  000.172  000.172: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/autoload/dashboard.vim
+380.766  000.102  000.102: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/buflist.vim
+381.279  000.059  000.059: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/autoload/dashboard/utils.vim
+382.759  000.161  000.161: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/autoload/dashboard/section.vim
+383.873  000.209  000.209: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/autoload/provider/clipboard.vim
+393.750  000.164  000.164: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/syntax/dashboard.vim
+394.628  000.023  000.023: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/syntax/dashboard.vim
+403.909  000.197  000.197: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-bookmarks/autoload/bm.vim
+404.478  024.053: VimEnter autocommands
+404.481  000.004: UIEnter autocommands
+404.486  000.004: before starting main loop
+405.719  000.165  000.165: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/ctrlspace.vim
+406.135  000.142  000.142: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/tabws.vim
+406.790  000.181  000.181: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/builder.vim
+432.174  006.769  006.769: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/autoload/fugitive.vim
+436.354  002.828  002.828: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar.vim
+437.544  000.169  000.169: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/debug.vim
+466.192  000.824  000.824: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/types/uctags.vim
+466.706  000.106  000.106: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/prototypes/typeinfo.vim
+481.495  065.825: first screen update
+481.500  000.005: --- NVIM STARTED ---
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.010  000.010: --- NVIM STARTING ---
+000.975  000.965: locale set
+001.601  000.626: inits 1
+001.628  000.028: window checked
+001.799  000.171: parsing arguments
+002.085  000.285: expanding arguments
+002.158  000.073: inits 2
+002.611  000.453: init highlight
+002.612  000.001: waiting for UI
+005.991  003.378: done waiting for UI
+006.023  000.033: initialized screen early for UI
+014.130  000.063  000.063: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/autoload/nvim_treesitter.vim
+168.295  161.576  161.513: sourcing /Users/fujimotogen/.config/nvim/init.lua
+168.350  000.750: sourcing vimrc file(s)
+177.839  000.027  000.027: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gdscript.vim
+177.942  000.024  000.024: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gomod.vim
+178.053  000.038  000.038: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/query.vim
+178.159  000.028  000.028: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/ftdetect/snippets.vim
+178.256  000.024  000.024: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/ftdetect/fugitive.vim
+178.389  000.060  000.060: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-markdown/ftdetect/markdown.vim
+179.757  011.236  011.036: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/filetype.vim
+180.660  000.056  000.056: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/ftplugin.vim
+181.597  000.052  000.052: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/indent.vim
+183.100  000.355  000.355: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+183.929  001.368  001.014: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/synload.vim
+184.067  001.685  000.317: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syntax.vim
+196.368  000.426  000.426: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/gzip.vim
+196.505  000.029  000.029: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/health.vim
+196.774  000.178  000.178: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/man.vim
+197.975  000.280  000.280: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+198.266  001.397  001.117: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/matchit.vim
+198.583  000.220  000.220: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/matchparen.vim
+199.223  000.540  000.540: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/netrwPlugin.vim
+199.674  000.024  000.024: sourcing /Users/fujimotogen/.local/share/nvim/rplugin.vim
+199.687  000.342  000.318: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/rplugin.vim
+199.952  000.153  000.153: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/shada.vim
+200.117  000.046  000.046: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/spellfile.vim
+200.459  000.227  000.227: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tarPlugin.vim
+200.712  000.144  000.144: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tohtml.vim
+200.857  000.041  000.041: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/tutor.vim
+201.251  000.293  000.293: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/plugin/zipPlugin.vim
+201.658  000.041  000.041: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+202.184  000.147  000.147: sourcing /Users/fujimotogen/.vim/custom_runtime/plugin/custom.vim
+204.061  001.608  001.608: sourcing /Users/fujimotogen/.vim/JpFormat.vim/plugin/JpFormat.vim
+208.989  000.299  000.299: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+211.340  000.229  000.229: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/syntax/syncolor.vim
+221.401  013.753  013.226: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/gruvbox/colors/gruvbox.vim
+226.284  000.073  000.073: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim
+226.442  000.041  000.041: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/csv.vim/ftdetect/csv.vim
+226.600  000.058  000.058: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim
+226.612  022.154  008.229: sourcing /Users/fujimotogen/.config/nvim/plugin/packer_compiled.lua
+228.066  018.701: loading plugins
+230.992  001.697  001.697: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/asyncrun.vim/plugin/asyncrun.vim
+231.960  000.430  000.430: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/plugin/dashboard.vim
+232.905  000.175  000.175: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-compe/plugin/compe.vim
+233.538  000.111  000.111: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-lspconfig/plugin/lspconfig.vim
+234.239  000.095  000.095: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua/plugin/toggleterm.vim
+234.946  000.162  000.162: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-tree.lua/plugin/tree.vim
+237.254  001.812  001.812: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/plugin/nvim-treesitter.vim
+237.678  000.036  000.036: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gdscript.vim
+237.855  000.047  000.047: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/gomod.vim
+238.024  000.048  000.048: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter/ftdetect/query.vim
+239.351  000.691  000.691: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor/plugin/nvim-treesitter-refactor.vim
+244.142  004.174  004.174: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim
+244.877  000.073  000.073: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-web-devicons/plugin/nvim-web-devicons.vim
+245.589  000.067  000.067: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/plenary.nvim/plugin/plenary.vim
+247.644  001.427  001.427: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/plugin/tagbar.vim
+249.020  000.596  000.596: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/telescope.nvim/plugin/telescope.vim
+250.070  000.107  000.107: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim
+250.166  000.669  000.561: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/plugin/UltiSnips.vim
+250.537  000.045  000.045: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/ftdetect/snippets.vim
+251.715  000.187  000.187: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/init.vim
+252.419  000.129  000.129: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/parts.vim
+252.908  000.046  000.046: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/formatter/short_path.vim
+254.572  000.285  000.285: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/util.vim
+254.729  003.787  003.140: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/plugin/airline.vim
+255.501  000.092  000.092: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/plugin/airline-themes.vim
+257.414  001.268  001.268: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-bookmarks/plugin/bookmark.vim
+258.604  000.453  000.453: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-closer/plugin/closer.vim
+259.418  000.241  000.241: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-commentary/plugin/commentary.vim
+260.207  000.222  000.222: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-easy-align/plugin/easy_align.vim
+265.989  005.235  005.235: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-easymotion/plugin/EasyMotion.vim
+268.280  001.770  001.770: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/plugin/fugitive.vim
+268.651  000.040  000.040: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/ftdetect/fugitive.vim
+269.196  000.071  000.071: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-markdown/ftdetect/markdown.vim
+270.131  000.173  000.173: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/utils.vim
+271.371  001.680  001.507: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/plugin/signature.vim
+272.088  000.091  000.091: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-snippets/plugin/vimsnippets.vim
+273.603  000.813  000.813: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-surround/plugin/surround.vim
+275.075  018.892: loading packages
+275.620  000.096  000.096: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/after/plugin/signature.vim
+276.128  000.177  000.177: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/ultisnips/after/plugin/UltiSnips_after.vim
+292.106  015.532  015.532: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/nvim-compe/after/plugin/compe.vim
+293.224  000.706  000.706: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/indentline/after/plugin/indentLine.vim
+294.457  002.870: loading after plugins
+294.475  000.019: inits 3
+297.152  002.676: reading ShaDa
+301.419  000.525  000.525: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/scripts.vim
+303.629  000.065  000.065: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/ftplugin/text.vim
+318.095  000.394  000.394: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions.vim
+318.491  000.096  000.096: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/quickfix.vim
+318.941  000.213  000.213: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline.vim
+319.358  000.074  000.074: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/netrw.vim
+320.196  000.102  000.102: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/section.vim
+320.801  000.283  000.283: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/highlighter.vim
+321.172  001.431  001.045: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/term.vim
+322.089  000.158  000.158: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tagbar.vim
+322.519  000.069  000.069: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/bookmark.vim
+323.091  000.264  000.264: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/branch.vim
+323.522  000.092  000.092: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/fugitiveline.vim
+323.972  000.097  000.097: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/nvimlsp.vim
+324.490  000.168  000.168: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/whitespace.vim
+325.339  000.145  000.145: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/po.vim
+325.850  000.205  000.205: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline.vim
+326.198  000.085  000.085: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/autoshow.vim
+326.911  000.168  000.168: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/tabs.vim
+327.515  000.211  000.211: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/buffers.vim
+328.005  000.071  000.071: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/keymap.vim
+329.373  000.086  000.086: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/searchcount.vim
+338.809  000.187  000.187: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/themes.vim
+339.173  000.854  000.666: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/autoload/airline/themes/luna.vim
+347.403  000.274  000.274: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline-themes/autoload/airline/themes/luna.vim
+374.673  000.217  000.217: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/builder.vim
+375.412  000.157  000.157: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/default.vim
+396.750  000.185  000.185: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-closer/autoload/closer.vim
+397.406  000.171  000.171: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/dashboard-nvim/autoload/dashboard.vim
+408.770  000.312  000.312: sourcing /usr/local/Cellar/neovim/0.5.0/share/nvim/runtime/autoload/provider/clipboard.vim
+411.815  002.062  002.062: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar.vim
+412.206  000.094  000.094: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/debug.vim
+412.342  014.143  011.675: sourcing /Users/fujimotogen/.local/share/nvim/view/~=+.config=+nvim=+lua=+config=+startup.txt=
+412.990  095.220: opening buffers
+442.580  000.339  000.339: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/sign.vim
+443.170  000.266  000.266: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-signature/autoload/signature/mark.vim
+446.181  032.585: BufEnter autocommands
+446.184  000.003: editing files in windows
+452.191  000.186  000.186: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-bookmarks/autoload/bm.vim
+452.749  006.379: VimEnter autocommands
+452.753  000.004: UIEnter autocommands
+452.757  000.004: before starting main loop
+454.092  000.356  000.356: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/ctrlspace.vim
+455.286  000.346  000.346: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/tabws.vim
+457.106  000.340  000.340: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/builder.vim
+457.683  000.124  000.124: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/buflist.vim
+461.634  000.190  000.190: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/extensions/tabline/formatters/default.vim
+478.792  011.640  011.640: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-fugitive/autoload/fugitive.vim
+480.389  000.374  000.374: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/async.vim
+516.626  000.830  000.830: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/types/uctags.vim
+517.174  000.131  000.131: sourcing /Users/fujimotogen/.local/share/nvim/site/pack/packer/start/tagbar/autoload/tagbar/prototypes/typeinfo.vim
+531.456  064.369: first screen update
+531.463  000.007: --- NVIM STARTED ---
